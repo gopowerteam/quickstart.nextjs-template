@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@datorama/akita": "^6.2.4",
     "@react-rxjs/core": "^0.8.4",
     "@react-rxjs/utils": "^0.9.3",

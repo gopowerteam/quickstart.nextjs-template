@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@ant-design/icons': ^4.7.0
   '@datorama/akita': ^6.2.4
   '@react-rxjs/core': ^0.8.4
   '@react-rxjs/utils': ^0.9.3
@@ -26,6 +27,7 @@ specifiers:
   typescript: 4.5.2
 
 dependencies:
+  '@ant-design/icons': registry.npmmirror.com/@ant-design/icons/4.7.0_react-dom@17.0.2+react@17.0.2
   '@datorama/akita': registry.npmmirror.com/@datorama/akita/6.2.4_rxjs@7.4.0
   '@react-rxjs/core': registry.npmmirror.com/@react-rxjs/core/0.8.4_react@17.0.2+rxjs@7.4.0
   '@react-rxjs/utils': registry.npmmirror.com/@react-rxjs/utils/0.9.3_60317e7bb930969efe8177c79c6cf228
@@ -3948,7 +3950,7 @@ packages:
     dev: false
 
   registry.npmmirror.com/@babel/runtime/7.16.3:
-    resolution: {integrity: sha512-WBwekcqacdY2e9AF/Q7WLFUWmdJGJTkbjqTjoMDgXkVZ3ZRUvOPsLb5KdwISoQVsbP+DQzVZW4Zhci0DvpbNTQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@babel/runtime/download/@babel/runtime-7.16.3.tgz?cache=0&sync_timestamp=1636509337506&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40babel%2Fruntime%2Fdownload%2F%40babel%2Fruntime-7.16.3.tgz}
+    resolution: {integrity: sha512-WBwekcqacdY2e9AF/Q7WLFUWmdJGJTkbjqTjoMDgXkVZ3ZRUvOPsLb5KdwISoQVsbP+DQzVZW4Zhci0DvpbNTQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@babel/runtime/download/@babel/runtime-7.16.3.tgz?cache=0&sync_timestamp=1636503927680&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40babel%2Fruntime%2Fdownload%2F%40babel%2Fruntime-7.16.3.tgz}
     name: '@babel/runtime'
     version: 7.16.3
     engines: {node: '>=6.9.0'}
@@ -5956,7 +5958,7 @@ packages:
     dev: false
 
   registry.npmmirror.com/rc-util/5.15.0_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-8RI8sjOCXD3FhD3dzQNBQetpGol6BBd3sHQ/8jSGk9NPT0CH3JGtBfPODnASyE7AdDpCFQMOmgcp9CBs3S/1hg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/rc-util/download/rc-util-5.15.0.tgz?cache=0&sync_timestamp=1636530960781&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Frc-util%2Fdownload%2Frc-util-5.15.0.tgz}
+    resolution: {integrity: sha512-8RI8sjOCXD3FhD3dzQNBQetpGol6BBd3sHQ/8jSGk9NPT0CH3JGtBfPODnASyE7AdDpCFQMOmgcp9CBs3S/1hg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/rc-util/download/rc-util-5.15.0.tgz}
     id: registry.npmmirror.com/rc-util/5.15.0
     name: rc-util
     version: 5.15.0
@@ -6003,7 +6005,7 @@ packages:
     dev: false
 
   registry.npmmirror.com/react-is/16.13.1:
-    resolution: {integrity: sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-is/download/react-is-16.13.1.tgz?cache=0&sync_timestamp=1637199514977&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Freact-is%2Fdownload%2Freact-is-16.13.1.tgz}
+    resolution: {integrity: sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-is/download/react-is-16.13.1.tgz}
     name: react-is
     version: 16.13.1
 

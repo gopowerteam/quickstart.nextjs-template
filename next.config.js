@@ -30,6 +30,10 @@ const nextConfig = {
 }
 
 const lessPluginConfig = () => {
+  withLess.patchNext(
+    require('next/dist/build/webpack/config/blocks/css')
+  )
+
   // 加载主题变量
   const themeVariables = lessToJS(
     fs.readFileSync(

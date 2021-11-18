@@ -1,15 +1,17 @@
 import type { NextPage } from 'next'
-import { useRouter } from 'next/dist/client/router'
+import { useRouter, Router } from 'next/router'
+import { useEffect, useState } from 'react'
+import { useObservable } from '~/shared/common/use-obserable'
+import { userQuery } from '~/store'
 
 const Bootstrap: NextPage = props => {
-  const router = useRouter()
+  const token = useObservable(userQuery.token$)
 
-  return (
-    <div>
-      <div>1235</div>
-      <div>{props.children}</div>
-    </div>
-  )
+  // if (router.pathname === '/about') {
+  //   router.push('dashboard')
+  // }
+
+  return <main>{props.children}</main>
 }
 
 export default Bootstrap

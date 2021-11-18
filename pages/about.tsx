@@ -1,7 +1,15 @@
-import { NextPage } from "next";
+import { NextPage } from 'next'
+import { useRouter } from 'next/dist/client/router'
+import definePage from '~/shared/common/define-page'
 
 const AboutPage: NextPage = () => {
-  return <div>TEST</div>;
-};
+  const router = useRouter()
+  return (
+    <div onClick={() => router.push('dashboard')}>TEST</div>
+  )
+}
 
-export default AboutPage;
+export default definePage(AboutPage, {
+  title: '123',
+  layout: 'blank'
+})

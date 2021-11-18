@@ -8,6 +8,6 @@ export function middleware(
   req: NextRequest,
   ev: NextFetchEvent
 ) {
-  console.log(123)
+  console.log('middleware')
   return NextResponse.next()
 }

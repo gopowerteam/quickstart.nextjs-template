@@ -8,6 +8,8 @@ export class AppQuery extends Query<AppState> {
   }
 
   ready$ = this.select(state => state.ready)
+
+  collapsed$ = this.select(state => state.collapsed)
 }
 
 export const appQuery = new AppQuery(appStore)

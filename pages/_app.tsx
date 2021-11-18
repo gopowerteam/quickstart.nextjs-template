@@ -4,6 +4,7 @@ import 'antd/dist/antd.less'
 import type { AppProps } from 'next/app'
 import { NextPage } from 'next'
 import Bootstrap from '~/bootstrap'
+
 function MyApp({
   Component,
   pageProps

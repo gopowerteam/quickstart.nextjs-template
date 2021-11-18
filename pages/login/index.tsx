@@ -10,6 +10,7 @@ import {
 import definePage from '~/shared/common/define-page'
 import LoginImage from '~/assets/images/login-bg.png'
 import styles from './login.module.less'
+import { useRouter } from 'next/router'
 
 interface ILoginModel {
   username: string
@@ -17,8 +18,11 @@ interface ILoginModel {
 }
 const LoginForm = () => {
   const [form] = Form.useForm<ILoginModel>()
+  const router = useRouter()
 
-  function onSubmit(data: ILoginModel) {}
+  function onSubmit(data: ILoginModel) {
+    router.push('/')
+  }
 
   return (
     <div className={styles['login-form']}>

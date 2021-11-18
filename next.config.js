@@ -4,7 +4,6 @@ const withLess = require('next-with-less')
 const path = require('path')
 const lessToJS = require('less-vars-to-js')
 const fs = require('fs')
-// const WindiCSSWebpackPlugin = require('windicss-webpack-plugin')
 
 const redirectsConfig = async () => {
   return [
@@ -15,11 +14,6 @@ const redirectsConfig = async () => {
     }
   ]
 }
-
-// const webpackConfig = config => {
-//   config.plugins.push(new WindiCSSWebpackPlugin())
-//   return config
-// }
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

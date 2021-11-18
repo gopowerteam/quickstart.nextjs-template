@@ -4,7 +4,7 @@ const { Content } = Layout
 
 const BlankLayout: React.FC = props => {
   return (
-    <Layout>
+    <Layout className="absolute inset-0">
       <Content> {props.children}</Content>
     </Layout>
   )

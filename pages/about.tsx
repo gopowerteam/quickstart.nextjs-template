@@ -11,5 +11,5 @@ const AboutPage: NextPage = () => {
 
 export default definePage(AboutPage, {
   title: '123',
-  layout: 'blank'
+  layout: 'workspace'
 })

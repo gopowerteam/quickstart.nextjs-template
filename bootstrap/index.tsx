@@ -7,6 +7,7 @@ import { useStoreQuery } from '~/shared/common/use-store-query'
 import { appAction, appQuery, userQuery } from '~/store'
 import { setup } from './setup'
 import Exception403Page from '~/pages/403'
+import { appLaunch, userLaunch } from './launch'
 
 interface BootstrapProps {
   page: NextComponentType<NextPageContext, any, {}> & {
@@ -27,7 +28,7 @@ const Bootstrap: React.FC<BootstrapProps> = props => {
   // 用户准备状态
   const [userReady, updateUserReady] = useState(false)
 
-  async function appLaunch() {
+  async function startAppLaunch() {
     if (!appReady) {
       await setup()
       await appLaunch()
@@ -35,7 +36,7 @@ const Bootstrap: React.FC<BootstrapProps> = props => {
     }
   }
 
-  async function userLaunch() {
+  async function startUserLaunch() {
     if (!userReady) {
       await userLaunch()
       updateUserReady(true)
@@ -43,7 +44,7 @@ const Bootstrap: React.FC<BootstrapProps> = props => {
   }
 
   useEffect(() => {
-    appLaunch().then(userLaunch)
+    startAppLaunch().then(startUserLaunch)
   }, [])
 
   switch (true) {

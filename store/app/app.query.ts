@@ -6,10 +6,6 @@ export class AppQuery extends Query<AppState> {
   constructor(protected store: AppStore) {
     super(store)
   }
-
-  ready$ = this.select(state => state.ready)
-
-  collapsed$ = this.select(state => state.collapsed)
 }
 
 export const appQuery = new AppQuery(appStore)

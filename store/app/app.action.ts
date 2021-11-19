@@ -1,6 +1,6 @@
 import { appStore, AppStore } from './app.store'
 
-export class AppService {
+export class AppAction {
   constructor(private appStore: AppStore) {}
 
   updateCollapsed(collapsed: boolean) {
@@ -12,4 +12,4 @@ export class AppService {
   }
 }
 
-export const appService = new AppService(appStore)
+export const appAction = new AppAction(appStore)

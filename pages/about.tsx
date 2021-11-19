@@ -10,6 +10,7 @@ const AboutPage: NextPage = () => {
 }
 
 export default definePage(AboutPage, {
-  title: '123',
-  layout: 'workspace'
+  title: '关于我们',
+  layout: 'workspace',
+  auth: true
 })

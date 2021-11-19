@@ -1,6 +1,5 @@
 import { Layout } from 'antd'
-import { useState } from 'react'
-import { useObservable } from '~/shared/common/use-obserable'
+import { useStoreQuery } from '~/shared/common/use-store-query'
 import { appQuery } from '~/store'
 import dynamic from 'next/dynamic'
 
@@ -13,7 +12,10 @@ const PageSider = dynamic(
 const { Header, Footer, Sider, Content } = Layout
 
 const WorkspaceLayout: React.FC = props => {
-  const collapsed = useObservable(appQuery.collapsed$)
+  const collapsed = useStoreQuery(
+    appQuery,
+    store => store.collapsed
+  )
 
   return (
     <Layout className="absolute inset-0">

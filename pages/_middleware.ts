@@ -8,6 +8,11 @@ export function middleware(
   req: NextRequest,
   ev: NextFetchEvent
 ) {
-  console.log('middleware')
-  return NextResponse.next()
+  if (!req.page.name) {
+    return NextResponse.next()
+  }
+
+  console.log(req.cookies, 'test')
+
+  console.log(111, req.page, ev)
 }

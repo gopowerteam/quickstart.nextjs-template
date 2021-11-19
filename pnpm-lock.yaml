@@ -3,24 +3,30 @@ lockfileVersion: 5.3
 specifiers:
   '@ant-design/icons': ^4.7.0
   '@datorama/akita': ^6.2.4
+  '@gopowerteam/http-request': ^0.4.3
   '@react-rxjs/core': ^0.8.4
   '@react-rxjs/utils': ^0.9.3
   '@types/node': 16.11.7
   '@types/react': 17.0.35
   antd: ^4.17.1-alpha.1
   autoprefixer: ^10.4.0
+  commander: ^8.3.0
   eslint: '8'
   eslint-config-next: 12.0.4
   eslint-config-prettier: ^8.3.0
+  handlebars: ^4.7.7
   less: ^4.1.2
   less-loader: ^10.2.0
   less-vars-to-js: ^1.3.0
+  mkdirp: ^1.0.4
   next: 12.0.4
   next-compose-plugins: ^2.2.1
   next-with-less: ^2.0.2
+  node-fetch: '2'
   postcss: ^8.3.11
   prettier: ^2.4.1
   react: 17.0.2
+  react-cookie: ^4.1.1
   react-dom: 17.0.2
   rxjs: ^7.4.0
   tailwindcss: ^2.2.19
@@ -29,11 +35,13 @@ specifiers:
 dependencies:
   '@ant-design/icons': registry.npmmirror.com/@ant-design/icons/4.7.0_react-dom@17.0.2+react@17.0.2
   '@datorama/akita': registry.npmmirror.com/@datorama/akita/6.2.4_rxjs@7.4.0
+  '@gopowerteam/http-request': registry.npmmirror.com/@gopowerteam/http-request/0.4.3_rxjs@7.4.0
   '@react-rxjs/core': registry.npmmirror.com/@react-rxjs/core/0.8.4_react@17.0.2+rxjs@7.4.0
   '@react-rxjs/utils': registry.npmmirror.com/@react-rxjs/utils/0.9.3_60317e7bb930969efe8177c79c6cf228
   antd: registry.npmmirror.com/antd/4.17.1-alpha.1_react-dom@17.0.2+react@17.0.2
   next: registry.npmmirror.com/next/12.0.4_react-dom@17.0.2+react@17.0.2
   react: registry.npmmirror.com/react/17.0.2
+  react-cookie: registry.npmmirror.com/react-cookie/4.1.1_react@17.0.2
   react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
   rxjs: registry.npmmirror.com/rxjs/7.4.0
 
@@ -41,14 +49,18 @@ devDependencies:
   '@types/node': registry.npmmirror.com/@types/node/16.11.7
   '@types/react': registry.npmmirror.com/@types/react/17.0.35
   autoprefixer: registry.npmmirror.com/autoprefixer/10.4.0_postcss@8.3.11
+  commander: registry.npmmirror.com/commander/8.3.0
   eslint: registry.npmmirror.com/eslint/8.2.0
   eslint-config-next: registry.npmmirror.com/eslint-config-next/12.0.4_639674200d1f5d2b87e29bce3a156ee6
   eslint-config-prettier: registry.nlark.com/eslint-config-prettier/8.3.0_eslint@8.2.0
+  handlebars: registry.nlark.com/handlebars/4.7.7
   less: registry.npmmirror.com/less/4.1.2
   less-loader: registry.npmmirror.com/less-loader/10.2.0_less@4.1.2
   less-vars-to-js: registry.nlark.com/less-vars-to-js/1.3.0
+  mkdirp: registry.npmmirror.com/mkdirp/1.0.4
   next-compose-plugins: registry.npmmirror.com/next-compose-plugins/2.2.1
   next-with-less: registry.npmmirror.com/next-with-less/2.0.2_7a47eee9ded2ae58de4032157cee2893
+  node-fetch: registry.npmmirror.com/node-fetch/2.6.1
   postcss: registry.npmmirror.com/postcss/8.3.11
   prettier: registry.nlark.com/prettier/2.4.1
   tailwindcss: registry.npmmirror.com/tailwindcss/2.2.19_0c54bdadaf9d9c9c6c134cb2c6c061a3
@@ -242,13 +254,11 @@ packages:
     resolution: {integrity: sha1-/PcgXCXf95Xuea8eMNosl5CAjxE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@types/prop-types/download/@types/prop-types-15.7.4.tgz}
     name: '@types/prop-types'
     version: 15.7.4
-    dev: true
 
   registry.nlark.com/@types/scheduler/0.16.2:
     resolution: {integrity: sha1-GmL4lSVyPd4kuhsBsJK/XfitTTk=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@types/scheduler/download/@types/scheduler-0.16.2.tgz}
     name: '@types/scheduler'
     version: 0.16.2
-    dev: true
 
   registry.nlark.com/@yarnpkg/lockfile/1.1.0:
     resolution: {integrity: sha1-53qX+9NFt22DJF7c0X05OxtB+zE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@yarnpkg/lockfile/download/@yarnpkg/lockfile-1.1.0.tgz}
@@ -282,7 +292,7 @@ packages:
     name: acorn-node
     version: 1.8.2
     dependencies:
-      acorn: registry.nlark.com/acorn/7.4.1
+      acorn: registry.npmmirror.com/acorn/7.4.1
       acorn-walk: registry.nlark.com/acorn-walk/7.2.0
       xtend: registry.nlark.com/xtend/4.0.2
     dev: true
@@ -292,14 +302,6 @@ packages:
     name: acorn-walk
     version: 7.2.0
     engines: {node: '>=0.4.0'}
-    dev: true
-
-  registry.nlark.com/acorn/7.4.1:
-    resolution: {integrity: sha1-/q7SVZc9LndVW4PbwIhRpsY1IPo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/acorn/download/acorn-7.4.1.tgz}
-    name: acorn
-    version: 7.4.1
-    engines: {node: '>=0.4.0'}
-    hasBin: true
     dev: true
 
   registry.nlark.com/acorn/8.5.0:
@@ -636,7 +638,7 @@ packages:
     dependencies:
       ansi-styles: registry.nlark.com/ansi-styles/3.2.1
       escape-string-regexp: registry.nlark.com/escape-string-regexp/1.0.5
-      supports-color: registry.nlark.com/supports-color/5.5.0
+      supports-color: registry.npmmirror.com/supports-color/5.5.0
 
   registry.nlark.com/chalk/4.0.0:
     resolution: {integrity: sha1-bpgIHtLRf6q2FetSrGbsH+YgnnI=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/chalk/download/chalk-4.0.0.tgz?cache=0&sync_timestamp=1631509549883&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fchalk%2Fdownload%2Fchalk-4.0.0.tgz}
@@ -645,7 +647,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       ansi-styles: registry.nlark.com/ansi-styles/4.3.0
-      supports-color: registry.nlark.com/supports-color/7.2.0
+      supports-color: registry.npmmirror.com/supports-color/7.2.0
     dev: false
 
   registry.nlark.com/chalk/4.1.2:
@@ -655,7 +657,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       ansi-styles: registry.nlark.com/ansi-styles/4.3.0
-      supports-color: registry.nlark.com/supports-color/7.2.0
+      supports-color: registry.npmmirror.com/supports-color/7.2.0
     dev: true
 
   registry.nlark.com/chownr/1.1.4:
@@ -763,6 +765,13 @@ packages:
     version: 1.7.0
     dependencies:
       safe-buffer: registry.nlark.com/safe-buffer/5.1.2
+    dev: false
+
+  registry.nlark.com/cookie/0.4.1:
+    resolution: {integrity: sha1-r9cT/ibr0hupXOth+agRblClN9E=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/cookie/download/cookie-0.4.1.tgz}
+    name: cookie
+    version: 0.4.1
+    engines: {node: '>= 0.6'}
     dev: false
 
   registry.nlark.com/copy-anything/2.0.3:
@@ -1395,6 +1404,21 @@ packages:
       slash: registry.nlark.com/slash/3.0.0
     dev: true
 
+  registry.nlark.com/handlebars/4.7.7:
+    resolution: {integrity: sha1-nOM0FqrQLb1sj6+oJA1dmABJRaE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/handlebars/download/handlebars-4.7.7.tgz}
+    name: handlebars
+    version: 4.7.7
+    engines: {node: '>=0.4.7'}
+    hasBin: true
+    dependencies:
+      minimist: registry.nlark.com/minimist/1.2.5
+      neo-async: registry.nlark.com/neo-async/2.6.2
+      source-map: registry.nlark.com/source-map/0.6.1
+      wordwrap: registry.nlark.com/wordwrap/1.0.0
+    optionalDependencies:
+      uglify-js: registry.npmmirror.com/uglify-js/3.14.3
+    dev: true
+
   registry.nlark.com/has-bigints/1.0.1:
     resolution: {integrity: sha1-ZP5qywIGc+O3jbA1pa9pqp0HsRM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/has-bigints/download/has-bigints-1.0.1.tgz}
     name: has-bigints
@@ -1475,6 +1499,14 @@ packages:
       hash.js: registry.nlark.com/hash.js/1.1.7
       minimalistic-assert: registry.nlark.com/minimalistic-assert/1.0.1
       minimalistic-crypto-utils: registry.nlark.com/minimalistic-crypto-utils/1.0.1
+    dev: false
+
+  registry.nlark.com/hoist-non-react-statics/3.3.2:
+    resolution: {integrity: sha1-7OCsr3HWLClpwuxZ/v9CpLGoW0U=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/hoist-non-react-statics/download/hoist-non-react-statics-3.3.2.tgz}
+    name: hoist-non-react-statics
+    version: 3.3.2
+    dependencies:
+      react-is: registry.npmmirror.com/react-is/16.13.1
     dev: false
 
   registry.nlark.com/hosted-git-info/2.8.9:
@@ -2137,7 +2169,7 @@ packages:
       brace-expansion: registry.nlark.com/brace-expansion/1.1.11
 
   registry.nlark.com/minimist/1.2.5:
-    resolution: {integrity: sha1-Z9ZgFLZqaoqqDAg8X9WN9OTpdgI=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/minimist/download/minimist-1.2.5.tgz?cache=0&sync_timestamp=1631509547344&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fminimist%2Fdownload%2Fminimist-1.2.5.tgz}
+    resolution: {integrity: sha1-Z9ZgFLZqaoqqDAg8X9WN9OTpdgI=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/minimist/download/minimist-1.2.5.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fminimist%2Fdownload%2Fminimist-1.2.5.tgz}
     name: minimist
     version: 1.2.5
 
@@ -2215,6 +2247,12 @@ packages:
       sax: registry.nlark.com/sax/1.2.4
     dev: true
     optional: true
+
+  registry.nlark.com/neo-async/2.6.2:
+    resolution: {integrity: sha1-tKr7k+OustgXTKU88WOrfXMIMF8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/neo-async/download/neo-async-2.6.2.tgz}
+    name: neo-async
+    version: 2.6.2
+    dev: true
 
   registry.nlark.com/node-emoji/1.11.0:
     resolution: {integrity: sha1-aaAVDmlG4vEV6dfqTfeXHiYoMBw=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/node-emoji/download/node-emoji-1.11.0.tgz}
@@ -2748,6 +2786,15 @@ packages:
       postcss: registry.npmmirror.com/postcss/8.3.11
       postcss-selector-parser: registry.nlark.com/postcss-selector-parser/6.0.6
     dev: true
+
+  registry.nlark.com/qs/6.10.1:
+    resolution: {integrity: sha1-STFIL6jWR6Wqt5nFJx0hM7mB+2o=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/qs/download/qs-6.10.1.tgz}
+    name: qs
+    version: 6.10.1
+    engines: {node: '>=0.6'}
+    dependencies:
+      side-channel: registry.nlark.com/side-channel/1.0.4
+    dev: false
 
   registry.nlark.com/queue-microtask/1.2.3:
     resolution: {integrity: sha1-SSkii7xyTfrEPg77BYyve2z7YkM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/queue-microtask/download/queue-microtask-1.2.3.tgz}
@@ -3523,31 +3570,6 @@ packages:
     version: 3.5.4
     dev: false
 
-  registry.nlark.com/supports-color/5.5.0:
-    resolution: {integrity: sha1-4uaaRKyHcveKHsCzW2id9lMO/I8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/supports-color/download/supports-color-5.5.0.tgz}
-    name: supports-color
-    version: 5.5.0
-    engines: {node: '>=4'}
-    dependencies:
-      has-flag: registry.nlark.com/has-flag/3.0.0
-
-  registry.nlark.com/supports-color/7.2.0:
-    resolution: {integrity: sha1-G33NyzK4E4gBs+R4umpRyqiWSNo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/supports-color/download/supports-color-7.2.0.tgz}
-    name: supports-color
-    version: 7.2.0
-    engines: {node: '>=8'}
-    dependencies:
-      has-flag: registry.nlark.com/has-flag/4.0.0
-
-  registry.nlark.com/supports-color/8.1.1:
-    resolution: {integrity: sha1-zW/BfihQDP9WwbhsCn/UpUpzAFw=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/supports-color/download/supports-color-8.1.1.tgz}
-    name: supports-color
-    version: 8.1.1
-    engines: {node: '>=10'}
-    dependencies:
-      has-flag: registry.nlark.com/has-flag/4.0.0
-    dev: false
-
   registry.nlark.com/text-table/0.2.0:
     resolution: {integrity: sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/text-table/download/text-table-0.2.0.tgz}
     name: text-table
@@ -3818,6 +3840,12 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  registry.nlark.com/wordwrap/1.0.0:
+    resolution: {integrity: sha1-J1hIEIkUVqQXHI0CJkQa3pDLyus=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/wordwrap/download/wordwrap-1.0.0.tgz}
+    name: wordwrap
+    version: 1.0.0
+    dev: true
+
   registry.nlark.com/wrappy/1.0.2:
     resolution: {integrity: sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/wrappy/download/wrappy-1.0.2.tgz}
     name: wrappy
@@ -3998,6 +4026,23 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  registry.npmmirror.com/@gopowerteam/http-request/0.4.3_rxjs@7.4.0:
+    resolution: {integrity: sha1-WDzYu3nX0nN7JOnR4pRe+0KPzsg=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@gopowerteam/http-request/download/@gopowerteam/http-request-0.4.3.tgz}
+    id: registry.npmmirror.com/@gopowerteam/http-request/0.4.3
+    name: '@gopowerteam/http-request'
+    version: 0.4.3
+    peerDependencies:
+      rxjs: ^7.0.0
+    dependencies:
+      '@types/qs': registry.npmmirror.com/@types/qs/6.9.7
+      axios: registry.npmmirror.com/axios/0.21.4
+      class-transformer: registry.npmmirror.com/class-transformer/0.4.0
+      qs: registry.nlark.com/qs/6.10.1
+      rxjs: registry.npmmirror.com/rxjs/7.4.0
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   registry.npmmirror.com/@hapi/accept/5.0.2:
     resolution: {integrity: sha1-q3BDsDfmi3Ivk/N2r7BehcBplSM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@hapi/accept/download/@hapi/accept-5.0.2.tgz}
@@ -4285,10 +4330,31 @@ packages:
       semver-intersect: registry.npmmirror.com/semver-intersect/1.4.0
     dev: false
 
+  registry.npmmirror.com/@types/cookie/0.3.3:
+    resolution: {integrity: sha1-hbx0ungvt6o6UU0RdngysOO8aAM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/cookie/download/@types/cookie-0.3.3.tgz}
+    name: '@types/cookie'
+    version: 0.3.3
+    dev: false
+
+  registry.npmmirror.com/@types/hoist-non-react-statics/3.3.1:
+    resolution: {integrity: sha1-ESSq/lEYy1kZd66xzqrtEHDrA58=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/hoist-non-react-statics/download/@types/hoist-non-react-statics-3.3.1.tgz}
+    name: '@types/hoist-non-react-statics'
+    version: 3.3.1
+    dependencies:
+      '@types/react': registry.npmmirror.com/@types/react/17.0.35
+      hoist-non-react-statics: registry.nlark.com/hoist-non-react-statics/3.3.2
+    dev: false
+
   registry.npmmirror.com/@types/node/16.11.7:
     resolution: {integrity: sha512-QB5D2sqfSjCmTuWcBWyJ+/44bcjO7VbjSbOE0ucoVbAsSNQc4Lt6QkgkVXkTDwkL4z/beecZNDvVX15D4P8Jbw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/node/download/@types/node-16.11.7.tgz}
     name: '@types/node'
     version: 16.11.7
+
+  registry.npmmirror.com/@types/qs/6.9.7:
+    resolution: {integrity: sha1-Y7t9Bn2xB8weRXwwO8JdUR/r9ss=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/qs/download/@types/qs-6.9.7.tgz}
+    name: '@types/qs'
+    version: 6.9.7
+    dev: false
 
   registry.npmmirror.com/@types/react/17.0.35:
     resolution: {integrity: sha512-r3C8/TJuri/SLZiiwwxQoLAoavaczARfT9up9b4Jr65+ErAUX3MIkU0oMOQnrpfgHme8zIqZLX7O5nnjm5Wayw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/react/download/@types/react-17.0.35.tgz}
@@ -4298,7 +4364,6 @@ packages:
       '@types/prop-types': registry.nlark.com/@types/prop-types/15.7.4
       '@types/scheduler': registry.nlark.com/@types/scheduler/0.16.2
       csstype: registry.npmmirror.com/csstype/3.0.10
-    dev: true
 
   registry.npmmirror.com/@typescript-eslint/parser/4.33.0_eslint@8.2.0+typescript@4.5.2:
     resolution: {integrity: sha1-3+eXVw2WlOVgUo0Y7srYbIx0SJk=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@typescript-eslint/parser/download/@typescript-eslint/parser-4.33.0.tgz}
@@ -4372,6 +4437,14 @@ packages:
     dependencies:
       '@typescript-eslint/types': registry.npmmirror.com/@typescript-eslint/types/4.33.0
       eslint-visitor-keys: registry.npmmirror.com/eslint-visitor-keys/2.1.0
+    dev: true
+
+  registry.npmmirror.com/acorn/7.4.1:
+    resolution: {integrity: sha1-/q7SVZc9LndVW4PbwIhRpsY1IPo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/acorn/download/acorn-7.4.1.tgz?cache=0&sync_timestamp=1637225943828&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Facorn%2Fdownload%2Facorn-7.4.1.tgz}
+    name: acorn
+    version: 7.4.1
+    engines: {node: '>=0.4.0'}
+    hasBin: true
     dev: true
 
   registry.npmmirror.com/ajv/6.12.3:
@@ -4534,6 +4607,16 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
+  registry.npmmirror.com/axios/0.21.4:
+    resolution: {integrity: sha1-xnuQ3AVo5cHPKwuFjEO6KOLtpXU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/axios/download/axios-0.21.4.tgz}
+    name: axios
+    version: 0.21.4
+    dependencies:
+      follow-redirects: registry.npmmirror.com/follow-redirects/1.14.5
+    transitivePeerDependencies:
+      - debug
+    dev: false
+
   registry.npmmirror.com/axobject-query/2.2.0:
     resolution: {integrity: sha1-lD1H4QwLcEqkInXiDt83ImSJib4=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/axobject-query/download/axobject-query-2.2.0.tgz}
     name: axobject-query
@@ -4613,6 +4696,12 @@ packages:
       fsevents: registry.npmmirror.com/fsevents/2.3.2
     dev: true
 
+  registry.npmmirror.com/class-transformer/0.4.0:
+    resolution: {integrity: sha1-tSFEEXtCPFFq+0TMHHbbrTHCFls=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/class-transformer/download/class-transformer-0.4.0.tgz}
+    name: class-transformer
+    version: 0.4.0
+    dev: false
+
   registry.npmmirror.com/colorette/1.4.0:
     resolution: {integrity: sha1-UZD7uHJ2JZqGrXAL/yxtb6o/ykA=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/colorette/download/colorette-1.4.0.tgz}
     name: colorette
@@ -4624,6 +4713,13 @@ packages:
     name: commander
     version: 6.2.1
     engines: {node: '>= 6'}
+    dev: true
+
+  registry.npmmirror.com/commander/8.3.0:
+    resolution: {integrity: sha1-SDfqGy2me5xhamevuw+v7lZ7ymY=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/commander/download/commander-8.3.0.tgz}
+    name: commander
+    version: 8.3.0
+    engines: {node: '>= 12'}
     dev: true
 
   registry.npmmirror.com/core-js-pure/3.19.1:
@@ -4664,7 +4760,6 @@ packages:
     resolution: {integrity: sha512-2u44ZG2OcNUO9HDp/Jl8C07x6pU/eTR3ncV91SiK3dhG9TWvRVsCoJw14Ckx5DgWkzGA3waZWO3d7pgqpUI/XA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/csstype/download/csstype-3.0.10.tgz}
     name: csstype
     version: 3.0.10
-    dev: true
 
   registry.npmmirror.com/data-uri-to-buffer/3.0.1:
     resolution: {integrity: sha1-WUuJc5OMW8LDMEZTV4U0GrxPNjY=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/data-uri-to-buffer/download/data-uri-to-buffer-3.0.1.tgz}
@@ -5047,6 +5142,18 @@ packages:
     version: 3.2.4
     dev: true
 
+  registry.npmmirror.com/follow-redirects/1.14.5:
+    resolution: {integrity: sha1-8JpYSJgdPHcrU5Iwl3hSP42Fw4E=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/follow-redirects/download/follow-redirects-1.14.5.tgz}
+    name: follow-redirects
+    version: 1.14.5
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+    dev: false
+
   registry.npmmirror.com/fraction.js/4.1.2:
     resolution: {integrity: sha512-o2RiJQ6DZaR/5+Si0qJUIy637QMRudSi9kU/FFzx9EZazrIdnBgpU+3sEWCxAVhH2RtxW2Oz+T4p2o8uOPVcgA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/fraction.js/download/fraction.js-4.1.2.tgz}
     name: fraction.js
@@ -5223,7 +5330,7 @@ packages:
     dependencies:
       '@types/node': registry.npmmirror.com/@types/node/16.11.7
       merge-stream: registry.nlark.com/merge-stream/2.0.0
-      supports-color: registry.nlark.com/supports-color/8.1.1
+      supports-color: registry.npmmirror.com/supports-color/8.1.1
     dev: false
 
   registry.npmmirror.com/klona/2.0.5:
@@ -5303,6 +5410,14 @@ packages:
     dependencies:
       minimist: registry.nlark.com/minimist/1.2.5
     dev: false
+
+  registry.npmmirror.com/mkdirp/1.0.4:
+    resolution: {integrity: sha1-PrXtYmInVteaXw4qIh3+utdcL34=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mkdirp/download/mkdirp-1.0.4.tgz}
+    name: mkdirp
+    version: 1.0.4
+    engines: {node: '>=10'}
+    hasBin: true
+    dev: true
 
   registry.npmmirror.com/moment/2.29.1:
     resolution: {integrity: sha1-sr52n6MZQL6e7qZGnAdeNQBvo9M=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/moment/download/moment-2.29.1.tgz?cache=0&sync_timestamp=1632817442935&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fmoment%2Fdownload%2Fmoment-2.29.1.tgz}
@@ -5449,7 +5564,6 @@ packages:
     name: node-fetch
     version: 2.6.1
     engines: {node: 4.x || >=6.0.0}
-    dev: false
 
   registry.npmmirror.com/node-html-parser/1.4.9:
     resolution: {integrity: sha1-PI9srEZHn65YAHJe21Mumuj9gWw=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/node-html-parser/download/node-html-parser-1.4.9.tgz}
@@ -5990,6 +6104,20 @@ packages:
       react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
     dev: false
 
+  registry.npmmirror.com/react-cookie/4.1.1_react@17.0.2:
+    resolution: {integrity: sha1-gy4TStcg4N4+A96s6qsXnEBhoZ0=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-cookie/download/react-cookie-4.1.1.tgz}
+    id: registry.npmmirror.com/react-cookie/4.1.1
+    name: react-cookie
+    version: 4.1.1
+    peerDependencies:
+      react: '>= 16.3.0'
+    dependencies:
+      '@types/hoist-non-react-statics': registry.npmmirror.com/@types/hoist-non-react-statics/3.3.1
+      hoist-non-react-statics: registry.nlark.com/hoist-non-react-statics/3.3.2
+      react: registry.npmmirror.com/react/17.0.2
+      universal-cookie: registry.npmmirror.com/universal-cookie/4.0.4
+    dev: false
+
   registry.npmmirror.com/react-dom/17.0.2_react@17.0.2:
     resolution: {integrity: sha1-7P+2hF462Nv83EmPDQqTlzZQLCM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-dom/download/react-dom-17.0.2.tgz}
     id: registry.npmmirror.com/react-dom/17.0.2
@@ -6005,7 +6133,7 @@ packages:
     dev: false
 
   registry.npmmirror.com/react-is/16.13.1:
-    resolution: {integrity: sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-is/download/react-is-16.13.1.tgz}
+    resolution: {integrity: sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-is/download/react-is-16.13.1.tgz?cache=0&sync_timestamp=1637280766710&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Freact-is%2Fdownload%2Freact-is-16.13.1.tgz}
     name: react-is
     version: 16.13.1
 
@@ -6217,6 +6345,31 @@ packages:
       stylis: registry.nlark.com/stylis/3.5.4
     dev: false
 
+  registry.npmmirror.com/supports-color/5.5.0:
+    resolution: {integrity: sha1-4uaaRKyHcveKHsCzW2id9lMO/I8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/supports-color/download/supports-color-5.5.0.tgz}
+    name: supports-color
+    version: 5.5.0
+    engines: {node: '>=4'}
+    dependencies:
+      has-flag: registry.nlark.com/has-flag/3.0.0
+
+  registry.npmmirror.com/supports-color/7.2.0:
+    resolution: {integrity: sha1-G33NyzK4E4gBs+R4umpRyqiWSNo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/supports-color/download/supports-color-7.2.0.tgz}
+    name: supports-color
+    version: 7.2.0
+    engines: {node: '>=8'}
+    dependencies:
+      has-flag: registry.nlark.com/has-flag/4.0.0
+
+  registry.npmmirror.com/supports-color/8.1.1:
+    resolution: {integrity: sha1-zW/BfihQDP9WwbhsCn/UpUpzAFw=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/supports-color/download/supports-color-8.1.1.tgz}
+    name: supports-color
+    version: 8.1.1
+    engines: {node: '>=10'}
+    dependencies:
+      has-flag: registry.nlark.com/has-flag/4.0.0
+    dev: false
+
   registry.npmmirror.com/tailwindcss/2.2.19_0c54bdadaf9d9c9c6c134cb2c6c061a3:
     resolution: {integrity: sha1-VA5GSDLNRiu5ZJwUhLCjgxXCZTw=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tailwindcss/download/tailwindcss-2.2.19.tgz}
     id: registry.npmmirror.com/tailwindcss/2.2.19
@@ -6318,6 +6471,25 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
+
+  registry.npmmirror.com/uglify-js/3.14.3:
+    resolution: {integrity: sha1-wPJd/qHo5TI+zPWWEL4ItgQ8Fc8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/uglify-js/download/uglify-js-3.14.3.tgz}
+    name: uglify-js
+    version: 3.14.3
+    engines: {node: '>=0.8.0'}
+    hasBin: true
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/universal-cookie/4.0.4:
+    resolution: {integrity: sha1-BuizYlv5rwSVae+XEJtLsiateY0=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/universal-cookie/download/universal-cookie-4.0.4.tgz}
+    name: universal-cookie
+    version: 4.0.4
+    dependencies:
+      '@types/cookie': registry.npmmirror.com/@types/cookie/0.3.3
+      cookie: registry.nlark.com/cookie/0.4.1
+    dev: false
 
   registry.npmmirror.com/use-subscription/1.5.1_react@17.0.2:
     resolution: {integrity: sha1-c1ARB/AvrYTG3VeWW+sLdcaMQtE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/use-subscription/download/use-subscription-1.5.1.tgz}

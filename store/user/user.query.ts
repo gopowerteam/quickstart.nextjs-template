@@ -1,5 +1,4 @@
 import { Query } from '@datorama/akita'
-import { useState } from 'react'
 import {
   UserState,
   userStore,
@@ -11,9 +10,10 @@ export class UserQuery extends Query<UserState> {
     super(store)
   }
 
-  name$ = this.select(state => state.name)
-
-  token$ = this.select(state => state.token)
+  get userReady() {
+    const { access_token, current } = this.getValue()
+    return !!access_token && !!current
+  }
 }
 
 export const userQuery = new UserQuery(userStore)

@@ -2,27 +2,32 @@ import { NextPage } from 'next'
 import { Button } from 'antd'
 import {
   userQuery,
-  userService,
   appQuery,
-  appService
+  userAction,
+  appAction
 } from '~/store'
-import { useObservable } from '~/shared/common/use-obserable'
 import { useRouter } from 'next/dist/client/router'
 import definePage from '~/shared/common/define-page'
+import { useStoreQuery } from '~/shared/common/use-store-query'
+import { useCookies } from 'react-cookie'
+import { useState } from 'react'
 
 const DashBoardPage: NextPage = () => {
-  const name = useObservable(userQuery.name$)
-  const token = useObservable(userQuery.token$)
+  // useCookies([''])
+  const ready = useStoreQuery(
+    appQuery,
+    store => store.ready
+  )
 
-  const ready = useObservable(appQuery.ready$)
+  const [a, u] = useState('1')
+
   const router = useRouter()
   function updateName() {
-    userService.updateUserName(name + 'z')
-    userService.updateUserToken(token + 'x')
+    // userAction.updateUserName(name + 'z')
   }
 
   function updateReady() {
-    appService.updateReady()
+    appAction.updateReady()
   }
 
   if (!ready) {
@@ -31,18 +36,23 @@ const DashBoardPage: NextPage = () => {
         <div className="text-red-500">1231</div>
         <Button
           className="m-20"
-          onClick={() => updateReady()}
+          onClick={() => updateName()}
         >
           not Ready
         </Button>
-        <div>xxx {token}</div>
+        <div>xxx</div>
       </>
     )
   } else {
     return (
-      <Button onClick={() => router.push('about')}>
-        Dashboard {name} - {token}
-      </Button>
+      <>
+        <Button onClick={() => router.push('about')}>
+          Dashboard
+        </Button>
+        <Button onClick={() => u(a + '1')}>
+          Dashboard {a}
+        </Button>
+      </>
     )
   }
 }

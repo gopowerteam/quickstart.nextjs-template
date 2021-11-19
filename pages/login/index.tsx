@@ -11,17 +11,39 @@ import definePage from '~/shared/common/define-page'
 import LoginImage from '~/assets/images/login-bg.png'
 import styles from './login.module.less'
 import { useRouter } from 'next/router'
+import { LoginService } from '~/http/services/assistant-service/login.service'
+import { userAction } from '~/store'
+import { CurrentUserService } from '~/http/services/user-service/current-user.service'
 
-interface ILoginModel {
+const loginService = new LoginService()
+const currentUserService = new CurrentUserService()
+interface LoginModel {
   username: string
   password: string
 }
+
 const LoginForm = () => {
-  const [form] = Form.useForm<ILoginModel>()
+  const [form] = Form.useForm<LoginModel>()
   const router = useRouter()
 
-  function onSubmit(data: ILoginModel) {
-    router.push('/')
+  function onSubmit(data: LoginModel) {
+    // router.push('/')
+    console.log(data)
+    loginService
+      .loginWithUserName({
+        username: 'admin',
+        password: 'admin'
+      })
+      .subscribe(data => {
+        userAction.updateToken(data)
+        console.log(data)
+      })
+  }
+
+  function getUser() {
+    currentUserService.currentUser().subscribe(data => {
+      console.log(data)
+    })
   }
 
   return (
@@ -79,6 +101,9 @@ const LoginForm = () => {
               </Form.Item>
 
               <a href="">忘记密码</a>
+              <Button onClick={() => getUser()}>
+                user
+              </Button>
             </Form.Item>
 
             <Form.Item>

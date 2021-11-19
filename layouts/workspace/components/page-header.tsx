@@ -1,5 +1,5 @@
-import { useObservable } from '~/shared/common/use-obserable'
-import { appQuery, appService } from '~/store'
+import { useStoreQuery } from '~/shared/common/use-store-query'
+import { appAction, appQuery } from '~/store'
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined
@@ -7,7 +7,10 @@ import {
 import React from 'react'
 
 const PageSider: React.FC = () => {
-  const collapsed = useObservable(appQuery.collapsed$)
+  const collapsed = useStoreQuery(
+    appQuery,
+    store => store.collapsed
+  )
 
   return (
     <>
@@ -16,7 +19,7 @@ const PageSider: React.FC = () => {
         {
           style: { color: '#fff', fontSize: 21 },
           onClick: () =>
-            appService.updateCollapsed(!collapsed)
+            appAction.updateCollapsed(!collapsed)
         }
       )}
     </>

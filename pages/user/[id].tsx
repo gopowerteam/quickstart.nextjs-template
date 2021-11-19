@@ -4,9 +4,7 @@ import { useRouter } from 'next/dist/client/router'
 const UserPage: NextPage = () => {
   const router = useRouter()
   const { id } = router.query
-  return (
-    <div onClick={() => router.push('/')}>user-{id}</div>
-  )
+  return <div>user-{id}</div>
 }
 
 export default UserPage

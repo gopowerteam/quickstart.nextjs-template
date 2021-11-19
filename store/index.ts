@@ -1,4 +1,5 @@
 import { persistState } from '@datorama/akita'
+
 import { AppPersistState } from './app'
 import { UserPersistState } from './user'
 

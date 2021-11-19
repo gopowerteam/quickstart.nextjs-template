@@ -4,6 +4,7 @@ import 'antd/dist/antd.less'
 import type { AppProps } from 'next/app'
 import { NextPage } from 'next'
 import Bootstrap from '~/bootstrap'
+import { CookiesProvider } from 'react-cookie'
 
 function MyApp({
   Component,
@@ -17,9 +18,11 @@ function MyApp({
     Component.getLayout || ((page: NextPage) => page)
 
   return (
-    <Bootstrap>
-      {getLayout(<Component {...pageProps} />)}
-    </Bootstrap>
+    <CookiesProvider>
+      <Bootstrap page={Component}>
+        {getLayout(<Component {...pageProps} />)}
+      </Bootstrap>
+    </CookiesProvider>
   )
 }
 

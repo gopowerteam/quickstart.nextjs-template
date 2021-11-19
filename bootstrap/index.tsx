@@ -1,13 +1,11 @@
 import type {
   NextComponentType,
-  NextPage,
   NextPageContext
 } from 'next'
-import { ReactNode, useEffect } from 'react'
-import { useCookies } from 'react-cookie'
+import { useEffect, useState } from 'react'
 import { useStoreQuery } from '~/shared/common/use-store-query'
 import { appAction, appQuery, userQuery } from '~/store'
-import { boot } from './boot'
+import { setup } from './setup'
 import Exception403Page from '~/pages/403'
 
 interface BootstrapProps {
@@ -27,19 +25,25 @@ const Bootstrap: React.FC<BootstrapProps> = props => {
   )
 
   // 用户准备状态
-  const userReady = userQuery.userReady
+  const [userReady, updateUserReady] = useState(false)
 
-  // const [cookies, setCookie] = useCookies(['name'])
+  async function appLaunch() {
+    if (!appReady) {
+      await setup()
+      await appLaunch()
+      appAction.updateReady()
+    }
+  }
+
+  async function userLaunch() {
+    if (!userReady) {
+      await userLaunch()
+      updateUserReady(true)
+    }
+  }
 
   useEffect(() => {
-    if (!appReady) {
-      boot(() => {
-        appAction.updateReady()
-      })
-    }
-
-    if (!userReady) {
-    }
+    appLaunch().then(userLaunch)
   }, [])
 
   switch (true) {
@@ -50,10 +54,17 @@ const Bootstrap: React.FC<BootstrapProps> = props => {
     case userReady:
       return <main>{props.children}</main>
     default:
-      const getLayout =
-        Page.getLayout || ((page: NextPage) => page)
+      return render403Page()
+  }
 
-      return <main>{getLayout(<Exception403Page />)}</main>
+  function render403Page() {
+    const getLayout = Exception403Page.getLayout
+
+    return (
+      <main>
+        {getLayout((<Exception403Page />) as any)}
+      </main>
+    )
   }
 }
 

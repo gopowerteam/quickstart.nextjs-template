@@ -5,7 +5,9 @@ import definePage from '~/shared/common/define-page'
 const AboutPage: NextPage = () => {
   const router = useRouter()
   return (
-    <div onClick={() => router.push('dashboard')}>TEST</div>
+    <div onClick={() => router.push('dashboard')}>
+      About
+    </div>
   )
 }
 

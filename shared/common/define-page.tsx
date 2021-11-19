@@ -24,20 +24,32 @@ const defaultPageProps: definePageProps & {
   auth: true
 }
 
+type ExtendNextPageConfig = {
+  layout: keyof typeof layouts
+  title: string
+  auth: boolean
+  type: ExtendNextPageConfig
+  getLayout: (Page: ExtendNextPage) => JSX.Element
+}
+
+type ExtendNextPage = NextPage & ExtendNextPageConfig
+
 const definePage = (
-  Page: NextPage & {
-    getLayout?: (page: NextPage) => JSX.Element
-  },
+  page: NextPage,
   config: definePageProps
 ) => {
-  const getConfig = () =>
-    Object.assign(defaultPageProps, config)
+  const pageConfig = Object.assign(defaultPageProps, config)
+
+  const Page = page as ExtendNextPage
+
+  Page.title = pageConfig.title
+  Page.auth = pageConfig.auth
+  Page.layout = pageConfig.layout
 
   // 设置布局
-  Page.getLayout = (page: NextPage) => {
-    const pageConfig = getConfig()
-
-    const Layout = layouts[pageConfig.layout]
+  Page.getLayout = page => {
+    const pageLayout = page.layout ?? page.type.layout
+    const Layout = layouts[pageLayout]
     return <Layout>{page}</Layout>
   }
 

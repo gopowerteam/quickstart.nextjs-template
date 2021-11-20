@@ -1,5 +1,4 @@
 import { NextPage } from 'next'
-import { useRouter } from 'next/dist/client/router'
 import definePage from '~/shared/common/define-page'
 
 const Exception403Page: NextPage = () => {

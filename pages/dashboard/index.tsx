@@ -1,19 +1,12 @@
 import { NextPage } from 'next'
 import { Button } from 'antd'
-import {
-  userQuery,
-  appQuery,
-  userAction,
-  appAction
-} from '~/store'
-import { useRouter } from 'next/dist/client/router'
+import { appQuery, appAction } from '~/store'
 import definePage from '~/shared/common/define-page'
 import { useStoreQuery } from '~/shared/common/use-store-query'
 import { useCookies } from 'react-cookie'
 import { useState } from 'react'
 
 const DashBoardPage: NextPage = () => {
-  // useCookies([''])
   const ready = useStoreQuery(
     appQuery,
     store => store.ready
@@ -21,13 +14,17 @@ const DashBoardPage: NextPage = () => {
 
   const [a, u] = useState('1')
 
-  const router = useRouter()
+  // const router = useRouter()
   function updateName() {
     // userAction.updateUserName(name + 'z')
   }
 
   function updateReady() {
     appAction.updateReady()
+  }
+
+  function toAbout() {
+    // router.push('about')
   }
 
   if (!ready) {
@@ -46,9 +43,7 @@ const DashBoardPage: NextPage = () => {
   } else {
     return (
       <>
-        <Button onClick={() => router.push('about')}>
-          Dashboard
-        </Button>
+        <Button onClick={() => toAbout()}>Dashboard</Button>
         <Button onClick={() => u(a + '1')}>
           Dashboard {a}
         </Button>

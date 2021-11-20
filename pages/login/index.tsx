@@ -10,7 +10,6 @@ import {
 import definePage from '~/shared/common/define-page'
 import LoginImage from '~/assets/images/login-bg.png'
 import styles from './login.module.less'
-import { useRouter } from 'next/router'
 import { LoginService } from '~/http/services/assistant-service/login.service'
 import { userAction } from '~/store'
 import { CurrentUserService } from '~/http/services/user-service/current-user.service'
@@ -24,7 +23,6 @@ interface LoginModel {
 
 const LoginForm = () => {
   const [form] = Form.useForm<LoginModel>()
-  const router = useRouter()
 
   function onSubmit(data: LoginModel) {
     // router.push('/')
@@ -142,5 +140,6 @@ const LoginPage: NextPage = () => {
 
 export default definePage(LoginPage, {
   title: '登录',
-  layout: 'blank'
+  layout: 'blank',
+  auth: false
 })

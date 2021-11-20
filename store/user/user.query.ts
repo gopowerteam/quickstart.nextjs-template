@@ -12,7 +12,18 @@ export class UserQuery extends Query<UserState> {
 
   get userReady() {
     const { access_token, current } = this.getValue()
-    return !!access_token && !!current
+
+    switch (true) {
+      // 用户未认证
+      case !access_token:
+        return false
+      // 用户已认证
+      case !!access_token && !!current:
+        return true
+      // 用户待刷新
+      default:
+        return undefined
+    }
   }
 }
 

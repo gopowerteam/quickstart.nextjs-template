@@ -38,8 +38,11 @@ const definePage = (
   page: NextPage,
   config: definePageProps
 ) => {
-  const pageConfig = Object.assign(defaultPageProps, config)
-
+  const pageConfig = Object.assign(
+    {},
+    defaultPageProps,
+    config
+  )
   const Page = page as ExtendNextPage
 
   Page.title = pageConfig.title

@@ -8,6 +8,7 @@ import { appAction, appQuery, userQuery } from '~/store'
 import { setup } from './setup'
 import Exception403Page from '~/pages/403'
 import { appLaunch, userLaunch } from './launch'
+import { useRouter } from 'next/router'
 
 interface BootstrapProps {
   page: NextComponentType<NextPageContext, any, {}> & {
@@ -17,6 +18,7 @@ interface BootstrapProps {
 }
 
 const Bootstrap: React.FC<BootstrapProps> = props => {
+  const router = useRouter()
   const { page: Page } = props
 
   // 系统准备状态
@@ -24,9 +26,6 @@ const Bootstrap: React.FC<BootstrapProps> = props => {
     appQuery,
     store => store.ready
   )
-
-  // 用户准备状态
-  const [userReady, updateUserReady] = useState(false)
 
   async function startAppLaunch() {
     if (!appReady) {
@@ -37,9 +36,8 @@ const Bootstrap: React.FC<BootstrapProps> = props => {
   }
 
   async function startUserLaunch() {
-    if (!userReady) {
+    if (userQuery.userReady === undefined) {
       await userLaunch()
-      updateUserReady(true)
     }
   }
 
@@ -48,16 +46,40 @@ const Bootstrap: React.FC<BootstrapProps> = props => {
   }, [])
 
   switch (true) {
-    case !appReady:
+    // 系统&用户数据准备中
+    case !appReady || userQuery.userReady === undefined:
       return <main>loading</main>
+    // 无需用户权限即可访问
     case !Page.auth:
       return <main>{props.children}</main>
-    case userReady:
+    // 用户权限验证通过
+    case Page.auth &&
+      userQuery.userReady &&
+      getUserRoleAuth() === true:
       return <main>{props.children}</main>
-    default:
+    // 用户权限验证失败
+    case Page.auth &&
+      userQuery.userReady &&
+      getUserRoleAuth() === false:
       return render403Page()
+    // 用户未登录
+    default:
+      router.replace('/login')
+      return <></>
   }
 
+  /**
+   * 获取用户访问权限
+   * @returns
+   */
+  function getUserRoleAuth(): boolean {
+    return true
+  }
+
+  /**
+   * 用户无访问权限
+   * @returns
+   */
   function render403Page() {
     const getLayout = Exception403Page.getLayout
 

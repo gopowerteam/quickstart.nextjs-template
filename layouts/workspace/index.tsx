@@ -1,5 +1,5 @@
 import { Layout } from 'antd'
-import { useStoreQuery } from '~/shared/common/use-store-query'
+import { useStoreQuery } from '~/shared/common/use-store'
 import { appQuery } from '~/store'
 import dynamic from 'next/dynamic'
 

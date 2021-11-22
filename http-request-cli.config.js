@@ -17,6 +17,7 @@ module.exports = {
   },
   services: {
     'assistant-service': 'as',
-    'user-service': 'uaa'
+    'user-service': 'uaa',
+    'learn-service': 'e-learning'
   }
 }

@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import { Button } from 'antd'
 import { appQuery, appAction } from '~/store'
 import definePage from '~/shared/common/define-page'
-import { useStoreQuery } from '~/shared/common/use-store-query'
+import { useStoreQuery } from '~/shared/common/use-store'
 import { useCookies } from 'react-cookie'
 import { useState } from 'react'
 

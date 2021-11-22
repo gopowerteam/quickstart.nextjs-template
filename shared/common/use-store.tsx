@@ -6,6 +6,24 @@ import {
 import { useState, useEffect } from 'react'
 import { Observable } from 'rxjs'
 
+function UseStoreSelect<T>(
+  steam: Observable<T>,
+  defaultValue?: T
+) {
+  const [value, setValue] = useState<T | undefined>(
+    defaultValue
+  )
+
+  useEffect(() => {
+    const subscription = steam.subscribe(newValue => {
+      setValue(newValue)
+    })
+    return () => subscription.unsubscribe()
+  }, [])
+
+  return value
+}
+
 function UseStoreQuery<T, R>(
   query: Query<T>,
   project: (store: T) => R
@@ -46,3 +64,4 @@ function UseStoreQuery<T, R>(
 }
 
 export const useStoreQuery = UseStoreQuery
+export const useStoreSelect = UseStoreSelect

@@ -67,12 +67,11 @@ function getControllerName(path, currentTag, tags) {
   // 无法解析
   try {
     const [controller] =
-      path.match(/(?<=\b\api\/).*(?=\/\b)/g) ??
-      path.match(/(?<=\b\api\/).*/g) ??
-      path.match(/(?<=\/).*(?=\/\b)/g) ??
-      path.match(/(?<=\/).*(?=\/)/g) ??
+      path.match(/(?<=\b\api\/).*?(?=\/)/g) ||
+      path.match(/(?<=\b\api\/).*/g) ||
+      path.match(/(?<=\/).*?(?=\/)/g) ||
       path.match(/(?<=\/).*/g)
-    console.log(controller)
+    console.log(path,controller)
     return controller
       .split('/')
       .map(x => x.replace(/^\S/, s => s.toUpperCase()))

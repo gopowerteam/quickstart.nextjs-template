@@ -12,36 +12,30 @@ import LoginImage from '~/assets/images/login-bg.png'
 import styles from './login.module.less'
 import { LoginService } from '~/http/services/assistant-service/login.service'
 import { userAction } from '~/store'
-import { CurrentUserService } from '~/http/services/user-service/current-user.service'
+import { useRouter } from 'next/router'
 
 const loginService = new LoginService()
-const currentUserService = new CurrentUserService()
 interface LoginModel {
   username: string
   password: string
 }
 
 const LoginForm = () => {
-  const [form] = Form.useForm<LoginModel>()
+  const router = useRouter()
 
   function onSubmit(data: LoginModel) {
-    // router.push('/')
-    console.log(data)
+    console.log(data, 333)
     loginService
       .loginWithUserName({
         username: 'admin',
         password: 'admin'
       })
       .subscribe(data => {
+        // 更新用户Token
         userAction.updateToken(data)
-        console.log(data)
+        // 进入系统页面
+        router.push('/')
       })
-  }
-
-  function getUser() {
-    currentUserService.currentUser().subscribe(data => {
-      console.log(data)
-    })
   }
 
   return (
@@ -52,7 +46,6 @@ const LoginForm = () => {
         </div>
         <div className="py-10">
           <Form
-            form={form}
             initialValues={{ remember: true }}
             onFinish={onSubmit}
           >
@@ -99,9 +92,6 @@ const LoginForm = () => {
               </Form.Item>
 
               <a href="">忘记密码</a>
-              <Button onClick={() => getUser()}>
-                user
-              </Button>
             </Form.Item>
 
             <Form.Item>

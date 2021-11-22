@@ -1,4 +1,4 @@
-import { useStoreQuery } from '~/shared/common/use-store-query'
+import { useStoreQuery } from '~/shared/common/use-store'
 import { appAction, appQuery } from '~/store'
 import {
   MenuUnfoldOutlined,

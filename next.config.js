@@ -18,7 +18,8 @@ const redirectsConfig = async () => {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // 严格模式
-  reactStrictMode: true,
+  // TODO: 兼容ANTD错误信息
+  reactStrictMode: false,
   // 默认路由跳转配置
   redirects: redirectsConfig
 }

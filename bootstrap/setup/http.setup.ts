@@ -1,5 +1,7 @@
 import { RequestService } from '@gopowerteam/http-request'
+import router from 'next/router'
 import { appConfig } from '~/config/app.config'
+import { userAction } from '~/store'
 import { TokenService } from '../http/token.service'
 
 export default function httpBoot() {
@@ -40,7 +42,8 @@ export default function httpBoot() {
       [400, '请求参数错误'],
       [405, '请求服务方法错误'],
       [500, '服务器内部错误'],
-      [403, '没有权限，请重新登陆']
+      [403, '用户未登录'],
+      [403, '无访问权限']
     ])
 
     if (respone) {
@@ -49,8 +52,14 @@ export default function httpBoot() {
         responseMessage ||
         messageList.get(respone.status) ||
         defaultError
-      if (respone.status === 403) {
-        //
+      if (respone.status === 401) {
+        // TODO: 待验证
+        userAction.updateToken({
+          access_token: '',
+          refresh_token: ''
+        })
+
+        router.push('/login')
       }
       //
     } else {

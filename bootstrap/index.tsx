@@ -7,7 +7,12 @@ import {
   useStoreQuery,
   useStoreSelect
 } from '~/shared/common/use-store'
-import { appAction, appQuery, userQuery } from '~/store'
+import {
+  appAction,
+  appQuery,
+  userAction,
+  userQuery
+} from '~/store'
 import { setup } from './setup'
 import Exception403Page from '~/pages/403'
 import { appLaunch, userLaunch } from './launch'
@@ -30,23 +35,28 @@ const Bootstrap: React.FC<BootstrapProps> = props => {
     store => store.ready
   )
 
-  const userReady = useStoreSelect(userQuery.userReady$)
-
-  async function startAppLaunch() {
-    if (!appReady) {
-      await setup()
-      await appLaunch()
-      appAction.updateReady()
-    }
-  }
-
-  async function startUserLaunch() {
-    if (userReady === undefined) {
-      await userLaunch()
-    }
-  }
+  const [userReady, updateUserReady] = useState<
+    boolean | undefined
+  >(userQuery.getUserReady())
 
   useEffect(() => {
+    async function startAppLaunch() {
+      if (!appReady) {
+        await setup()
+        await appLaunch()
+        // 更新系统准备状态
+        appAction.updateReady()
+      }
+    }
+
+    async function startUserLaunch() {
+      if (userQuery.getUserReady() === undefined) {
+        await userLaunch()
+        // 更新用户准备状态
+        updateUserReady(userQuery.getUserReady())
+      }
+    }
+
     startAppLaunch().then(startUserLaunch)
   }, [userReady])
 
@@ -59,12 +69,12 @@ const Bootstrap: React.FC<BootstrapProps> = props => {
       return <main>{props.children}</main>
     // 用户权限验证通过
     case Page.auth &&
-      userReady &&
+      userReady == true &&
       getUserRoleAuth() === true:
       return <main>{props.children}</main>
     // 用户权限验证失败
     case Page.auth &&
-      userReady &&
+      userReady == true &&
       getUserRoleAuth() === false:
       return render403Page()
     // 用户未登录

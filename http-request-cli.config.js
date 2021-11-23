@@ -1,6 +1,6 @@
 module.exports = {
   name: 'default',
-  gateway: 'http://192.168.5.52:8000',
+  gateway: 'https://e-api.local.xbt-dev.top',
   swagger: 'rest-api-docs/dso',
   model: false,
   modelDir: {

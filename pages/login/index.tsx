@@ -24,7 +24,6 @@ const LoginForm = () => {
   const router = useRouter()
 
   function onSubmit(data: LoginModel) {
-    console.log(data, 333)
     loginService
       .loginWithUserName({
         username: 'admin',

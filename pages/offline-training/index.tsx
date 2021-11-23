@@ -17,7 +17,7 @@ const OfflineTrainingPage: NextPage = () => {
     getTrainData()
   }, [])
 
-  return <PageContainer></PageContainer>
+  return <PageContainer>123</PageContainer>
 }
 
 export default definePage(OfflineTrainingPage, {

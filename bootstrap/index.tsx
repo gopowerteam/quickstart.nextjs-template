@@ -39,26 +39,27 @@ const Bootstrap: React.FC<BootstrapProps> = props => {
     boolean | undefined
   >(userQuery.getUserReady())
 
+  async function startAppLaunch() {
+    if (!appReady) {
+      await setup()
+      await appLaunch()
+      // 更新系统准备状态
+      appAction.updateReady()
+    }
+  }
+
+  async function startUserLaunch() {
+    if (userQuery.getUserReady() === undefined) {
+      await userLaunch()
+      // 更新用户准备状态
+      updateUserReady(userQuery.getUserReady())
+    }
+  }
+
+  // TODO: 登录副作用修复
   useEffect(() => {
-    async function startAppLaunch() {
-      if (!appReady) {
-        await setup()
-        await appLaunch()
-        // 更新系统准备状态
-        appAction.updateReady()
-      }
-    }
-
-    async function startUserLaunch() {
-      if (userQuery.getUserReady() === undefined) {
-        await userLaunch()
-        // 更新用户准备状态
-        updateUserReady(userQuery.getUserReady())
-      }
-    }
-
     startAppLaunch().then(startUserLaunch)
-  }, [userReady])
+  }, [])
 
   switch (true) {
     // 系统&用户数据准备中

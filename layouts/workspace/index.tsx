@@ -19,18 +19,21 @@ const WorkspaceLayout: React.FC = props => {
 
   return (
     <Layout className="absolute inset-0">
-      <Sider
-        trigger={null}
-        collapsible
-        collapsed={collapsed}
-      >
-        <PageSider></PageSider>
-      </Sider>
+      <Header className="h-12 px-5">
+        <PageHeader></PageHeader>
+      </Header>
       <Layout>
-        <Header>
-          <PageHeader></PageHeader>
-        </Header>
-        <Content> {props.children}</Content>
+        <Sider
+          className="bg-gray-50"
+          trigger={null}
+          collapsedWidth={50}
+          collapsible
+          collapsed={collapsed}
+        >
+          <PageSider></PageSider>
+        </Sider>
+
+        <Content>{props.children}</Content>
       </Layout>
     </Layout>
   )

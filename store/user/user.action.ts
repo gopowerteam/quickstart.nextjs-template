@@ -20,6 +20,14 @@ export class UserAction {
       refresh_token
     })
   }
+
+  logout() {
+    this.userStore.update({
+      access_token: '',
+      refresh_token: '',
+      current: undefined
+    })
+  }
 }
 
 export const userAction = new UserAction(userStore)

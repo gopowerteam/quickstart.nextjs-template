@@ -5,6 +5,7 @@ module.exports = {
     './shared/components/**/*.{js,ts,jsx,tsx}'
   ],
   darkMode: false, // or 'media' or 'class'
+  important: true,
   theme: {
     extend: {}
   },

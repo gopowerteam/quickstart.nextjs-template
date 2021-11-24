@@ -5,7 +5,7 @@ import {
   MenuUnfoldOutlined
 } from '@ant-design/icons'
 import {
-  useMenus,
+  getMenus,
   MenuConfigItem
 } from '~/config/menu.config'
 import { useRouter } from 'next/router'
@@ -40,7 +40,7 @@ const MenuItem: React.FC<MenuConfigItem> = props => {
 }
 
 const SiderMenu: React.FC = () => {
-  const menus = useMenus()
+  const menus = getMenus()
   const router = useRouter()
 
   function onChange(node: { key: string }) {

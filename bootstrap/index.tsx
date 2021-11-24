@@ -59,7 +59,7 @@ const Bootstrap: React.FC<BootstrapProps> = props => {
   // TODO: 登录副作用修复
   useEffect(() => {
     startAppLaunch().then(startUserLaunch)
-  }, [])
+  }, [userReady])
 
   switch (true) {
     // 系统&用户数据准备中

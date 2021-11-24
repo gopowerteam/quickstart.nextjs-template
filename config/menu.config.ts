@@ -17,7 +17,7 @@ export interface MenuConfigItem {
   children?: MenuConfigItem[]
 }
 
-export const useMenus = () => {
+export const getMenus = () => {
   const generateKey = () =>
     Math.random().toString(32).slice(2)
 

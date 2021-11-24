@@ -1,20 +1,20 @@
 import { Breadcrumb } from 'antd'
 import { useRouter } from 'next/router'
+import { getCurrentMenuByPath } from '../utils'
 
 const Header: React.FC = () => {
   const router = useRouter() as any
 
   function renderBreadcrumb() {
+    const menus = getCurrentMenuByPath(router.route)
+
     return (
       <Breadcrumb>
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item>
-          <a href="">Application Center</a>
-        </Breadcrumb.Item>
-        <Breadcrumb.Item>
-          <a href="">Application List</a>
-        </Breadcrumb.Item>
-        <Breadcrumb.Item>An Application</Breadcrumb.Item>
+        {menus.map(menu => (
+          <Breadcrumb.Item key={menu.id}>
+            {menu.title}
+          </Breadcrumb.Item>
+        ))}
       </Breadcrumb>
     )
   }

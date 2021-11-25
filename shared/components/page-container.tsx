@@ -20,7 +20,7 @@ const Header: React.FC = () => {
   }
 
   function renderTitle() {
-    const { Component } = router.components[router.asPath]
+    const { Component } = router.components[router.pathname]
 
     return (
       <div className="title font-bold text-xl pt-2 text-gray-600">

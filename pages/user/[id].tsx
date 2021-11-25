@@ -1,10 +1,19 @@
 import { NextPage } from 'next'
-// import { useRouter } from 'next/dist/client/router'
+import definePage from '~/shared/common/define-page'
+import PageContainer from '~/shared/components/page-container'
 
 const UserPage: NextPage = () => {
   // const router = useRouter()
   // const { id } = router.query
-  return <div>user</div>
+  return (
+    <PageContainer>
+      <div>user</div>
+    </PageContainer>
+  )
 }
 
-export default UserPage
+export default definePage(UserPage, {
+  title: '用户',
+  layout: 'workspace',
+  auth: true
+})

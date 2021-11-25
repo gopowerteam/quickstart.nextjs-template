@@ -44,6 +44,7 @@ const PublishConfig: ForwardRefRenderFunction<
           ? moment(data.releaseTime)
           : undefined
       })
+      setValue(data.releaseType)
     }
   }))
 
@@ -65,6 +66,7 @@ const PublishConfig: ForwardRefRenderFunction<
   return (
     <Card>
       <Form
+        form={form}
         name="publish-config-form"
         onFinish={onNext}
         onFinishFailed={onFinishFailed}

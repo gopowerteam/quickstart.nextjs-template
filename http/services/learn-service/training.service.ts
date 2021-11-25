@@ -55,6 +55,17 @@ export class TrainingService {
    * 培训发布配置
    */
   @Request({
+    server: TrainingController.getTrainingRelease,
+  })
+  public getTrainingRelease(
+    params?: RequestParams | { [key: string]: any }
+  ): Observable<any> {
+    return RequestParams.create(params).request();
+  }
+  /**
+   * 获取培训发布配置
+   */
+  @Request({
     server: TrainingController.updateTrainingRelease,
   })
   public updateTrainingRelease(

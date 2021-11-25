@@ -47,6 +47,15 @@ export const TrainingController = {
         type: RequestMethod.Put
     },
     // 培训发布配置
+    getTrainingRelease: {
+        gateway,
+        service,
+        controller,
+        path: '/api/training/{id}/release',
+        action: 'getTrainingRelease',
+        type: RequestMethod.Get
+    },
+    // 获取培训发布配置
     updateTrainingRelease: {
         gateway,
         service,

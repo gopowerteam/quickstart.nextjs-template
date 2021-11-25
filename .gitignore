@@ -7,5 +7,5 @@ dist-ssr
 yarn-error.log
 yarn.lock
 .pnpm-debug.log
-
-typings/components.d.ts
+.next
+/.next/

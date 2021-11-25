@@ -49,7 +49,7 @@ const PublishConfigPage: NextPage = () => {
 
   function getConfigDetail() {
     trainingService
-      .getTrainingSaleConfig(
+      .getTrainingRelease(
         new RequestParams({
           append: {
             id: id as string

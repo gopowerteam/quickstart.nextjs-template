@@ -33,7 +33,11 @@ const OfflineTrainingListPage: NextPage = () => {
    */
   function getTrainData() {
     trainingService
-      .getTrainings(new RequestParams())
+      .getTrainings(
+        new RequestParams({
+          page: pageService
+        })
+      )
       .subscribe(data => {
         setDataSource(data)
       })
@@ -48,7 +52,6 @@ const OfflineTrainingListPage: NextPage = () => {
    * @param e
    */
   const onChange = (e: any) => {
-    console.log('radio2 checked', e.target.value)
     setStatus(e.target.value)
     getTrainData()
   }
@@ -167,7 +170,7 @@ const OfflineTrainingListPage: NextPage = () => {
               </>
             )
           }}
-        ></Column>
+        />
       </DataTable>
     </PageContainer>
   )

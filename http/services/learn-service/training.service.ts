@@ -19,23 +19,45 @@ export class TrainingService {
     return RequestParams.create(params).request();
   }
   /**
-   * 更新活动
+   * 更新基本信息
    */
   @Request({
-    server: TrainingController.update,
+    server: TrainingController.updateTrainingDetail,
   })
-  public update(
+  public updateTrainingDetail(
     params?: RequestParams | { [key: string]: any }
   ): Observable<any> {
     return RequestParams.create(params).request();
   }
   /**
-   * 用户签到
+   * 获取营销配置
    */
   @Request({
-    server: TrainingController.trainingSignIn,
+    server: TrainingController.getTrainingSaleConfig,
   })
-  public trainingSignIn(
+  public getTrainingSaleConfig(
+    params?: RequestParams | { [key: string]: any }
+  ): Observable<any> {
+    return RequestParams.create(params).request();
+  }
+  /**
+   * 更新营销配置
+   */
+  @Request({
+    server: TrainingController.updateTrainingSaleConfig,
+  })
+  public updateTrainingSaleConfig(
+    params?: RequestParams | { [key: string]: any }
+  ): Observable<any> {
+    return RequestParams.create(params).request();
+  }
+  /**
+   * 培训发布配置
+   */
+  @Request({
+    server: TrainingController.updateTrainingRelease,
+  })
+  public updateTrainingRelease(
     params?: RequestParams | { [key: string]: any }
   ): Observable<any> {
     return RequestParams.create(params).request();
@@ -74,23 +96,23 @@ export class TrainingService {
     return RequestParams.create(params).request();
   }
   /**
-   * 学员例表
+   * （分页）获取学员例表
    */
   @Request({
-    server: TrainingController.getAllStudent,
+    server: TrainingController.getTrainingStudents,
   })
-  public getAllStudent(
+  public getTrainingStudents(
     params?: RequestParams | { [key: string]: any }
   ): Observable<any> {
     return RequestParams.create(params).request();
   }
   /**
-   * 增加临时学员
+   * 分组查看（学员）
    */
   @Request({
-    server: TrainingController.addStudent,
+    server: TrainingController.getTrainingGroupStudents,
   })
-  public addStudent(
+  public getTrainingGroupStudents(
     params?: RequestParams | { [key: string]: any }
   ): Observable<any> {
     return RequestParams.create(params).request();
@@ -107,111 +129,23 @@ export class TrainingService {
     return RequestParams.create(params).request();
   }
   /**
-   * 给培训增加提问
+   * （分页）获取全部单订单(admin)
    */
   @Request({
-    server: TrainingController.postQuestionof,
+    server: TrainingController.getTrainingOrders,
   })
-  public postQuestionof(
+  public getTrainingOrders(
     params?: RequestParams | { [key: string]: any }
   ): Observable<any> {
     return RequestParams.create(params).request();
   }
   /**
-   * 提交订单（单人）购买
+   * 获取订单详情
    */
   @Request({
-    server: TrainingController.submitOrder,
+    server: TrainingController.getTrainingOrderDetail,
   })
-  public submitOrder(
-    params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
-    return RequestParams.create(params).request();
-  }
-  /**
-   * 分组
-   */
-  @Request({
-    server: TrainingController.getGroups,
-  })
-  public getGroups(
-    params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
-    return RequestParams.create(params).request();
-  }
-  /**
-   * 启动分组
-   */
-  @Request({
-    server: TrainingController.group,
-  })
-  public group(
-    params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
-    return RequestParams.create(params).request();
-  }
-  /**
-   * 清除分组
-   */
-  @Request({
-    server: TrainingController.clearGroup,
-  })
-  public clearGroup(
-    params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
-    return RequestParams.create(params).request();
-  }
-  /**
-   * 培训三人行订单
-   */
-  @Request({
-    server: TrainingController.submitGroupOrder,
-  })
-  public submitGroupOrder(
-    params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
-    return RequestParams.create(params).request();
-  }
-  /**
-   * 获取正在拼团的订单
-   */
-  @Request({
-    server: TrainingController.getPendingGroupOrders,
-  })
-  public getPendingGroupOrders(
-    params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
-    return RequestParams.create(params).request();
-  }
-  /**
-   * 获取全部单个订单(admin)
-   */
-  @Request({
-    server: TrainingController.getAllSingleOrders,
-  })
-  public getAllSingleOrders(
-    params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
-    return RequestParams.create(params).request();
-  }
-  /**
-   * 获取全部拼团的订单（admin)
-   */
-  @Request({
-    server: TrainingController.getAllGroupOrders,
-  })
-  public getAllGroupOrders(
-    params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
-    return RequestParams.create(params).request();
-  }
-  /**
-   * 从培训中移出学员
-   */
-  @Request({
-    server: TrainingController.removeStudent,
-  })
-  public removeStudent(
+  public getTrainingOrderDetail(
     params?: RequestParams | { [key: string]: any }
   ): Observable<any> {
     return RequestParams.create(params).request();

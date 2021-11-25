@@ -4,7 +4,7 @@ const menuConfig: MenuConfigItem[] = [
     children: [
       {
         title: '线下培训',
-        path: '/offline-training'
+        path: '/offline-training-list'
       }
     ]
   }

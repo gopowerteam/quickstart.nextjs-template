@@ -19,22 +19,40 @@ export const TrainingController = {
         action: 'getTrainingDetail',
         type: RequestMethod.Get
     },
-    // 更新活动
-    update: {
+    // 更新基本信息
+    updateTrainingDetail: {
         gateway,
         service,
         controller,
         path: '/api/training/{id}',
-        action: 'update',
+        action: 'updateTrainingDetail',
         type: RequestMethod.Put
     },
-    // 用户签到
-    trainingSignIn: {
+    // 获取营销配置
+    getTrainingSaleConfig: {
         gateway,
         service,
         controller,
-        path: '/api/training/{id}/signIn',
-        action: 'trainingSignIn',
+        path: '/api/training/{id}/sale',
+        action: 'getTrainingSaleConfig',
+        type: RequestMethod.Get
+    },
+    // 更新营销配置
+    updateTrainingSaleConfig: {
+        gateway,
+        service,
+        controller,
+        path: '/api/training/{id}/sale',
+        action: 'updateTrainingSaleConfig',
+        type: RequestMethod.Put
+    },
+    // 培训发布配置
+    updateTrainingRelease: {
+        gateway,
+        service,
+        controller,
+        path: '/api/training/{id}/release',
+        action: 'updateTrainingRelease',
         type: RequestMethod.Put
     },
     // 更新活动状态
@@ -64,23 +82,23 @@ export const TrainingController = {
         action: 'createTraining',
         type: RequestMethod.Post
     },
-    // 学员例表
-    getAllStudent: {
+    // （分页）获取学员例表
+    getTrainingStudents: {
         gateway,
         service,
         controller,
         path: '/api/training/{id}/student',
-        action: 'getAllStudent',
+        action: 'getTrainingStudents',
         type: RequestMethod.Get
     },
-    // 增加临时学员
-    addStudent: {
+    // 分组查看（学员）
+    getTrainingGroupStudents: {
         gateway,
         service,
         controller,
-        path: '/api/training/{id}/student',
-        action: 'addStudent',
-        type: RequestMethod.Post
+        path: '/api/training/{id}/student/group',
+        action: 'getTrainingGroupStudents',
+        type: RequestMethod.Get
     },
     // 获取全部的问题
     getAllQuestions: {
@@ -91,94 +109,22 @@ export const TrainingController = {
         action: 'getAllQuestions',
         type: RequestMethod.Get
     },
-    // 给培训增加提问
-    postQuestionof: {
+    // （分页）获取全部单订单(admin)
+    getTrainingOrders: {
         gateway,
         service,
         controller,
-        path: '/api/training/{id}/question',
-        action: 'postQuestionof',
-        type: RequestMethod.Post
-    },
-    // 提交订单（单人）购买
-    submitOrder: {
-        gateway,
-        service,
-        controller,
-        path: '/api/training/{id}/order',
-        action: 'submitOrder',
-        type: RequestMethod.Post
-    },
-    // 分组
-    getGroups: {
-        gateway,
-        service,
-        controller,
-        path: '/api/training/{id}/group',
-        action: 'getGroups',
+        path: '/api/training/{id}/orders',
+        action: 'getTrainingOrders',
         type: RequestMethod.Get
     },
-    // 启动分组
-    group: {
+    // 获取订单详情
+    getTrainingOrderDetail: {
         gateway,
         service,
         controller,
-        path: '/api/training/{id}/group',
-        action: 'group',
-        type: RequestMethod.Post
-    },
-    // 清除分组
-    clearGroup: {
-        gateway,
-        service,
-        controller,
-        path: '/api/training/{id}/group',
-        action: 'clearGroup',
-        type: RequestMethod.Delete
-    },
-    // 培训三人行订单
-    submitGroupOrder: {
-        gateway,
-        service,
-        controller,
-        path: '/api/training/{id}/groupOrder',
-        action: 'submitGroupOrder',
-        type: RequestMethod.Post
-    },
-    // 获取正在拼团的订单
-    getPendingGroupOrders: {
-        gateway,
-        service,
-        controller,
-        path: '/api/training/{id}/grouporders',
-        action: 'getPendingGroupOrders',
+        path: '/api/training/order/{id}',
+        action: 'getTrainingOrderDetail',
         type: RequestMethod.Get
-    },
-    // 获取全部单个订单(admin)
-    getAllSingleOrders: {
-        gateway,
-        service,
-        controller,
-        path: '/api/training/{id}/all/orders',
-        action: 'getAllSingleOrders',
-        type: RequestMethod.Get
-    },
-    // 获取全部拼团的订单（admin)
-    getAllGroupOrders: {
-        gateway,
-        service,
-        controller,
-        path: '/api/training/{id}/all/grouporders',
-        action: 'getAllGroupOrders',
-        type: RequestMethod.Get
-    },
-    // 从培训中移出学员
-    removeStudent: {
-        gateway,
-        service,
-        controller,
-        path: '/api/training/{id}/student/{sid}',
-        action: 'removeStudent',
-        type: RequestMethod.Delete
     }
 }

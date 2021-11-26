@@ -311,6 +311,7 @@ const StudentCenter: React.FC<PropsType> = props => {
 
           <List
             dataSource={dataSource}
+            rowKey={'id'}
             pagination={{
               onChange: page => {
                 console.log(page)
@@ -323,12 +324,13 @@ const StudentCenter: React.FC<PropsType> = props => {
                   <Card
                     style={{ width: '100%' }}
                     title={item.groupName}
+                    key={item.id}
                     extra={<a href="#">More</a>}
                   >
                     {item.students?.map((x: any) => {
                       return (
                         <>
-                          <Tag>{x.name}</Tag>
+                          <Tag key={x.id}>{x.name}</Tag>
                         </>
                       )
                     })}
@@ -347,9 +349,10 @@ const StudentCenter: React.FC<PropsType> = props => {
                     )}
                     {!item.inputVisible && (
                       <Tag
-                        onClick={() =>
-                          (item.inputVisible = true)
-                        }
+                        onClick={() => {
+                          item.inputVisible = true
+                          setDataSource(dataSource)
+                        }}
                         className="site-tag-plus"
                       >
                         <PlusOutlined /> New Tag

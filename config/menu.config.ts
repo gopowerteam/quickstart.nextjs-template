@@ -4,7 +4,16 @@ const menuConfig: MenuConfigItem[] = [
     children: [
       {
         title: '线下培训',
-        path: '/offline-training'
+        path: '/offline-training-list'
+      }
+    ]
+  },
+  {
+    title: '订单中心',
+    children: [
+      {
+        title: '订购情况',
+        path: '/order-center'
       }
     ]
   }

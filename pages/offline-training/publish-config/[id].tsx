@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
 import { RequestParams } from '@gopowerteam/http-request'
 import { message } from 'antd'
-import PublishConfig from '~/pages/offline-training/components/publish-config'
+import PublishConfig from '~/pages/offline-training/components/publish-config-component'
 
 const trainingService = new TrainingService()
 

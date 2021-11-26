@@ -7,6 +7,15 @@ const menuConfig: MenuConfigItem[] = [
         path: '/offline-training-list'
       }
     ]
+  },
+  {
+    title: '订单中心',
+    children: [
+      {
+        title: '订购情况',
+        path: '/order-center'
+      }
+    ]
   }
 ]
 

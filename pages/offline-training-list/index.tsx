@@ -60,7 +60,7 @@ const OfflineTrainingListPage: NextPage = () => {
    * 创建活动
    */
   const onCreate = () => {
-    router.push('/offline-training/-1')
+    router.push('/offline-training/basic-info/-1')
   }
 
   /**
@@ -68,7 +68,7 @@ const OfflineTrainingListPage: NextPage = () => {
    * @param id
    */
   const onEdit = (id: string) => {
-    router.push(`/offline-training/${id}`)
+    router.push(`/offline-training/basic-info/${id}`)
   }
 
   /**
@@ -83,6 +83,13 @@ const OfflineTrainingListPage: NextPage = () => {
    * @param id
    */
   const onPublishConfig = (id: string) => {
+    router.push(`/offline-training/publish-config/${id}`)
+  }
+  /**
+   * 发布配置
+   * @param id
+   */
+  const onDetail = (id: string) => {
     router.push(`/offline-training/publish-config/${id}`)
   }
 
@@ -164,8 +171,12 @@ const OfflineTrainingListPage: NextPage = () => {
                 >
                   发布配置
                 </Button>
-                <Button type={'link'} size={'small'}>
-                  删除
+                <Button
+                  type={'link'}
+                  size={'small'}
+                  onClick={() => onDetail(data.id)}
+                >
+                  详情
                 </Button>
               </>
             )

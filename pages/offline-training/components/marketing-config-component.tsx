@@ -26,7 +26,7 @@ interface PropsType {
   onSubmit: (data: any) => void
 }
 
-const MarketingConfig: ForwardRefRenderFunction<
+const MarketingConfigComponent: ForwardRefRenderFunction<
   RefType,
   PropsType
 > = (props, ref) => {
@@ -204,4 +204,4 @@ const MarketingConfig: ForwardRefRenderFunction<
   )
 }
 
-export default forwardRef<any, any>(MarketingConfig)
+export default forwardRef<any, any>(MarketingConfigComponent)

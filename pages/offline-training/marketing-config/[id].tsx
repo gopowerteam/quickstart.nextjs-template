@@ -5,7 +5,7 @@ import definePage from '~/shared/common/define-page'
 import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
 import { RequestParams } from '@gopowerteam/http-request'
-import MarketingConfig from '~/pages/offline-training/components/marketing-config'
+import MarketingConfig from '~/pages/offline-training/components/marketing-config-component'
 import moment from 'moment'
 import { message } from 'antd'
 

@@ -78,6 +78,7 @@ const OfflineTrainingListPage: NextPage = () => {
   const onConfig = (id: string) => {
     router.push(`/offline-training/marketing-config/${id}`)
   }
+
   /**
    * 发布配置
    * @param id
@@ -85,12 +86,13 @@ const OfflineTrainingListPage: NextPage = () => {
   const onPublishConfig = (id: string) => {
     router.push(`/offline-training/publish-config/${id}`)
   }
+
   /**
-   * 发布配置
+   * 详情
    * @param id
    */
   const onDetail = (id: string) => {
-    router.push(`/offline-training/publish-config/${id}`)
+    router.push(`/offline-training/detail/${id}`)
   }
 
   return (

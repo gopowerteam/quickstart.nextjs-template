@@ -3,7 +3,7 @@ import definePage from '~/shared/common/define-page'
 import PageContainer from '~/shared/components/page-container'
 import DataForm from '~/shared/components/data-form'
 import DataTable from '~/shared/components/data-table'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PageService } from '~/bootstrap/http/page.service'
 import { TrainingService } from '~/http/services/learn-service/training.service'
 import { RequestParams } from '@gopowerteam/http-request'
@@ -14,18 +14,28 @@ import {
   Form,
   Input,
   InputNumber,
+  Modal,
   Radio,
   Row,
   Table,
   Tabs
 } from 'antd'
+
 import { TabPane } from 'rc-tabs'
+
 const pageService = new PageService()
 const trainingService = new TrainingService()
-const Index: NextPage = () => {
+interface PropsType {
+  id: string
+}
+
+const StudentCenter: React.FC<PropsType> = props => {
   const [dataSource, setDataSource] = useState([])
   const [status, setStatus] = useState('Normal')
   const [groupStatus, setGroupStatus] = useState('fixGroup')
+  const [isModalVisible, setModalVisible] = useState(false)
+  const [studentName, setStudentName] = useState<string>()
+
   const { Column } = Table
   const options = [
     { label: '全部', value: 'Normal' },
@@ -69,14 +79,44 @@ const Index: NextPage = () => {
         setDataSource(data)
       })
   }
+
+  function addTempStudent() {
+    trainingService.addStudent(
+      new RequestParams({
+        append: {
+          id: props.id
+        },
+        data: {
+          id: props.id,
+          name: studentName
+        }
+      })
+    )
+  }
+
+  const handleOk = () => {
+    console.log(studentName)
+    // setModalVisible(false)
+    addTempStudent()
+  }
+
+  const handleCancel = () => {
+    setModalVisible(false)
+  }
+
   return (
-    <PageContainer>
+    <>
       <DataForm
         name={'student-list-form'}
         actions={
           <>
             <div className={styles['add-button']}>
-              <Button type={'primary'}>添加</Button>
+              <Button
+                type={'primary'}
+                onClick={() => setModalVisible(true)}
+              >
+                添加
+              </Button>
               <Button
                 type={'primary'}
                 style={{ marginLeft: '10px' }}
@@ -91,18 +131,16 @@ const Index: NextPage = () => {
           <InputNumber
             precision={0}
             style={{ width: '180px' }}
-          ></InputNumber>
+          />
         </Form.Item>
         <Form.Item label={'姓名'} name={'name'}>
-          <Input style={{ width: '180px' }}></Input>
+          <Input style={{ width: '180px' }} />
         </Form.Item>
         <Form.Item>
           <div>
             <Button type={'primary'}>查询</Button>
           </div>
         </Form.Item>
-        <Form.Item />
-        <Form.Item />
       </DataForm>
       <Tabs defaultActiveKey="1">
         <TabPane tab="列表" key="1">
@@ -130,10 +168,9 @@ const Index: NextPage = () => {
               </Col>
               <Col span={8}>
                 <Form.Item label={'数量'}>
-                  <InputNumber precision={0}></InputNumber>
+                  <InputNumber precision={0} />
                 </Form.Item>
               </Col>
-
               <Col span={8}>
                 <Form.Item>
                   <Button>智能分组</Button>
@@ -147,12 +184,19 @@ const Index: NextPage = () => {
           </DataTable>
         </TabPane>
       </Tabs>
-    </PageContainer>
+      <Modal
+        title="添加临时学员"
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <Input
+          placeholder={'请输入学员姓名'}
+          onChange={e => setStudentName(e.target.value)}
+        />
+      </Modal>
+    </>
   )
 }
 
-export default definePage(Index, {
-  title: '学员列表',
-  layout: 'workspace',
-  auth: true
-})
+export default StudentCenter

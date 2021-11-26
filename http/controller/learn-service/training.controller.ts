@@ -100,6 +100,24 @@ export const TrainingController = {
         action: 'getTrainingStudents',
         type: RequestMethod.Get
     },
+    // 增加临时学员
+    addStudent: {
+        gateway,
+        service,
+        controller,
+        path: '/api/training/{id}/student',
+        action: 'addStudent',
+        type: RequestMethod.Post
+    },
+    // 启动分组
+    group: {
+        gateway,
+        service,
+        controller,
+        path: '/api/training/{id}/group',
+        action: 'group',
+        type: RequestMethod.Post
+    },
     // 分组查看（学员）
     getTrainingGroupStudents: {
         gateway,

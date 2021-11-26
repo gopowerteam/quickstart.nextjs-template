@@ -1,9 +1,7 @@
-import { NextPage } from 'next'
-import definePage from '~/shared/common/define-page'
 import PageContainer from '~/shared/components/page-container'
 import DataForm from '~/shared/components/data-form'
 import DataTable from '~/shared/components/data-table'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PageService } from '~/bootstrap/http/page.service'
 import { TrainingService } from '~/http/services/learn-service/training.service'
 import { RequestParams } from '@gopowerteam/http-request'
@@ -15,9 +13,11 @@ import {
   Radio,
   Table
 } from 'antd'
+
 const pageService = new PageService()
 const trainingService = new TrainingService()
-const Index: NextPage = () => {
+
+const OrderCenterList: React.FC = () => {
   const [dataSource, setDataSource] = useState([])
   const [status, setStatus] = useState('Normal')
   const { Column } = Table
@@ -52,7 +52,7 @@ const Index: NextPage = () => {
       })
   }
   return (
-    <PageContainer>
+    <>
       <DataForm
         name={'order-list-form'}
         actions={
@@ -91,12 +91,8 @@ const Index: NextPage = () => {
       <DataTable rowKey={'id'} dataSource={dataSource}>
         <Column title={'姓名'} />
       </DataTable>
-    </PageContainer>
+    </>
   )
 }
 
-export default definePage(Index, {
-  title: '线下培训',
-  layout: 'workspace',
-  auth: true
-})
+export default OrderCenterList

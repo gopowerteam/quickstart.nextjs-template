@@ -118,6 +118,28 @@ export class TrainingService {
     return RequestParams.create(params).request();
   }
   /**
+   * 增加临时学员
+   */
+  @Request({
+    server: TrainingController.addStudent,
+  })
+  public addStudent(
+    params?: RequestParams | { [key: string]: any }
+  ): Observable<any> {
+    return RequestParams.create(params).request();
+  }
+  /**
+   * 启动分组
+   */
+  @Request({
+    server: TrainingController.group,
+  })
+  public group(
+    params?: RequestParams | { [key: string]: any }
+  ): Observable<any> {
+    return RequestParams.create(params).request();
+  }
+  /**
    * 分组查看（学员）
    */
   @Request({

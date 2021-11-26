@@ -7,6 +7,7 @@ import BasicInfo from '~/pages/offline-training/components/basic-info-component'
 import { RequestParams } from '@gopowerteam/http-request'
 import { useRouter } from 'next/router'
 import { Button, message, Modal } from 'antd'
+
 const trainingService = new TrainingService()
 
 const OfflineTrainingPage: NextPage = () => {

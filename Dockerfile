@@ -28,4 +28,4 @@ COPY . .
 # -运行编译
 RUN pnpm build
 # 项目启动入口
-ENTRYPOINT ["pm2-runtime","ecosystem.config.js"]
+ENTRYPOINT ["pnpm","start"]

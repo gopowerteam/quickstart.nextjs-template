@@ -1,27 +1,28 @@
-import { NextPage } from 'next'
-import definePage from '~/shared/common/define-page'
-import PageContainer from '~/shared/components/page-container'
 import DataForm from '~/shared/components/data-form'
 import DataTable from '~/shared/components/data-table'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { PageService } from '~/bootstrap/http/page.service'
 import { TrainingService } from '~/http/services/learn-service/training.service'
 import { RequestParams } from '@gopowerteam/http-request'
 import styles from './student.module.less'
 import {
   Button,
+  Card,
   Col,
   Form,
   Input,
   InputNumber,
+  List,
   Modal,
   Radio,
   Row,
   Table,
-  Tabs
+  Tabs,
+  Tag
 } from 'antd'
 
 import { TabPane } from 'rc-tabs'
+import { PlusOutlined } from '@ant-design/icons'
 
 const pageService = new PageService()
 const trainingService = new TrainingService()
@@ -31,21 +32,24 @@ interface PropsType {
 
 const StudentCenter: React.FC<PropsType> = props => {
   const [dataSource, setDataSource] = useState([])
-  const [status, setStatus] = useState('Normal')
-  const [groupStatus, setGroupStatus] = useState('fixGroup')
+  const [status, setStatus] = useState('')
+  const [groupStatus, setGroupStatus] = useState('Group')
+  const [groupNumber, setGroupNumber] = useState(0)
   const [isModalVisible, setModalVisible] = useState(false)
   const [studentName, setStudentName] = useState<string>()
-
+  const [inputValue, setInputValue] = useState()
+  const [inputVisible, setInputVisible] = useState(false)
+  const saveInputRef = useRef<any>()
   const { Column } = Table
   const options = [
-    { label: '全部', value: 'Normal' },
-    { label: '临时', value: 'Early' },
-    { label: '线上购买', value: 'Group' }
+    { label: '全部', value: '' },
+    { label: '临时', value: 'Temporary' },
+    { label: '线上购买', value: 'Normal' }
   ]
 
   const groupOptions = [
-    { label: '固定组数', value: 'fixGroup' },
-    { label: '固定人数', value: 'fixCount' }
+    { label: '固定组数', value: 'Group' },
+    { label: '固定人数', value: 'Student' }
   ]
 
   useEffect(() => {
@@ -68,11 +72,40 @@ const StudentCenter: React.FC<PropsType> = props => {
     setGroupStatus(e.target.value)
   }
 
+  function onTabChange(value: any) {
+    switch (value) {
+      case '1':
+        getDataSource()
+        break
+      case '2':
+        getGroupStudent()
+        break
+    }
+  }
+
+  function getGroupStudent() {
+    trainingService
+      .getTrainingGroupStudents(
+        new RequestParams({
+          page: pageService,
+          append: {
+            id: props.id
+          }
+        })
+      )
+      .subscribe(data => {
+        setDataSource(data)
+      })
+  }
+
   function getDataSource() {
     trainingService
-      .getTrainingOrders(
+      .getTrainingStudents(
         new RequestParams({
-          page: pageService
+          page: pageService,
+          append: {
+            id: props.id
+          }
         })
       )
       .subscribe(data => {
@@ -81,27 +114,97 @@ const StudentCenter: React.FC<PropsType> = props => {
   }
 
   function addTempStudent() {
-    trainingService.addStudent(
-      new RequestParams({
-        append: {
-          id: props.id
-        },
-        data: {
-          id: props.id,
-          name: studentName
-        }
+    trainingService
+      .addStudent(
+        new RequestParams({
+          append: {
+            id: props.id
+          },
+          data: {
+            name: studentName
+          }
+        })
+      )
+      .subscribe(data => {
+        setModalVisible(false)
       })
-    )
   }
 
   const handleOk = () => {
-    console.log(studentName)
-    // setModalVisible(false)
     addTempStudent()
   }
 
   const handleCancel = () => {
     setModalVisible(false)
+  }
+
+  /**
+   * 智能分组
+   */
+  function createGroup() {
+    trainingService
+      .group(
+        new RequestParams({
+          append: {
+            id: props.id
+          },
+          data: {
+            number: groupNumber,
+            type: groupStatus
+          }
+        })
+      )
+      .subscribe(data => {
+        getGroupStudent()
+      })
+  }
+
+  const handleClose = (removedTag: any) => {
+    const tags = dataSource.filter(
+      tag => tag !== removedTag
+    )
+    console.log(tags)
+    //请求删除
+  }
+
+  const showInput = () => {
+    setInputVisible(true)
+  }
+
+  const handleInputChange = (e: any) => {
+    setInputValue(e.target.value)
+  }
+
+  const handleInputConfirm = () => {
+    // if (inputValue && tags.indexOf(inputValue) === -1) {
+    //   tags = [...tags, inputValue]
+    // }
+    // console.log(tags)
+    // this.setState({
+    //   tags,
+    //   inputVisible: false,
+    //   inputValue: ''
+    // })
+    //TODO:请求增加学员
+  }
+
+  const forMap = (tag: any) => {
+    const tagElem = (
+      <Tag
+        closable
+        onClose={e => {
+          e.preventDefault()
+          handleClose(tag)
+        }}
+      >
+        {tag}
+      </Tag>
+    )
+    return (
+      <span key={tag} style={{ display: 'inline-block' }}>
+        {tagElem}
+      </span>
+    )
   }
 
   return (
@@ -142,7 +245,7 @@ const StudentCenter: React.FC<PropsType> = props => {
           </div>
         </Form.Item>
       </DataForm>
-      <Tabs defaultActiveKey="1">
+      <Tabs defaultActiveKey="1" onChange={onTabChange}>
         <TabPane tab="列表" key="1">
           <Radio.Group
             options={options}
@@ -151,7 +254,29 @@ const StudentCenter: React.FC<PropsType> = props => {
             optionType="button"
           />
           <DataTable rowKey={'id'} dataSource={dataSource}>
-            <Column title={'姓名'} />
+            <Column title={'姓名'} dataIndex={'name'} />
+            <Column
+              title={'分组名称'}
+              dataIndex={'groupName'}
+            />
+            <Column
+              title={'联系电话'}
+              dataIndex={'phone'}
+            />
+            <Column
+              title={'学员类型'}
+              dataIndex={'studentType'}
+              render={data => {
+                switch (data) {
+                  case 'Normal':
+                    return <div>付费学员</div>
+                  case 'Temporary':
+                    return <div>临时学员</div>
+                  default:
+                    return <div></div>
+                }
+              }}
+            />
           </DataTable>
         </TabPane>
         <TabPane tab="分组" key="2">
@@ -168,20 +293,73 @@ const StudentCenter: React.FC<PropsType> = props => {
               </Col>
               <Col span={8}>
                 <Form.Item label={'数量'}>
-                  <InputNumber precision={0} />
+                  <InputNumber
+                    precision={0}
+                    onChange={(e: any) => setGroupNumber(e)}
+                  />
                 </Form.Item>
               </Col>
               <Col span={8}>
                 <Form.Item>
-                  <Button>智能分组</Button>
+                  <Button onClick={createGroup}>
+                    智能分组
+                  </Button>
                 </Form.Item>
               </Col>
             </Row>
           </Form>
 
-          <DataTable rowKey={'id'} dataSource={dataSource}>
-            <Column title={'姓名'} />
-          </DataTable>
+          <List
+            dataSource={dataSource}
+            pagination={{
+              onChange: page => {
+                console.log(page)
+              },
+              pageSize: 10
+            }}
+            renderItem={(item: any) => {
+              return (
+                <List.Item>
+                  <Card
+                    style={{ width: '100%' }}
+                    title={item.groupName}
+                    extra={<a href="#">More</a>}
+                  >
+                    {item.students?.map((x: any) => {
+                      return (
+                        <>
+                          <Tag>{x.name}</Tag>
+                        </>
+                      )
+                    })}
+                    {item.inputVisible && (
+                      <Input
+                        type="text"
+                        size="small"
+                        style={{ width: 78 }}
+                        value={inputValue}
+                        onChange={(e: any) =>
+                          (item.inputValue = e.target.value)
+                        }
+                        onBlur={handleInputConfirm}
+                        onPressEnter={handleInputConfirm}
+                      />
+                    )}
+                    {!item.inputVisible && (
+                      <Tag
+                        onClick={() =>
+                          (item.inputVisible = true)
+                        }
+                        className="site-tag-plus"
+                      >
+                        <PlusOutlined /> New Tag
+                      </Tag>
+                    )}
+                  </Card>
+                </List.Item>
+              )
+            }}
+          />
         </TabPane>
       </Tabs>
       <Modal

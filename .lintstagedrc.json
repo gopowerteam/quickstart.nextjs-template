@@ -1,14 +1,1 @@
-{
-  "*.ts!*.d.ts": [
-    "eslint  --fix",
-    "prettier --write",
-    "git add ."
-  ],
-  "*.vue": [
-    "eslint  --fix",
-    "prettier --write",
-    "git add ."
-  ],
-  "*.js": "eslint --cache --fix",
-  "*.css": "stylelint --fix"
-}
+{  "*.tsx!*.d.ts": [    "eslint  --fix",    "prettier --write",    "git add ."  ],  "*.js": "eslint --cache --fix",  "*.css": "stylelint --fix"}

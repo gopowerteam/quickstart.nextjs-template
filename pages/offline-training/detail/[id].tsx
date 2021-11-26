@@ -263,7 +263,7 @@ const OfflineTrainingDetail: NextPage = () => {
             <OrderCenterList />
           </TabPane>
           <TabPane tab="学员管理" key="5">
-            <StudentCenter />
+            <StudentCenter id={router.query.id as string} />
           </TabPane>
         </Tabs>
       </Card>

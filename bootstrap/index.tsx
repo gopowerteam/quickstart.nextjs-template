@@ -34,7 +34,6 @@ const Bootstrap: React.FC<BootstrapProps> = props => {
     appQuery,
     store => store.ready
   )
-
   const [userReady, updateUserReady] = useState<
     boolean | undefined
   >(userQuery.getUserReady())

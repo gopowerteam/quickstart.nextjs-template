@@ -34,7 +34,7 @@ specifiers:
   node-fetch: '2'
   postcss: ^8.3.11
   prettier: ^2.4.1
-  rc-tween-one: ^3.0.3
+  rc-tabs: ^11.10.4
   react: 17.0.2
   react-cookie: ^4.1.1
   react-dom: 17.0.2
@@ -53,7 +53,7 @@ dependencies:
   moment: registry.nlark.com/moment/2.29.1
   nanoid: registry.npmmirror.com/nanoid/3.1.30
   next: registry.npmmirror.com/next/12.0.4_react-dom@17.0.2+react@17.0.2
-  rc-tween-one: registry.npmmirror.com/rc-tween-one/3.0.3_react-dom@17.0.2+react@17.0.2
+  rc-tabs: registry.npmmirror.com/rc-tabs/11.10.4_react-dom@17.0.2+react@17.0.2
   react: registry.npmmirror.com/react/17.0.2
   react-cookie: registry.npmmirror.com/react-cookie/4.1.1_react@17.0.2
   react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
@@ -1122,12 +1122,6 @@ packages:
     version: 1.0.1
     dev: false
 
-  registry.nlark.com/d3-polygon/1.0.6:
-    resolution: {integrity: sha1-C/jLgYCm3BB/UY3feXXhKrv7044=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-polygon/download/d3-polygon-1.0.6.tgz}
-    name: d3-polygon
-    version: 1.0.6
-    dev: false
-
   registry.nlark.com/damerau-levenshtein/1.0.7:
     resolution: {integrity: sha1-ZDaAA1EqGmmSWTdBoJqdMag29V0=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/damerau-levenshtein/download/damerau-levenshtein-1.0.7.tgz}
     name: damerau-levenshtein
@@ -1312,12 +1306,6 @@ packages:
       inherits: registry.nlark.com/inherits/2.0.4
       readable-stream: registry.nlark.com/readable-stream/2.3.7
       stream-shift: registry.nlark.com/stream-shift/1.0.1
-    dev: false
-
-  registry.nlark.com/earcut/2.2.3:
-    resolution: {integrity: sha1-1EztL/WhiFlWjjJ92cfUaxb1XPQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/earcut/download/earcut-2.2.3.tgz}
-    name: earcut
-    version: 2.2.3
     dev: false
 
   registry.nlark.com/editor/1.0.0:
@@ -3194,12 +3182,6 @@ packages:
       sha.js: registry.nlark.com/sha.js/2.4.11
     dev: false
 
-  registry.nlark.com/performance-now/2.1.0:
-    resolution: {integrity: sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/performance-now/download/performance-now-2.1.0.tgz}
-    name: performance-now
-    version: 2.1.0
-    dev: false
-
   registry.nlark.com/picomatch/2.3.0:
     resolution: {integrity: sha1-8fBh3o9qS/AiiS4tEoI0+5gwKXI=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/picomatch/download/picomatch-2.3.0.tgz}
     name: picomatch
@@ -3436,14 +3418,6 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  registry.nlark.com/raf/3.4.1:
-    resolution: {integrity: sha1-B0LpmkplUvRF1z4+4DKK8P8e3jk=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/raf/download/raf-3.4.1.tgz}
-    name: raf
-    version: 3.4.1
-    dependencies:
-      performance-now: registry.nlark.com/performance-now/2.1.0
-    dev: false
-
   registry.nlark.com/randombytes/2.1.0:
     resolution: {integrity: sha1-32+ENy8CcNxlzfYpE0mrekc9Tyo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/randombytes/download/randombytes-2.1.0.tgz}
     name: randombytes
@@ -3553,7 +3527,7 @@ packages:
     dependencies:
       '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.3
       classnames: registry.nlark.com/classnames/2.2.6
-      rc-trigger: registry.npmmirror.com/rc-trigger/5.2.10_react-dom@17.0.2+react@17.0.2
+      rc-trigger: registry.nlark.com/rc-trigger/5.2.10_react-dom@17.0.2+react@17.0.2
       react: registry.npmmirror.com/react/17.0.2
       react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
     dev: false
@@ -3738,6 +3712,25 @@ packages:
     dependencies:
       '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.3
       rc-trigger: registry.npmmirror.com/rc-trigger/5.2.10_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.nlark.com/rc-trigger/5.2.10_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha1-igBXqUCxuQJ+qjO+7IpuzYXM4rE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/rc-trigger/download/rc-trigger-5.2.10.tgz}
+    id: registry.nlark.com/rc-trigger/5.2.10
+    name: rc-trigger
+    version: 5.2.10
+    engines: {node: '>=8.x'}
+    peerDependencies:
+      react: '>=16.9.0'
+      react-dom: '>=16.9.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.3
+      classnames: registry.nlark.com/classnames/2.2.6
+      rc-align: registry.nlark.com/rc-align/4.0.11_react-dom@17.0.2+react@17.0.2
+      rc-motion: registry.nlark.com/rc-motion/2.4.4_react-dom@17.0.2+react@17.0.2
+      rc-util: registry.npmmirror.com/rc-util/5.15.0_react-dom@17.0.2+react@17.0.2
       react: registry.npmmirror.com/react/17.0.2
       react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
     dev: false
@@ -4436,15 +4429,6 @@ packages:
     version: 1.0.6
     dev: false
 
-  registry.nlark.com/topojson-client/3.1.0:
-    resolution: {integrity: sha1-Iuix7QiiuSL+60r29Ttu8JpGe5k=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/topojson-client/download/topojson-client-3.1.0.tgz}
-    name: topojson-client
-    version: 3.1.0
-    hasBin: true
-    dependencies:
-      commander: registry.npmmirror.com/commander/2.20.3
-    dev: false
-
   registry.nlark.com/trim-newlines/3.0.1:
     resolution: {integrity: sha1-Jgpdli2LdSQlsy86fbDcrNF2wUQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/trim-newlines/download/trim-newlines-3.0.1.tgz}
     name: trim-newlines
@@ -4491,12 +4475,6 @@ packages:
       tslib: registry.nlark.com/tslib/1.14.1
       typescript: registry.npmmirror.com/typescript/4.5.2
     dev: true
-
-  registry.nlark.com/tween-functions/1.2.0:
-    resolution: {integrity: sha1-GuOlDnxguz3vd06scHrLynO7w/8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/tween-functions/download/tween-functions-1.2.0.tgz}
-    name: tween-functions
-    version: 1.2.0
-    dev: false
 
   registry.nlark.com/type-check/0.4.0:
     resolution: {integrity: sha1-B7ggO/pwVsBlcFDjzNLDdzC6uPE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/type-check/download/type-check-0.4.0.tgz}
@@ -4864,7 +4842,7 @@ packages:
     dev: false
 
   registry.npmmirror.com/@babel/runtime/7.16.3:
-    resolution: {integrity: sha512-WBwekcqacdY2e9AF/Q7WLFUWmdJGJTkbjqTjoMDgXkVZ3ZRUvOPsLb5KdwISoQVsbP+DQzVZW4Zhci0DvpbNTQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@babel/runtime/download/@babel/runtime-7.16.3.tgz?cache=0&sync_timestamp=1636500996116&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40babel%2Fruntime%2Fdownload%2F%40babel%2Fruntime-7.16.3.tgz}
+    resolution: {integrity: sha512-WBwekcqacdY2e9AF/Q7WLFUWmdJGJTkbjqTjoMDgXkVZ3ZRUvOPsLb5KdwISoQVsbP+DQzVZW4Zhci0DvpbNTQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@babel/runtime/download/@babel/runtime-7.16.3.tgz}
     name: '@babel/runtime'
     version: 7.16.3
     engines: {node: '>=6.9.0'}
@@ -5839,12 +5817,6 @@ packages:
     version: 2.0.16
     dev: true
 
-  registry.npmmirror.com/commander/2.20.3:
-    resolution: {integrity: sha1-/UhehMA+tIgcIHIrpIA16FMa6zM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/commander/download/commander-2.20.3.tgz}
-    name: commander
-    version: 2.20.3
-    dev: false
-
   registry.npmmirror.com/commander/6.2.1:
     resolution: {integrity: sha1-B5LraC37wyWZm7K4T93duhEKxzw=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/commander/download/commander-6.2.1.tgz}
     name: commander
@@ -5957,12 +5929,6 @@ packages:
       temp: registry.nlark.com/temp/0.9.4
       word-wrap: registry.nlark.com/word-wrap/1.2.3
     dev: true
-
-  registry.npmmirror.com/d3-array/1.2.4:
-    resolution: {integrity: sha1-Y1zk1e6nWfb2BYY9vPww7cc39x8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/d3-array/download/d3-array-1.2.4.tgz}
-    name: d3-array
-    version: 1.2.4
-    dev: false
 
   registry.npmmirror.com/data-uri-to-buffer/3.0.1:
     resolution: {integrity: sha1-WUuJc5OMW8LDMEZTV4U0GrxPNjY=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/data-uri-to-buffer/download/data-uri-to-buffer-3.0.1.tgz}
@@ -6420,19 +6386,6 @@ packages:
     name: flatted
     version: 3.2.4
     dev: true
-
-  registry.npmmirror.com/flubber/0.4.2:
-    resolution: {integrity: sha1-FEUtSoOMw7ny+2F12pTjWs1V+6o=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/flubber/download/flubber-0.4.2.tgz}
-    name: flubber
-    version: 0.4.2
-    dependencies:
-      d3-array: registry.npmmirror.com/d3-array/1.2.4
-      d3-polygon: registry.nlark.com/d3-polygon/1.0.6
-      earcut: registry.nlark.com/earcut/2.2.3
-      svg-path-properties: registry.npmmirror.com/svg-path-properties/0.2.2
-      svgpath: registry.npmmirror.com/svgpath/2.3.1
-      topojson-client: registry.nlark.com/topojson-client/3.1.0
-    dev: false
 
   registry.npmmirror.com/follow-redirects/1.14.5:
     resolution: {integrity: sha1-8JpYSJgdPHcrU5Iwl3hSP42Fw4E=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/follow-redirects/download/follow-redirects-1.14.5.tgz}
@@ -7309,7 +7262,7 @@ packages:
       classnames: registry.nlark.com/classnames/2.2.6
       rc-motion: registry.nlark.com/rc-motion/2.4.4_react-dom@17.0.2+react@17.0.2
       rc-overflow: registry.nlark.com/rc-overflow/1.2.2_react-dom@17.0.2+react@17.0.2
-      rc-trigger: registry.npmmirror.com/rc-trigger/5.2.10_react-dom@17.0.2+react@17.0.2
+      rc-trigger: registry.nlark.com/rc-trigger/5.2.10_react-dom@17.0.2+react@17.0.2
       rc-util: registry.npmmirror.com/rc-util/5.15.0_react-dom@17.0.2+react@17.0.2
       react: registry.npmmirror.com/react/17.0.2
       react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
@@ -7449,6 +7402,26 @@ packages:
       react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
     dev: false
 
+  registry.npmmirror.com/rc-tabs/11.10.4_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-FXihSD9DEF7G/C5iIHNon5jzIO66Two0aeB6uHCmSYibasCsnuBFslHXb9Pa4woqs+vVNjiKRgoDZfurwx1rzg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/rc-tabs/download/rc-tabs-11.10.4.tgz}
+    id: registry.npmmirror.com/rc-tabs/11.10.4
+    name: rc-tabs
+    version: 11.10.4
+    engines: {node: '>=8.x'}
+    peerDependencies:
+      react: '>=16.9.0'
+      react-dom: '>=16.9.0'
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.3
+      classnames: registry.nlark.com/classnames/2.2.6
+      rc-dropdown: registry.nlark.com/rc-dropdown/3.2.0_react-dom@17.0.2+react@17.0.2
+      rc-menu: registry.npmmirror.com/rc-menu/9.0.14_react-dom@17.0.2+react@17.0.2
+      rc-resize-observer: registry.nlark.com/rc-resize-observer/1.0.1_react-dom@17.0.2+react@17.0.2
+      rc-util: registry.npmmirror.com/rc-util/5.15.0_react-dom@17.0.2+react@17.0.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
   registry.npmmirror.com/rc-tree-select/4.6.3_react-dom@17.0.2+react@17.0.2:
     resolution: {integrity: sha512-VymfystOnW8EfoWaWehgB8zpYKgRZf4ILu9KHf7FJZVZ/1dnBEHDqg1bBi43/1BYLwYFKSKKSjkYyNYntWJM4A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/rc-tree-select/download/rc-tree-select-4.6.3.tgz}
     id: registry.npmmirror.com/rc-tree-select/4.6.3
@@ -7503,23 +7476,6 @@ packages:
       rc-util: registry.npmmirror.com/rc-util/5.15.0_react-dom@17.0.2+react@17.0.2
       react: registry.npmmirror.com/react/17.0.2
       react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
-    dev: false
-
-  registry.npmmirror.com/rc-tween-one/3.0.3_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-sU4Ci6sgN9Rglsctdk2C3G7r0bWcOv/4l3xBWfrBoTTV8c3Qsoch8a7oBR7ZRovW2PyzdPnCmM08byEYwHbPDQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/rc-tween-one/download/rc-tween-one-3.0.3.tgz}
-    id: registry.npmmirror.com/rc-tween-one/3.0.3
-    name: rc-tween-one
-    version: 3.0.3
-    engines: {node: '>=8.x'}
-    peerDependencies:
-      react: '>=16.9.0'
-      react-dom: '>=16.9.0'
-    dependencies:
-      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.3
-      react: registry.npmmirror.com/react/17.0.2
-      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
-      style-utils: registry.npmmirror.com/style-utils/0.3.4
-      tween-one: registry.npmmirror.com/tween-one/1.0.57
     dev: false
 
   registry.npmmirror.com/rc-upload/4.3.2_react-dom@17.0.2+react@17.0.2:
@@ -7600,7 +7556,7 @@ packages:
     dev: false
 
   registry.npmmirror.com/react-is/16.13.1:
-    resolution: {integrity: sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-is/download/react-is-16.13.1.tgz?cache=0&sync_timestamp=1637342018160&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Freact-is%2Fdownload%2Freact-is-16.13.1.tgz}
+    resolution: {integrity: sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-is/download/react-is-16.13.1.tgz}
     name: react-is
     version: 16.13.1
 
@@ -7873,12 +7829,6 @@ packages:
       ansi-regex: registry.nlark.com/ansi-regex/6.0.1
     dev: true
 
-  registry.npmmirror.com/style-utils/0.3.4:
-    resolution: {integrity: sha1-/0B8Ng07XBoJcSeVhuOc4nJRBk8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/style-utils/download/style-utils-0.3.4.tgz}
-    name: style-utils
-    version: 0.3.4
-    dev: false
-
   registry.npmmirror.com/styled-jsx/5.0.0-beta.3_react@17.0.2:
     resolution: {integrity: sha1-QA0WF5td/xDVlUq4viepobd4DdI=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/styled-jsx/download/styled-jsx-5.0.0-beta.3.tgz?cache=0&sync_timestamp=1636544896403&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fstyled-jsx%2Fdownload%2Fstyled-jsx-5.0.0-beta.3.tgz}
     id: registry.npmmirror.com/styled-jsx/5.0.0-beta.3
@@ -7945,24 +7895,6 @@ packages:
     version: 9.1.0
     engines: {node: '>=12'}
     dev: true
-
-  registry.npmmirror.com/svg-path-properties/0.2.2:
-    resolution: {integrity: sha1-sHPYG+cpLq4OIzq4qD9Y3CcRMpY=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/svg-path-properties/download/svg-path-properties-0.2.2.tgz}
-    name: svg-path-properties
-    version: 0.2.2
-    dev: false
-
-  registry.npmmirror.com/svg-path-properties/1.0.11:
-    resolution: {integrity: sha1-2AS3feoobd1WvRglSLnE9ZgNz4M=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/svg-path-properties/download/svg-path-properties-1.0.11.tgz}
-    name: svg-path-properties
-    version: 1.0.11
-    dev: false
-
-  registry.npmmirror.com/svgpath/2.3.1:
-    resolution: {integrity: sha1-sQIzS+vSJEtIGEYLouutUnFqDUM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/svgpath/download/svgpath-2.3.1.tgz}
-    name: svgpath
-    version: 2.3.1
-    dev: false
 
   registry.npmmirror.com/tailwindcss/2.2.19_0c54bdadaf9d9c9c6c134cb2c6c061a3:
     resolution: {integrity: sha1-VA5GSDLNRiu5ZJwUhLCjgxXCZTw=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tailwindcss/download/tailwindcss-2.2.19.tgz}
@@ -8054,19 +7986,6 @@ packages:
       typescript: registry.npmmirror.com/typescript/4.5.2
       yn: registry.nlark.com/yn/3.1.1
     dev: true
-
-  registry.npmmirror.com/tween-one/1.0.57:
-    resolution: {integrity: sha512-TlK4RMISb3UCXq/wlk+yghWLQeybEi3Ktu8efGOzIy201urhAkdrXO2nyuIgaIQQa8v27Nkmh5DhBEFx211+Dw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tween-one/download/tween-one-1.0.57.tgz}
-    name: tween-one
-    version: 1.0.57
-    dependencies:
-      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.3
-      flubber: registry.npmmirror.com/flubber/0.4.2
-      raf: registry.nlark.com/raf/3.4.1
-      style-utils: registry.npmmirror.com/style-utils/0.3.4
-      svg-path-properties: registry.npmmirror.com/svg-path-properties/1.0.11
-      tween-functions: registry.nlark.com/tween-functions/1.2.0
-    dev: false
 
   registry.npmmirror.com/type-fest/0.18.1:
     resolution: {integrity: sha1-20vBUaSiz07r+a3V23VQjbbMhB8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/type-fest/download/type-fest-0.18.1.tgz}

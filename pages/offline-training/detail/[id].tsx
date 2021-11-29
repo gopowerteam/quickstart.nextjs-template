@@ -21,6 +21,7 @@ import moment from 'moment'
 import PublishConfig from '~/pages/offline-training/components/publish-config-component'
 import OrderCenterList from '~/pages/offline-training/order-center'
 import StudentCenter from '~/pages/offline-training/student-center'
+import axios from 'axios'
 
 const trainingService = new TrainingService()
 
@@ -45,12 +46,20 @@ const OfflineTrainingDetail: NextPage = () => {
   const basicInfoRef = useRef<any>()
   const marketingConfigRef = useRef<any>()
   const publishConfigRef = useRef<any>()
+  const unmount = useRef(false)
   const [activityModel, setActivityModel] =
     useState<ActivityType>()
 
   useEffect(() => {
     getBasicInfoDetail()
   }, [])
+
+  //清除副作用
+  useEffect(() => {
+    return () => {
+      unmount.current = true
+    }
+  })
 
   /**
    * 获取基本信息详情
@@ -65,11 +74,13 @@ const OfflineTrainingDetail: NextPage = () => {
         })
       )
       .subscribe(data => {
-        setActivityModel({
-          ...data,
-          date: moment(data.date).format('YYYY-MM-DD')
-        })
-        basicInfoRef.current?.setFormValue(data)
+        !unmount.current &&
+          setActivityModel({
+            ...data,
+            date: moment(data.date).format('YYYY-MM-DD')
+          })
+        !unmount.current &&
+          basicInfoRef.current?.setFormValue(data)
       })
   }
 
@@ -105,10 +116,14 @@ const OfflineTrainingDetail: NextPage = () => {
     const requestData = {
       ...value,
       earlyDeadTime: value.earlyDeadTime
-        ? moment(value.earlyDeadTime).format('YYYY-MM-DD')
+        ? moment(value.earlyDeadTime).format(
+            'YYYY-MM-DD HH:mm:ss'
+          )
         : undefined,
       saleDeadTime: value.saleDeadTime
-        ? moment(value.saleDeadTime).format('YYYY-MM-DD')
+        ? moment(value.saleDeadTime).format(
+            'YYYY-MM-DD HH:mm:ss'
+          )
         : undefined,
       earlyPrice: value.earlyPrice
         ? value.earlyPrice * 100
@@ -173,7 +188,8 @@ const OfflineTrainingDetail: NextPage = () => {
         })
       )
       .subscribe(data => {
-        marketingConfigRef.current?.setFormValue(data)
+        !unmount.current &&
+          marketingConfigRef.current?.setFormValue(data)
       })
   }
 
@@ -187,7 +203,8 @@ const OfflineTrainingDetail: NextPage = () => {
         })
       )
       .subscribe(data => {
-        publishConfigRef.current?.setFormValue(data)
+        !unmount.current &&
+          publishConfigRef.current?.setFormValue(data)
       })
   }
 

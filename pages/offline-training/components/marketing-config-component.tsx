@@ -148,6 +148,7 @@ const MarketingConfigComponent: ForwardRefRenderFunction<
           wrapperCol={{ span: 8 }}
         >
           <InputNumber
+            step={'0.01'}
             style={{ width: '100%' }}
           ></InputNumber>
         </Form.Item>
@@ -204,4 +205,6 @@ const MarketingConfigComponent: ForwardRefRenderFunction<
   )
 }
 
-export default forwardRef<any, any>(MarketingConfigComponent)
+export default forwardRef<any, any>(
+  MarketingConfigComponent
+)

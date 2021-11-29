@@ -7,7 +7,6 @@ import { RequestParams } from '@gopowerteam/http-request'
 import styles from './student.module.less'
 import {
   Button,
-  Card,
   Col,
   Form,
   Input,
@@ -18,8 +17,7 @@ import {
   Radio,
   Row,
   Table,
-  Tabs,
-  Tag
+  Tabs
 } from 'antd'
 
 import EditableRow from '~/pages/offline-training/student-center/components/editable-row'
@@ -35,7 +33,8 @@ const StudentCenter: React.FC<PropsType> = props => {
   const [groupDataSource, setGroupDataSource] = useState<
     any[]
   >([])
-  const [status, setStatus] = useState('')
+  const [studentStatus, setStudentStatus] =
+    useState<string>('')
   const [groupStatus, setGroupStatus] = useState('Group')
   const [groupNumber, setGroupNumber] = useState(0)
   const [isModalVisible, setModalVisible] = useState(false)
@@ -59,14 +58,16 @@ const StudentCenter: React.FC<PropsType> = props => {
     getDataSource()
   }, [])
 
-  /**
-   * 过滤条件
-   * @param e
-   */
-  const onChange = (e: any) => {
-    setStatus(e.target.value)
+  //人员搜索条件变化
+  useEffect(() => {
     getDataSource()
-  }
+  }, [studentStatus])
+
+  //分组分页变化监听
+  useEffect(() => {
+    getGroupStudent(currentPage)
+  }, [currentPage])
+
   /**
    * 过滤条件
    * @param e
@@ -82,18 +83,16 @@ const StudentCenter: React.FC<PropsType> = props => {
         break
       case '2':
         setCurrentPage(0)
-        getGroupStudent(currentPage)
         break
     }
   }
 
   function getGroupStudent(page: number) {
-    setCurrentPage(page)
     trainingService
       .getTrainingGroupStudents(
         new RequestParams({
           data: {
-            page: currentPage,
+            page: page,
             page_size: 10
           },
           append: {
@@ -114,7 +113,10 @@ const StudentCenter: React.FC<PropsType> = props => {
           append: {
             id: props.id
           },
-          data: form.getFieldsValue()
+          data: {
+            status: studentStatus,
+            ...form.getFieldsValue()
+          }
         })
       )
       .subscribe(data => {
@@ -167,7 +169,7 @@ const StudentCenter: React.FC<PropsType> = props => {
         })
       )
       .subscribe(data => {
-        getGroupStudent(currentPage)
+        setCurrentPage(0)
       })
   }
 
@@ -238,8 +240,10 @@ const StudentCenter: React.FC<PropsType> = props => {
         <TabPane tab="列表" key="1">
           <Radio.Group
             options={options}
-            onChange={onChange}
-            value={status}
+            onChange={e => {
+              setStudentStatus(e.target.value)
+            }}
+            value={studentStatus}
             optionType="button"
           />
           <DataTable
@@ -327,7 +331,7 @@ const StudentCenter: React.FC<PropsType> = props => {
             rowKey={'groupName'}
             pagination={{
               onChange: page => {
-                getGroupStudent(page)
+                setCurrentPage(page)
               },
               pageSize: 10
             }}

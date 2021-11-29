@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Card, Input, Tag } from 'antd'
+import styles from '../student.module.less'
 
 interface PropsType {
   data: any
@@ -35,14 +36,10 @@ const EditableRow: React.FC<PropsType> = (props: any) => {
       style={{ width: '100%' }}
       title={item.groupName}
       key={item.groupName}
-      extra={<a href="#">More</a>}
+      extra={<span>共{item.students.length}人</span>}
     >
       {item.students?.map((x: any) => {
-        return (
-          <>
-            <Tag key={x.id}>{x.name}</Tag>
-          </>
-        )
+        return <Tag key={x.id}>{x.name}</Tag>
       })}
       {inputVisible && (
         <Input

@@ -1,10 +1,21 @@
-import { Button, Card, DatePicker, Form, Input } from 'antd'
+import {
+  Button,
+  Card,
+  DatePicker,
+  Form,
+  Image,
+  Input
+} from 'antd'
 import React, {
   forwardRef,
   ForwardRefRenderFunction,
-  useImperativeHandle
+  useImperativeHandle,
+  useState
 } from 'react'
 import moment from 'moment'
+import FileUpload from '~/shared/components/file-upload'
+import { useFileService } from '~/shared/services/file.service'
+import styles from './info.module.less'
 
 interface RefType {
   setFormValue: (data: any) => void
@@ -20,6 +31,10 @@ const BasicInfoComponent: ForwardRefRenderFunction<
 > = (props, ref) => {
   const { TextArea } = Input
   const [form] = Form.useForm()
+  const fileService = useFileService(
+    service => service.public
+  )
+  const [bannerImage, setBannerImage] = useState<string>()
 
   const formItemLayout = {
     labelCol: {
@@ -36,8 +51,19 @@ const BasicInfoComponent: ForwardRefRenderFunction<
     props.onSubmit(value)
   }
 
+  function onFileUpload(fileList: FileList) {
+    fileService.upload(fileList).subscribe(data => {
+      console.log(data)
+      setBannerImage(data.url)
+      form.setFieldsValue({
+        bannerImg: data.url
+      })
+    })
+  }
+
   useImperativeHandle(ref, () => ({
     setFormValue: data => {
+      setBannerImage(data.bannerImg)
       form.setFieldsValue({
         ...data,
         date: moment(data.date)
@@ -73,7 +99,12 @@ const BasicInfoComponent: ForwardRefRenderFunction<
             }
           ]}
         >
-          <Input></Input>
+          <div className={styles['flex-col']}>
+            <FileUpload onUpload={onFileUpload}>
+              <Button type={'primary'}>上传</Button>
+            </FileUpload>
+            <Image src={bannerImage} width={'60%'} />
+          </div>
         </Form.Item>
         <Form.Item
           label="日期"

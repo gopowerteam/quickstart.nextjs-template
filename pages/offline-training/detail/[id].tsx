@@ -5,14 +5,12 @@ import {
   Card,
   Col,
   Descriptions,
-  Grid,
   Image,
   message,
   Row,
   Tabs
 } from 'antd'
 import styles from './detail.module.less'
-import { TabPane } from 'rc-tabs'
 import BasicInfo from '~/pages/offline-training/components/basic-info-component'
 import { useEffect, useRef, useState } from 'react'
 import { RequestParams } from '@gopowerteam/http-request'
@@ -25,6 +23,8 @@ import OrderCenterList from '~/pages/offline-training/order-center'
 import StudentCenter from '~/pages/offline-training/student-center'
 
 const trainingService = new TrainingService()
+
+const { TabPane } = Tabs
 
 interface ActivityType {
   id: string

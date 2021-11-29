@@ -79,16 +79,19 @@ const StudentCenter: React.FC<PropsType> = props => {
         getDataSource()
         break
       case '2':
-        getGroupStudent()
+        getGroupStudent(0)
         break
     }
   }
 
-  function getGroupStudent() {
+  function getGroupStudent(page: number) {
     trainingService
       .getTrainingGroupStudents(
         new RequestParams({
-          page: pageService,
+          data: {
+            page: page,
+            page_size: 10
+          },
           append: {
             id: props.id
           }
@@ -160,7 +163,7 @@ const StudentCenter: React.FC<PropsType> = props => {
         })
       )
       .subscribe(data => {
-        getGroupStudent()
+        getGroupStudent(0)
       })
   }
 
@@ -275,8 +278,7 @@ const StudentCenter: React.FC<PropsType> = props => {
             rowKey={'groupName'}
             pagination={{
               onChange: page => {
-                console.log(page)
-                getGroupStudent()
+                getGroupStudent(page)
               },
               pageSize: 10
             }}

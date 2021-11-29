@@ -15,6 +15,8 @@ const OfflineTrainingPage: NextPage = () => {
   const [isModalVisible, setIsModalVisible] =
     useState(false)
   const isEdit = router.query.id !== '-1'
+  const [activityId, setActivityId] = useState<string>() //创建后的活动id
+
   useEffect(() => {
     if (isEdit) {
       getDetail(router.query.id as string)
@@ -56,6 +58,7 @@ const OfflineTrainingPage: NextPage = () => {
       )
       .subscribe(data => {
         setIsModalVisible(true)
+        setActivityId(data.id)
       })
   }
 
@@ -77,6 +80,8 @@ const OfflineTrainingPage: NextPage = () => {
 
   const handleOk = () => {
     setIsModalVisible(false)
+    console.log(activityId)
+    router.push(`/offline-training/detail/${activityId}`)
   }
 
   const handleCancel = () => {
@@ -87,15 +92,12 @@ const OfflineTrainingPage: NextPage = () => {
 
   return (
     <PageContainer>
-      <BasicInfo
-        ref={r}
-        onSubmit={onSubmit}
-      ></BasicInfo>
+      <BasicInfo ref={r} onSubmit={onSubmit}></BasicInfo>
       <Modal
         title="提示"
         visible={isModalVisible}
-        okText={<Button type={'link'}>去配置</Button>}
-        cancelText={<Button type={'link'}>取消</Button>}
+        okText={'去配置'}
+        cancelText={'取消'}
         onOk={handleOk}
         onCancel={handleCancel}
       >

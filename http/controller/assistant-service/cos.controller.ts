@@ -10,31 +10,31 @@ const service = 'as'
 const gateway = 'default'
 
 export const CosController = {
-  // 创建临时上传链接
-  createUploadUrl: {
-    gateway,
-    service,
-    controller,
-    path: '/api/cos/createUploadUrl/{bucketName}',
-    action: 'createUploadUrl',
-    type: RequestMethod.Post
-  },
-  // 创建临时Secret
-  createTempSecret: {
-    gateway,
-    service,
-    controller,
-    path: '/api/cos/createTempSecret/{bucketName}',
-    action: 'createTempSecret',
-    type: RequestMethod.Post
-  },
-  // 腾讯COS预授权URL
-  generatePresignedUrl: {
-    gateway,
-    service,
-    controller,
-    path: '/api/cos/preSignedUrl/{objectKey}',
-    action: 'generatePresignedUrl',
-    type: RequestMethod.Get
-  }
+    // 创建临时上传链接
+    createUploadUrl: {
+        gateway,
+        service,
+        controller,
+        path: '/api/cos/createUploadUrl/{bucketName}',
+        action: 'createUploadUrl',
+        type: RequestMethod.Post
+    },
+    // 创建临时Secret
+    createTempSecret: {
+        gateway,
+        service,
+        controller,
+        path: '/api/cos/createTempSecret/{bucketName}',
+        action: 'createTempSecret',
+        type: RequestMethod.Post
+    },
+    // 腾讯COS预授权URL
+    generatePresignedUrl: {
+        gateway,
+        service,
+        controller,
+        path: '/api/cos/preSignedUrl/{objectKey}',
+        action: 'generatePresignedUrl',
+        type: RequestMethod.Get
+    }
 }

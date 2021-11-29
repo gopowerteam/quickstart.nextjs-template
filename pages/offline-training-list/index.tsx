@@ -100,11 +100,11 @@ const OfflineTrainingListPage: NextPage = () => {
       <DataForm
         name={'offline-training-list'}
         actions={
-          <>
+          <div className={'flex flex-row justify-end'}>
             <Button type={'primary'} onClick={onCreate}>
               新增
             </Button>
-          </>
+          </div>
         }
       >
         <Form.Item>

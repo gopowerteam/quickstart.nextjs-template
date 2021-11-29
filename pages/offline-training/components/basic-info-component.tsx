@@ -53,7 +53,6 @@ const BasicInfoComponent: ForwardRefRenderFunction<
 
   function onFileUpload(fileList: FileList) {
     fileService.upload(fileList).subscribe(data => {
-      console.log(data)
       setBannerImage(data.url)
       form.setFieldsValue({
         bannerImg: data.url

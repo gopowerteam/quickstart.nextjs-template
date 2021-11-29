@@ -28,6 +28,15 @@ export const TrainingController = {
         action: 'updateTrainingDetail',
         type: RequestMethod.Put
     },
+    // 更新活动状态
+    changeStatus: {
+        gateway,
+        service,
+        controller,
+        path: '/api/training/{id}/status',
+        action: 'changeStatus',
+        type: RequestMethod.Put
+    },
     // 获取营销配置
     getTrainingSaleConfig: {
         gateway,
@@ -62,15 +71,6 @@ export const TrainingController = {
         controller,
         path: '/api/training/{id}/release',
         action: 'updateTrainingRelease',
-        type: RequestMethod.Put
-    },
-    // 更新活动状态
-    changeStatus: {
-        gateway,
-        service,
-        controller,
-        path: '/api/training/status/{id}',
-        action: 'changeStatus',
         type: RequestMethod.Put
     },
     // 活动列表(全部)
@@ -109,24 +109,6 @@ export const TrainingController = {
         action: 'addStudent',
         type: RequestMethod.Post
     },
-    // 启动分组
-    group: {
-        gateway,
-        service,
-        controller,
-        path: '/api/training/{id}/group',
-        action: 'group',
-        type: RequestMethod.Post
-    },
-    // 分组查看（学员）
-    getTrainingGroupStudents: {
-        gateway,
-        service,
-        controller,
-        path: '/api/training/{id}/student/group',
-        action: 'getTrainingGroupStudents',
-        type: RequestMethod.Get
-    },
     // 获取全部的问题
     getAllQuestions: {
         gateway,
@@ -135,6 +117,33 @@ export const TrainingController = {
         path: '/api/training/{id}/question',
         action: 'getAllQuestions',
         type: RequestMethod.Get
+    },
+    // 给培训增加提问
+    postQuestion: {
+        gateway,
+        service,
+        controller,
+        path: '/api/training/{id}/question',
+        action: 'postQuestion',
+        type: RequestMethod.Post
+    },
+    // 分组查看（学员）
+    getTrainingGroupStudents: {
+        gateway,
+        service,
+        controller,
+        path: '/api/training/{id}/group',
+        action: 'getTrainingGroupStudents',
+        type: RequestMethod.Get
+    },
+    // 启动分组
+    group: {
+        gateway,
+        service,
+        controller,
+        path: '/api/training/{id}/group',
+        action: 'group',
+        type: RequestMethod.Post
     },
     // （分页）获取全部单订单(admin)
     getTrainingOrders: {
@@ -153,5 +162,14 @@ export const TrainingController = {
         path: '/api/training/order/{id}',
         action: 'getTrainingOrderDetail',
         type: RequestMethod.Get
+    },
+    // 从培训中移出学员
+    removeStudent: {
+        gateway,
+        service,
+        controller,
+        path: '/api/training/{id}/student/{sid}',
+        action: 'removeStudent',
+        type: RequestMethod.Delete
     }
 }

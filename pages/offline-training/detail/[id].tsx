@@ -93,6 +93,7 @@ const OfflineTrainingDetail: NextPage = () => {
       )
       .subscribe(data => {
         message.success('信息更新成功')
+        getBasicInfoDetail()
       })
   }
 
@@ -131,7 +132,8 @@ const OfflineTrainingDetail: NextPage = () => {
         })
       )
       .subscribe(data => {
-        message.success('配置更新成功')
+        message.success('营销配置更新成功')
+        getBasicInfoDetail()
       })
   }
 
@@ -157,7 +159,7 @@ const OfflineTrainingDetail: NextPage = () => {
         })
       )
       .subscribe(data => {
-        message.success('配置更新成功')
+        message.success('发布配置更新成功')
       })
   }
 

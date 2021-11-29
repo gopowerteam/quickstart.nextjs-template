@@ -19,7 +19,7 @@ export class QuestionService {
     return RequestParams.create(params).request();
   }
   /**
-   * 提问点赞
+   * 问题点赞
    */
   @Request({
     server: QuestionController.star,

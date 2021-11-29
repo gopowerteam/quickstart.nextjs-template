@@ -23,13 +23,13 @@ const EditableRow: React.FC<PropsType> = (props: any) => {
     //TODO:请求增加学员
     console.log(inputVisible, inputValue)
   }
-  // const handleClose = (removedTag: any) => {
-  //   const tags = dataSource.filter(
-  //     tag => tag !== removedTag
-  //   )
-  //   console.log(tags)
-  //   //请求删除
-  // }
+  const handleClose = (removedTag: any) => {
+    // const tags = dataSource.filter(
+    //   tag => tag !== removedTag
+    // )
+    console.log(removedTag)
+    //请求删除
+  }
 
   return (
     <Card
@@ -39,7 +39,18 @@ const EditableRow: React.FC<PropsType> = (props: any) => {
       extra={<span>共{item.students.length}人</span>}
     >
       {item.students?.map((x: any) => {
-        return <Tag key={x.id}>{x.name}</Tag>
+        return (
+          <Tag
+            key={x.id}
+            closable
+            onClose={e => {
+              e.preventDefault()
+              handleClose(x.id)
+            }}
+          >
+            {x.name}
+          </Tag>
+        )
       })}
       {inputVisible && (
         <Input

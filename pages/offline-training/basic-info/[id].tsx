@@ -80,7 +80,6 @@ const OfflineTrainingPage: NextPage = () => {
 
   const handleOk = () => {
     setIsModalVisible(false)
-    console.log(activityId)
     router.push(`/offline-training/detail/${activityId}`)
   }
 

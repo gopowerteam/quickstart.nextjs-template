@@ -14,6 +14,7 @@ import {
   InputNumber,
   List,
   Modal,
+  Popconfirm,
   Radio,
   Row,
   Table,
@@ -40,7 +41,8 @@ const StudentCenter: React.FC<PropsType> = props => {
   const [isModalVisible, setModalVisible] = useState(false)
   const [studentName, setStudentName] = useState<string>()
   const { TabPane } = Tabs
-
+  const [currentPage, setCurrentPage] = useState(0)
+  const [form] = Form.useForm()
   const { Column } = Table
   const options = [
     { label: '全部', value: '' },
@@ -79,17 +81,19 @@ const StudentCenter: React.FC<PropsType> = props => {
         getDataSource()
         break
       case '2':
-        getGroupStudent(0)
+        setCurrentPage(0)
+        getGroupStudent(currentPage)
         break
     }
   }
 
   function getGroupStudent(page: number) {
+    setCurrentPage(page)
     trainingService
       .getTrainingGroupStudents(
         new RequestParams({
           data: {
-            page: page,
+            page: currentPage,
             page_size: 10
           },
           append: {
@@ -109,7 +113,8 @@ const StudentCenter: React.FC<PropsType> = props => {
           page: pageService,
           append: {
             id: props.id
-          }
+          },
+          data: form.getFieldsValue()
         })
       )
       .subscribe(data => {
@@ -142,7 +147,6 @@ const StudentCenter: React.FC<PropsType> = props => {
 
   const handleCancel = () => {
     setStudentName(undefined)
-    console.log(studentName)
     setModalVisible(false)
   }
 
@@ -163,13 +167,33 @@ const StudentCenter: React.FC<PropsType> = props => {
         })
       )
       .subscribe(data => {
-        getGroupStudent(0)
+        getGroupStudent(currentPage)
+      })
+  }
+
+  /**
+   * 删除分组学员
+   * @param sid 学员id
+   */
+  function deleteGroupStu(sid: string) {
+    trainingService
+      .removeStudent(
+        new RequestParams({
+          append: {
+            id: props.id,
+            sid: sid
+          }
+        })
+      )
+      .subscribe(data => {
+        getDataSource()
       })
   }
 
   return (
     <>
       <DataForm
+        form={form}
         name={'student-list-form'}
         actions={
           <>
@@ -201,7 +225,12 @@ const StudentCenter: React.FC<PropsType> = props => {
         </Form.Item>
         <Form.Item>
           <div>
-            <Button type={'primary'}>查询</Button>
+            <Button
+              type={'primary'}
+              onClick={getDataSource}
+            >
+              查询
+            </Button>
           </div>
         </Form.Item>
       </DataForm>
@@ -239,6 +268,26 @@ const StudentCenter: React.FC<PropsType> = props => {
                   default:
                     return <div></div>
                 }
+              }}
+            />
+            <Column
+              title={'操作'}
+              key="action"
+              render={data => {
+                return (
+                  <>
+                    <Popconfirm
+                      title="确定要删除该学员吗?"
+                      onConfirm={() => {
+                        deleteGroupStu(data.id)
+                      }}
+                      okText="确定"
+                      cancelText="取消"
+                    >
+                      <Button type={'link'}>删除</Button>
+                    </Popconfirm>
+                  </>
+                )
               }}
             />
           </DataTable>
@@ -285,7 +334,11 @@ const StudentCenter: React.FC<PropsType> = props => {
             renderItem={(item: any, index: number) => {
               return (
                 <List.Item>
-                  <EditableRow key={index} data={item} />
+                  <EditableRow
+                    onDelStudent={deleteGroupStu}
+                    key={index}
+                    data={item}
+                  />
                 </List.Item>
               )
             }}

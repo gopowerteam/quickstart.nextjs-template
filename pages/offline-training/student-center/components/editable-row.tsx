@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Card, Input, Tag } from 'antd'
-import styles from '../student.module.less'
 
 interface PropsType {
   data: any
+  onDelStudent: (data: any) => void
 }
 
-const EditableRow: React.FC<PropsType> = (props: any) => {
+const EditableRow: React.FC<PropsType> = props => {
   const item = props.data
   const [inputVisible, setInputVisible] = useState(false)
   const [inputValue, setInputValue] = useState()
@@ -23,12 +23,12 @@ const EditableRow: React.FC<PropsType> = (props: any) => {
     //TODO:请求增加学员
     console.log(inputVisible, inputValue)
   }
-  const handleClose = (removedTag: any) => {
+  const handleClose = (sid: any) => {
     // const tags = dataSource.filter(
     //   tag => tag !== removedTag
     // )
-    console.log(removedTag)
     //请求删除
+    props.onDelStudent(sid)
   }
 
   return (

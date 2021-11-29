@@ -35,7 +35,10 @@ const OfflineTrainingListPage: NextPage = () => {
     trainingService
       .getTrainings(
         new RequestParams({
-          page: pageService
+          page: pageService,
+          data: {
+            status: status
+          }
         })
       )
       .subscribe(data => {

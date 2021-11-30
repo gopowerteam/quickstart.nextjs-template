@@ -5,6 +5,7 @@
 import { Request, RequestParams } from '@gopowerteam/http-request'
 import type { Observable } from 'rxjs'
 import { PublicController } from '@/http/controller/user-service/public.controller'
+import { UserView } from '@/http/model/user-service.model'
 
 export class PublicService {
   /**
@@ -12,10 +13,11 @@ export class PublicService {
    */
   @Request({
     server: PublicController.createUser,
+    model: UserView
   })
   public createUser(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<UserView> {
     return RequestParams.create(params).request();
   }
 }

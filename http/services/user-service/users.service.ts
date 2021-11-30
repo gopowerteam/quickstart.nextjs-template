@@ -5,6 +5,7 @@
 import { Request, RequestParams } from '@gopowerteam/http-request'
 import type { Observable } from 'rxjs'
 import { UsersController } from '@/http/controller/user-service/users.controller'
+import { UserView } from '@/http/model/user-service.model'
 
 export class UsersService {
   /**
@@ -12,10 +13,11 @@ export class UsersService {
    */
   @Request({
     server: UsersController.queryUserLists,
+    model: UserView
   })
   public queryUserLists(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<UserView[]> {
     return RequestParams.create(params).request();
   }
 }

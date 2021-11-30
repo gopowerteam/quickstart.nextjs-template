@@ -5,6 +5,7 @@
 import { Request, RequestParams } from '@gopowerteam/http-request'
 import type { Observable } from 'rxjs'
 import { MicroappController } from '@/http/controller/user-service/microapp.controller'
+import { UserView } from '@/http/model/user-service.model'
 
 export class MicroappService {
   /**
@@ -12,10 +13,11 @@ export class MicroappService {
    */
   @Request({
     server: MicroappController.maUserInfoSync,
+    model: UserView
   })
   public maUserInfoSync(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<UserView> {
     return RequestParams.create(params).request();
   }
   /**
@@ -23,10 +25,11 @@ export class MicroappService {
    */
   @Request({
     server: MicroappController.maUserPhoneSync,
+    model: UserView
   })
   public maUserPhoneSync(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<UserView> {
     return RequestParams.create(params).request();
   }
 }

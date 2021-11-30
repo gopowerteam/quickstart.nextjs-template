@@ -5,6 +5,7 @@
 import { Request, RequestParams } from '@gopowerteam/http-request'
 import type { Observable } from 'rxjs'
 import { TrainingController } from '@/http/controller/learn-service/training.controller'
+import { TrainingDetail, Training, TrainingSaleInfo, TrainingReleaseInfo, TrainingStudent, TrainingQuestion, Question, TrainingStudentGroup, TrainingOrder, TrainingOrderDetail } from '@/http/model/learn-service.model'
 
 export class TrainingService {
   /**
@@ -12,10 +13,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.getTrainingDetail,
+    model: TrainingDetail
   })
   public getTrainingDetail(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingDetail> {
     return RequestParams.create(params).request();
   }
   /**
@@ -23,10 +25,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.updateTrainingDetail,
+    model: TrainingDetail
   })
   public updateTrainingDetail(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingDetail> {
     return RequestParams.create(params).request();
   }
   /**
@@ -34,10 +37,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.changeStatus,
+    model: Training
   })
   public changeStatus(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<Training> {
     return RequestParams.create(params).request();
   }
   /**
@@ -45,10 +49,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.getTrainingSaleConfig,
+    model: TrainingSaleInfo
   })
   public getTrainingSaleConfig(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingSaleInfo> {
     return RequestParams.create(params).request();
   }
   /**
@@ -56,10 +61,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.updateTrainingSaleConfig,
+    model: TrainingSaleInfo
   })
   public updateTrainingSaleConfig(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingSaleInfo> {
     return RequestParams.create(params).request();
   }
   /**
@@ -67,10 +73,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.getTrainingRelease,
+    model: TrainingReleaseInfo
   })
   public getTrainingRelease(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingReleaseInfo> {
     return RequestParams.create(params).request();
   }
   /**
@@ -78,10 +85,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.updateTrainingRelease,
+    model: TrainingReleaseInfo
   })
   public updateTrainingRelease(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingReleaseInfo> {
     return RequestParams.create(params).request();
   }
   /**
@@ -89,10 +97,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.getTrainings,
+    model: TrainingDetail
   })
   public getTrainings(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingDetail[]> {
     return RequestParams.create(params).request();
   }
   /**
@@ -100,10 +109,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.createTraining,
+    model: TrainingDetail
   })
   public createTraining(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingDetail> {
     return RequestParams.create(params).request();
   }
   /**
@@ -111,10 +121,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.getTrainingStudents,
+    model: TrainingStudent
   })
   public getTrainingStudents(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingStudent[]> {
     return RequestParams.create(params).request();
   }
   /**
@@ -122,10 +133,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.addStudent,
+    model: TrainingStudent
   })
   public addStudent(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingStudent> {
     return RequestParams.create(params).request();
   }
   /**
@@ -133,10 +145,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.getAllQuestions,
+    model: TrainingQuestion
   })
   public getAllQuestions(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingQuestion[]> {
     return RequestParams.create(params).request();
   }
   /**
@@ -144,10 +157,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.postQuestion,
+    model: Question
   })
   public postQuestion(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<Question> {
     return RequestParams.create(params).request();
   }
   /**
@@ -155,10 +169,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.getTrainingGroupStudents,
+    model: TrainingStudentGroup
   })
   public getTrainingGroupStudents(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingStudentGroup[]> {
     return RequestParams.create(params).request();
   }
   /**
@@ -188,10 +203,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.searchStudent,
+    model: TrainingStudent
   })
   public searchStudent(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingStudent[]> {
     return RequestParams.create(params).request();
   }
   /**
@@ -199,10 +215,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.getTrainingOrders,
+    model: TrainingOrder
   })
   public getTrainingOrders(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingOrder[]> {
     return RequestParams.create(params).request();
   }
   /**
@@ -210,10 +227,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.getTrainingOrderDetail,
+    model: TrainingOrderDetail
   })
   public getTrainingOrderDetail(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingOrderDetail> {
     return RequestParams.create(params).request();
   }
   /**

@@ -5,6 +5,7 @@
 import { Request, RequestParams } from '@gopowerteam/http-request'
 import type { Observable } from 'rxjs'
 import { CurrentUserController } from '@/http/controller/user-service/current-user.controller'
+import { UserView } from '@/http/model/user-service.model'
 
 export class CurrentUserService {
   /**
@@ -12,10 +13,11 @@ export class CurrentUserService {
    */
   @Request({
     server: CurrentUserController.currentUser,
+    model: UserView
   })
   public currentUser(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<UserView> {
     return RequestParams.create(params).request();
   }
 }

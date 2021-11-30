@@ -5,6 +5,7 @@
 import { Request, RequestParams } from '@gopowerteam/http-request'
 import type { Observable } from 'rxjs'
 import { MicroappController } from '@/http/controller/assistant-service/microapp.controller'
+import { WxMaUserInfo, WxMaPhoneNumberInfo, WxMaJscode2SessionResult } from '@/http/model/assistant-service.model'
 
 export class MicroappService {
   /**
@@ -12,10 +13,11 @@ export class MicroappService {
    */
   @Request({
     server: MicroappController.userInfo,
+    model: WxMaUserInfo
   })
   public userInfo(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<WxMaUserInfo> {
     return RequestParams.create(params).request();
   }
   /**
@@ -23,10 +25,11 @@ export class MicroappService {
    */
   @Request({
     server: MicroappController.userPhone,
+    model: WxMaPhoneNumberInfo
   })
   public userPhone(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<WxMaPhoneNumberInfo> {
     return RequestParams.create(params).request();
   }
   /**
@@ -34,10 +37,11 @@ export class MicroappService {
    */
   @Request({
     server: MicroappController.fetchUserIds,
+    model: WxMaJscode2SessionResult
   })
   public fetchUserIds(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<WxMaJscode2SessionResult> {
     return RequestParams.create(params).request();
   }
 }

@@ -19,13 +19,13 @@ export const LoginController = {
         action: 'loginWithUserName',
         type: RequestMethod.Post
     },
-    // 微信登录
-    loginWithWxMpCode: {
+    // 微信用户unionId登录
+    loginWithUnionId: {
         gateway,
         service,
         controller,
-        path: '/login/mp',
-        action: 'loginWithWxMpCode',
+        path: '/login/microapp',
+        action: 'loginWithUnionId',
         type: RequestMethod.Post
     }
 }

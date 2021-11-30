@@ -1,34 +1,28 @@
-import React, { useState } from 'react'
-import { Card, Input, Tag } from 'antd'
+import React, { useEffect, useRef, useState } from 'react'
+import { Card, Select, Tag } from 'antd'
 
 interface PropsType {
   data: any
+  allGroupData: any[]
   onDelStudent: (data: any) => void
+  onAddStudent: (data: any, groupId: string) => void
 }
 
 const EditableRow: React.FC<PropsType> = props => {
   const item = props.data
   const [inputVisible, setInputVisible] = useState(false)
-  const [inputValue, setInputValue] = useState()
-  const handleInputConfirm = () => {
-    // if (inputValue && tags.indexOf(inputValue) === -1) {
-    //   tags = [...tags, inputValue]
-    // }
-    // console.log(tags)
-    // this.setState({
-    //   tags,
-    //   inputVisible: false,
-    //   inputValue: ''
-    // })
-    //TODO:请求增加学员
-    console.log(inputVisible, inputValue)
-  }
+  const [allStudents, setAllStudents] = useState(
+    props.allGroupData
+  )
+  const { Option } = Select
+
+  useEffect(() => {
+    setAllStudents(props.allGroupData)
+  }, [props.allGroupData])
+
   const handleClose = (sid: any) => {
-    // const tags = dataSource.filter(
-    //   tag => tag !== removedTag
-    // )
     //请求删除
-    props.onDelStudent(sid)
+    props.onDelStudent(allStudents.find(x => x.id === sid))
   }
 
   return (
@@ -42,7 +36,12 @@ const EditableRow: React.FC<PropsType> = props => {
         return (
           <Tag
             key={x.id}
-            closable
+            style={{
+              paddingLeft: '10px',
+              paddingRight: '10px',
+              marginTop: '5px'
+            }}
+            closable={item.id !== null}
             onClose={e => {
               e.preventDefault()
               handleClose(x.id)
@@ -53,19 +52,40 @@ const EditableRow: React.FC<PropsType> = props => {
         )
       })}
       {inputVisible && (
-        <Input
-          type="text"
-          size="small"
-          style={{ width: 78 }}
-          value={inputValue}
-          onChange={(e: any) =>
-            setInputValue(e.target.value)
-          }
-          onBlur={handleInputConfirm}
-          onPressEnter={handleInputConfirm}
-        />
+        <Select
+          key={item.groupName}
+          style={{ width: 200 }}
+          showSearch
+          optionFilterProp="label"
+          onBlur={() => {
+            setInputVisible(false)
+          }}
+          onChange={(e: any) => {
+            props.onAddStudent(
+              allStudents.find(x => x.id === e),
+              item.id
+            )
+            setInputVisible(false)
+          }}
+        >
+          {allStudents.map(x => (
+            <Option
+              key={x.id}
+              value={x.id}
+              title={x.name}
+              label={x.name}
+            >
+              <div
+                className={'flex flex-row justify-between'}
+              >
+                <span>{x.name}</span>
+                <span>{x.groupName}</span>
+              </div>
+            </Option>
+          ))}
+        </Select>
       )}
-      {!inputVisible && (
+      {!inputVisible && item.id !== null && (
         <Tag
           onClick={() => {
             setInputVisible(true)

@@ -19,12 +19,12 @@ export class LoginService {
     return RequestParams.create(params).request();
   }
   /**
-   * 微信登录
+   * 微信用户unionId登录
    */
   @Request({
-    server: LoginController.loginWithWxMpCode,
+    server: LoginController.loginWithUnionId,
   })
-  public loginWithWxMpCode(
+  public loginWithUnionId(
     params?: RequestParams | { [key: string]: any }
   ): Observable<any> {
     return RequestParams.create(params).request();

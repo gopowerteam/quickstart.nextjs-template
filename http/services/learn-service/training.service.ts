@@ -173,6 +173,28 @@ export class TrainingService {
     return RequestParams.create(params).request();
   }
   /**
+   * 把学员加入某个组
+   */
+  @Request({
+    server: TrainingController.addStudentToGroup,
+  })
+  public addStudentToGroup(
+    params?: RequestParams | { [key: string]: any }
+  ): Observable<any> {
+    return RequestParams.create(params).request();
+  }
+  /**
+   * 搜索学员，包括分组与未分组的
+   */
+  @Request({
+    server: TrainingController.searchStudent,
+  })
+  public searchStudent(
+    params?: RequestParams | { [key: string]: any }
+  ): Observable<any> {
+    return RequestParams.create(params).request();
+  }
+  /**
    * （分页）获取全部单订单(admin)
    */
   @Request({
@@ -201,6 +223,28 @@ export class TrainingService {
     server: TrainingController.removeStudent,
   })
   public removeStudent(
+    params?: RequestParams | { [key: string]: any }
+  ): Observable<any> {
+    return RequestParams.create(params).request();
+  }
+  /**
+   * 从培训的分组中删除某个学员
+   */
+  @Request({
+    server: TrainingController.removeStudentGroup,
+  })
+  public removeStudentGroup(
+    params?: RequestParams | { [key: string]: any }
+  ): Observable<any> {
+    return RequestParams.create(params).request();
+  }
+  /**
+   * 清除分组
+   */
+  @Request({
+    server: TrainingController.clearGroup,
+  })
+  public clearGroup(
     params?: RequestParams | { [key: string]: any }
   ): Observable<any> {
     return RequestParams.create(params).request();

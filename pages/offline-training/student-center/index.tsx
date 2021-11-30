@@ -33,14 +33,15 @@ const StudentCenter: React.FC<PropsType> = props => {
   const [groupDataSource, setGroupDataSource] = useState<
     any[]
   >([])
+  const [allStudents, setAllStudents] = useState<any[]>([])
   const [studentStatus, setStudentStatus] =
     useState<string>('')
   const [groupStatus, setGroupStatus] = useState('Group')
   const [groupNumber, setGroupNumber] = useState(0)
   const [isModalVisible, setModalVisible] = useState(false)
   const [studentName, setStudentName] = useState<string>()
+  const [activeKey, setActivityKey] = useState('1') //Tab当前状态
   const { TabPane } = Tabs
-  const [currentPage, setCurrentPage] = useState(0)
   const [form] = Form.useForm()
   const { Column } = Table
   const options = [
@@ -63,11 +64,6 @@ const StudentCenter: React.FC<PropsType> = props => {
     getDataSource()
   }, [studentStatus])
 
-  //分组分页变化监听
-  useEffect(() => {
-    getGroupStudent(currentPage)
-  }, [currentPage])
-
   /**
    * 过滤条件
    * @param e
@@ -77,31 +73,54 @@ const StudentCenter: React.FC<PropsType> = props => {
   }
 
   function onTabChange(value: any) {
+    setActivityKey(value)
     switch (value) {
       case '1':
         getDataSource()
         break
       case '2':
-        setCurrentPage(0)
+        getGroupStudent()
         break
     }
   }
 
-  function getGroupStudent(page: number) {
+  function getGroupStudent() {
     trainingService
       .getTrainingGroupStudents(
         new RequestParams({
-          data: {
-            page: page,
-            page_size: 10
-          },
           append: {
             id: props.id
           }
         })
       )
-      .subscribe(data => {
+      .subscribe((data: any[]) => {
         setGroupDataSource(data)
+        setAllStudents(
+          data.filter((x: any) => {
+            return x.students.filter((y: any) => {
+              return {
+                name: y.name,
+                id: y.id,
+                groupName: x.groupName,
+                groupId: x.id
+              }
+            })
+          })
+        )
+        let tempList: any[] = []
+        data.filter((x: any) => {
+          x.students.filter((y: any) => {
+            tempList.push({
+              name: y.name,
+              id: y.id,
+              groupName: x.groupName,
+              groupId: x.id,
+              label: y.name,
+              value: y.id
+            })
+          })
+        })
+        setAllStudents(tempList)
       })
   }
 
@@ -139,7 +158,14 @@ const StudentCenter: React.FC<PropsType> = props => {
       .subscribe(data => {
         setStudentName(undefined)
         setModalVisible(false)
-        getDataSource()
+        switch (activeKey) {
+          case '1':
+            getDataSource()
+            break
+          case '2':
+            getGroupStudent()
+            break
+        }
       })
   }
 
@@ -169,7 +195,26 @@ const StudentCenter: React.FC<PropsType> = props => {
         })
       )
       .subscribe(data => {
-        setCurrentPage(0)
+        getGroupStudent()
+      })
+  }
+
+  /**
+   * 删除学员
+   * @param sid 学员id
+   */
+  function deleteStudent(id: string) {
+    trainingService
+      .removeStudentGroup(
+        new RequestParams({
+          append: {
+            id: props.id,
+            sid: id
+          }
+        })
+      )
+      .subscribe(data => {
+        getDataSource()
       })
   }
 
@@ -177,18 +222,37 @@ const StudentCenter: React.FC<PropsType> = props => {
    * 删除分组学员
    * @param sid 学员id
    */
-  function deleteGroupStu(sid: string) {
+  function deleteGroupStu(data: any) {
     trainingService
-      .removeStudent(
+      .removeStudentGroup(
         new RequestParams({
           append: {
             id: props.id,
-            sid: sid
+            sid: data.id
           }
         })
       )
       .subscribe(data => {
-        getDataSource()
+        getGroupStudent()
+      })
+  }
+
+  function addStudentToGroup(data: any, groupId: string) {
+    trainingService
+      .addStudentToGroup(
+        new RequestParams({
+          append: {
+            id: props.id,
+            gid: groupId
+          },
+          data: {
+            id: data.id,
+            name: data.name
+          }
+        })
+      )
+      .subscribe(data => {
+        getGroupStudent()
       })
   }
 
@@ -236,7 +300,11 @@ const StudentCenter: React.FC<PropsType> = props => {
           </div>
         </Form.Item>
       </DataForm>
-      <Tabs defaultActiveKey="1" onChange={onTabChange}>
+      <Tabs
+        defaultActiveKey="1"
+        onChange={onTabChange}
+        activeKey={activeKey}
+      >
         <TabPane tab="列表" key="1">
           <Radio.Group
             options={options}
@@ -283,7 +351,7 @@ const StudentCenter: React.FC<PropsType> = props => {
                     <Popconfirm
                       title="确定要删除该学员吗?"
                       onConfirm={() => {
-                        deleteGroupStu(data.id)
+                        deleteStudent(data.id)
                       }}
                       okText="确定"
                       cancelText="取消"
@@ -329,19 +397,15 @@ const StudentCenter: React.FC<PropsType> = props => {
           <List
             dataSource={groupDataSource}
             rowKey={'groupName'}
-            pagination={{
-              onChange: page => {
-                setCurrentPage(page)
-              },
-              pageSize: 10
-            }}
             renderItem={(item: any, index: number) => {
               return (
                 <List.Item>
                   <EditableRow
+                    onAddStudent={addStudentToGroup}
                     onDelStudent={deleteGroupStu}
                     key={index}
                     data={item}
+                    allGroupData={allStudents}
                   />
                 </List.Item>
               )

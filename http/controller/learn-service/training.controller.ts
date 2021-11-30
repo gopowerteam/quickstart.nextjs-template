@@ -145,6 +145,24 @@ export const TrainingController = {
         action: 'group',
         type: RequestMethod.Post
     },
+    // 把学员加入某个组
+    addStudentToGroup: {
+        gateway,
+        service,
+        controller,
+        path: '/api/training/{id}/group/{gid}',
+        action: 'addStudentToGroup',
+        type: RequestMethod.Post
+    },
+    // 搜索学员，包括分组与未分组的
+    searchStudent: {
+        gateway,
+        service,
+        controller,
+        path: '/api/training/{id}/student/search',
+        action: 'searchStudent',
+        type: RequestMethod.Get
+    },
     // （分页）获取全部单订单(admin)
     getTrainingOrders: {
         gateway,
@@ -170,6 +188,24 @@ export const TrainingController = {
         controller,
         path: '/api/training/{id}/student/{sid}',
         action: 'removeStudent',
+        type: RequestMethod.Delete
+    },
+    // 从培训的分组中删除某个学员
+    removeStudentGroup: {
+        gateway,
+        service,
+        controller,
+        path: '/api/training/{id}/group/{sid}',
+        action: 'removeStudentGroup',
+        type: RequestMethod.Delete
+    },
+    // 清除分组
+    clearGroup: {
+        gateway,
+        service,
+        controller,
+        path: '/api/training/{id}/cleargroup',
+        action: 'clearGroup',
         type: RequestMethod.Delete
     }
 }

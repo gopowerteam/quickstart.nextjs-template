@@ -38,6 +38,7 @@ interface DataFormProp {
   initialValues?: any
   onFieldsChange?: any
   onValuesChange?: any
+  form?: any
 }
 
 // public static Item = DataFormItem
@@ -90,6 +91,7 @@ const DataForm: React.FC<DataFormProp> = props => {
     return (
       //       <components.FormContainer>
       <Form
+        form={props.form}
         onFieldsChange={props.onFieldsChange}
         onValuesChange={props.onValuesChange}
         initialValues={props.initialValues}

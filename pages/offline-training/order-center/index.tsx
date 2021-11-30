@@ -1,4 +1,3 @@
-import PageContainer from '~/shared/components/page-container'
 import DataForm from '~/shared/components/data-form'
 import DataTable from '~/shared/components/data-table'
 import React, { useEffect, useState } from 'react'
@@ -70,15 +69,13 @@ const OrderCenterList: React.FC = () => {
           <InputNumber
             precision={0}
             style={{ width: '180px' }}
-          ></InputNumber>
+          />
         </Form.Item>
         <Form.Item label={'姓名'} name={'name'}>
-          <Input style={{ width: '180px' }}></Input>
+          <Input style={{ width: '180px' }} />
         </Form.Item>
         <Form.Item label={'支付号码'} name={'name'}>
-          <InputNumber
-            style={{ width: '180px' }}
-          ></InputNumber>
+          <InputNumber style={{ width: '180px' }} />
         </Form.Item>
         <Form.Item />
         <Form.Item />

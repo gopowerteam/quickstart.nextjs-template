@@ -4,7 +4,8 @@ import {
   DatePicker,
   Form,
   InputNumber,
-  Radio
+  Radio,
+  TimePicker
 } from 'antd'
 import React, {
   forwardRef,
@@ -25,26 +26,35 @@ const PublishConfigComponent: ForwardRefRenderFunction<
   RefType,
   PropsType
 > = (props, ref) => {
-  const [value, setValue] = React.useState('Manual')
+  const [releaseType, setReleaseType] =
+    React.useState<string>('Manual')
+  const format = 'HH:mm'
   const [form] = Form.useForm()
 
   function onNext(value: any) {
     props.onSubmit({
-      ...value,
-      releaseTime: moment(value.releaseTime).format(
-        'YYYY-MM-DD'
-      )
+      releaseType: value.releaseType,
+      releaseTime:
+        moment(value.releaseDate).format('YYYY-MM-DD') +
+        ' ' +
+        moment(value.releaseTime).format('HH:mm:ss')
     })
   }
+
   useImperativeHandle(ref, () => ({
     setFormValue: data => {
+      setReleaseType(data.releaseType)
+      const releaseTime = data.releaseTime
+        ? moment(data.releaseTime)
+        : undefined
+      const releaseDate = data.releaseTime
+        ? moment(data.releaseTime)
+        : undefined
       form.setFieldsValue({
-        ...data,
-        releaseTime: data.releaseTime
-          ? moment(data.releaseTime)
-          : undefined
+        releaseType: data.releaseType,
+        releaseTime: releaseTime,
+        releaseDate: releaseDate
       })
-      setValue(data.releaseType)
     }
   }))
 
@@ -53,7 +63,41 @@ const PublishConfigComponent: ForwardRefRenderFunction<
   }
 
   const onChange = (e: any) => {
-    setValue(e.target.value)
+    setReleaseType(e.target.value)
+  }
+
+  function getDateLayouts() {
+    if (releaseType === 'Timed') {
+      return (
+        <>
+          <Form.Item
+            label="定时发布时间"
+            name="releaseDate"
+            rules={[
+              {
+                required: true,
+                message: '请选择发布日期'
+              }
+            ]}
+          >
+            <DatePicker />
+          </Form.Item>
+          <Form.Item
+            label="定时发布时间"
+            name="releaseTime"
+            rules={[
+              {
+                required: true,
+                message: '请选择发布时间'
+              }
+            ]}
+          >
+            <TimePicker format={format} />
+          </Form.Item>
+        </>
+      )
+    }
+    return <></>
   }
 
   const formItemLayout = {
@@ -73,25 +117,12 @@ const PublishConfigComponent: ForwardRefRenderFunction<
         {...formItemLayout}
       >
         <Form.Item label="发布设置" name="releaseType">
-          <Radio.Group onChange={onChange} value={value}>
+          <Radio.Group onChange={onChange}>
             <Radio value={'Manual'}>手动</Radio>
             <Radio value={'Timed'}>定时发布</Radio>
           </Radio.Group>
         </Form.Item>
-        {value === 'Timed' && (
-          <Form.Item
-            label="定时发布时间"
-            name="releaseTime"
-            rules={[
-              {
-                required: true,
-                message: '请选择发布时间'
-              }
-            ]}
-          >
-            <DatePicker />
-          </Form.Item>
-        )}
+        {getDateLayouts()}
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit">
             保存

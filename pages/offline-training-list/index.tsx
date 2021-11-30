@@ -35,7 +35,10 @@ const OfflineTrainingListPage: NextPage = () => {
     trainingService
       .getTrainings(
         new RequestParams({
-          page: pageService
+          page: pageService,
+          data: {
+            status: status
+          }
         })
       )
       .subscribe(data => {
@@ -100,11 +103,11 @@ const OfflineTrainingListPage: NextPage = () => {
       <DataForm
         name={'offline-training-list'}
         actions={
-          <>
+          <div className={'flex flex-row justify-end'}>
             <Button type={'primary'} onClick={onCreate}>
               新增
             </Button>
-          </>
+          </div>
         }
       >
         <Form.Item>
@@ -149,30 +152,24 @@ const OfflineTrainingListPage: NextPage = () => {
         <Column
           title={'操作'}
           key="action"
+          width={100}
           render={data => {
             return (
               <>
-                <Button
-                  type={'link'}
-                  size={'small'}
-                  onClick={() => onEdit(data.id)}
-                >
-                  编辑
-                </Button>
-                <Button
-                  type={'link'}
-                  size={'small'}
-                  onClick={() => onConfig(data.id)}
-                >
-                  营销配置
-                </Button>
-                <Button
-                  type={'link'}
-                  size={'small'}
-                  onClick={() => onPublishConfig(data.id)}
-                >
-                  发布配置
-                </Button>
+                {/*<Button*/}
+                {/*  type={'link'}*/}
+                {/*  size={'small'}*/}
+                {/*  onClick={() => onConfig(data.id)}*/}
+                {/*>*/}
+                {/*  营销配置*/}
+                {/*</Button>*/}
+                {/*<Button*/}
+                {/*  type={'link'}*/}
+                {/*  size={'small'}*/}
+                {/*  onClick={() => onPublishConfig(data.id)}*/}
+                {/*>*/}
+                {/*  发布配置*/}
+                {/*</Button>*/}
                 <Button
                   type={'link'}
                   size={'small'}

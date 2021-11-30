@@ -29,10 +29,14 @@ const MarketingConfigPage: NextPage = () => {
     const requestData = {
       ...value,
       earlyDeadTime: value.earlyDeadTime
-        ? moment(value.earlyDeadTime).format('YYYY-MM-DD')
+        ? moment(value.earlyDeadTime).format(
+            'YYYY-MM-DD HH:mm:ss'
+          )
         : undefined,
       saleDeadTime: value.saleDeadTime
-        ? moment(value.saleDeadTime).format('YYYY-MM-DD')
+        ? moment(value.saleDeadTime).format(
+            'YYYY-MM-DD HH:mm:ss'
+          )
         : undefined,
       earlyPrice: value.earlyPrice
         ? value.earlyPrice * 100
@@ -46,6 +50,7 @@ const MarketingConfigPage: NextPage = () => {
   }
 
   function updateConfig(value: any) {
+    console.log(value)
     trainingService
       .updateTrainingSaleConfig(
         new RequestParams({

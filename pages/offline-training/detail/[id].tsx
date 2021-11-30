@@ -5,14 +5,12 @@ import {
   Card,
   Col,
   Descriptions,
-  Grid,
   Image,
   message,
   Row,
   Tabs
 } from 'antd'
 import styles from './detail.module.less'
-import { TabPane } from 'rc-tabs'
 import BasicInfo from '~/pages/offline-training/components/basic-info-component'
 import { useEffect, useRef, useState } from 'react'
 import { RequestParams } from '@gopowerteam/http-request'
@@ -23,8 +21,11 @@ import moment from 'moment'
 import PublishConfig from '~/pages/offline-training/components/publish-config-component'
 import OrderCenterList from '~/pages/offline-training/order-center'
 import StudentCenter from '~/pages/offline-training/student-center'
+import axios from 'axios'
 
 const trainingService = new TrainingService()
+
+const { TabPane } = Tabs
 
 interface ActivityType {
   id: string
@@ -45,12 +46,20 @@ const OfflineTrainingDetail: NextPage = () => {
   const basicInfoRef = useRef<any>()
   const marketingConfigRef = useRef<any>()
   const publishConfigRef = useRef<any>()
+  const unmount = useRef(false)
   const [activityModel, setActivityModel] =
     useState<ActivityType>()
 
   useEffect(() => {
     getBasicInfoDetail()
   }, [])
+
+  //清除副作用
+  useEffect(() => {
+    return () => {
+      unmount.current = true
+    }
+  })
 
   /**
    * 获取基本信息详情
@@ -65,11 +74,13 @@ const OfflineTrainingDetail: NextPage = () => {
         })
       )
       .subscribe(data => {
-        setActivityModel({
-          ...data,
-          date: moment(data.date).format('YYYY-MM-DD')
-        })
-        basicInfoRef.current?.setFormValue(data)
+        !unmount.current &&
+          setActivityModel({
+            ...data,
+            date: moment(data.date).format('YYYY-MM-DD')
+          })
+        !unmount.current &&
+          basicInfoRef.current?.setFormValue(data)
       })
   }
 
@@ -93,6 +104,7 @@ const OfflineTrainingDetail: NextPage = () => {
       )
       .subscribe(data => {
         message.success('信息更新成功')
+        getBasicInfoDetail()
       })
   }
 
@@ -104,10 +116,14 @@ const OfflineTrainingDetail: NextPage = () => {
     const requestData = {
       ...value,
       earlyDeadTime: value.earlyDeadTime
-        ? moment(value.earlyDeadTime).format('YYYY-MM-DD')
+        ? moment(value.earlyDeadTime).format(
+            'YYYY-MM-DD HH:mm:ss'
+          )
         : undefined,
       saleDeadTime: value.saleDeadTime
-        ? moment(value.saleDeadTime).format('YYYY-MM-DD')
+        ? moment(value.saleDeadTime).format(
+            'YYYY-MM-DD HH:mm:ss'
+          )
         : undefined,
       earlyPrice: value.earlyPrice
         ? value.earlyPrice * 100
@@ -131,7 +147,8 @@ const OfflineTrainingDetail: NextPage = () => {
         })
       )
       .subscribe(data => {
-        message.success('配置更新成功')
+        message.success('营销配置更新成功')
+        getBasicInfoDetail()
       })
   }
 
@@ -157,7 +174,7 @@ const OfflineTrainingDetail: NextPage = () => {
         })
       )
       .subscribe(data => {
-        message.success('配置更新成功')
+        message.success('发布配置更新成功')
       })
   }
 
@@ -171,7 +188,8 @@ const OfflineTrainingDetail: NextPage = () => {
         })
       )
       .subscribe(data => {
-        marketingConfigRef.current?.setFormValue(data)
+        !unmount.current &&
+          marketingConfigRef.current?.setFormValue(data)
       })
   }
 
@@ -185,7 +203,8 @@ const OfflineTrainingDetail: NextPage = () => {
         })
       )
       .subscribe(data => {
-        publishConfigRef.current?.setFormValue(data)
+        !unmount.current &&
+          publishConfigRef.current?.setFormValue(data)
       })
   }
 
@@ -263,7 +282,7 @@ const OfflineTrainingDetail: NextPage = () => {
             <OrderCenterList />
           </TabPane>
           <TabPane tab="学员管理" key="5">
-            <StudentCenter />
+            <StudentCenter id={router.query.id as string} />
           </TabPane>
         </Tabs>
       </Card>

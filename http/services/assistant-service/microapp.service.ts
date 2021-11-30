@@ -4,38 +4,38 @@
  */
 import { Request, RequestParams } from '@gopowerteam/http-request'
 import type { Observable } from 'rxjs'
-import { CosController } from '@/http/controller/assistant-service/cos.controller'
+import { MicroappController } from '@/http/controller/assistant-service/microapp.controller'
 
-export class CosService {
+export class MicroappService {
   /**
-   * 创建临时上传链接
+   * 用户信息
    */
   @Request({
-    server: CosController.createUploadUrl,
+    server: MicroappController.userInfo,
   })
-  public createUploadUrl(
+  public userInfo(
     params?: RequestParams | { [key: string]: any }
   ): Observable<any> {
     return RequestParams.create(params).request();
   }
   /**
-   * 创建临时Secret
+   * 电话号码
    */
   @Request({
-    server: CosController.createTempSecret,
+    server: MicroappController.userPhone,
   })
-  public createTempSecret(
+  public userPhone(
     params?: RequestParams | { [key: string]: any }
   ): Observable<any> {
     return RequestParams.create(params).request();
   }
   /**
-   * 腾讯COS预授权URL
+   * 小程序获取unionId及sessionKey
    */
   @Request({
-    server: CosController.generatePresignedUrl,
+    server: MicroappController.fetchUserIds,
   })
-  public generatePresignedUrl(
+  public fetchUserIds(
     params?: RequestParams | { [key: string]: any }
   ): Observable<any> {
     return RequestParams.create(params).request();

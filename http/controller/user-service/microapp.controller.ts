@@ -5,27 +5,27 @@
 import { RequestMethod } from '@gopowerteam/http-request'
 
 // 控制器名称
-const controller = 'login'
-const service = 'as'
+const controller = 'microapp'
+const service = 'uaa'
 const gateway = 'default'
 
-export const LoginController = {
-    // 用户名，密码登录
-    loginWithUserName: {
+export const MicroappController = {
+    // 同步用户信息
+    maUserInfoSync: {
         gateway,
         service,
         controller,
-        path: '/login',
-        action: 'loginWithUserName',
+        path: '/api/microapp/userinfo',
+        action: 'maUserInfoSync',
         type: RequestMethod.Post
     },
-    // 微信用户unionId登录
-    loginWithUnionId: {
+    // 同步用户电话号码
+    maUserPhoneSync: {
         gateway,
         service,
         controller,
-        path: '/login/microapp',
-        action: 'loginWithUnionId',
+        path: '/api/microapp/phone',
+        action: 'maUserPhoneSync',
         type: RequestMethod.Post
     }
 }

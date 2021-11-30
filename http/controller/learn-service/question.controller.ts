@@ -19,7 +19,7 @@ export const QuestionController = {
         action: 'unstar',
         type: RequestMethod.Put
     },
-    // 提问点赞
+    // 问题点赞
     star: {
         gateway,
         service,

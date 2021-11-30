@@ -4,27 +4,27 @@
  */
 import { Request, RequestParams } from '@gopowerteam/http-request'
 import type { Observable } from 'rxjs'
-import { LoginController } from '@/http/controller/assistant-service/login.controller'
+import { MicroappController } from '@/http/controller/user-service/microapp.controller'
 
-export class LoginService {
+export class MicroappService {
   /**
-   * 用户名，密码登录
+   * 同步用户信息
    */
   @Request({
-    server: LoginController.loginWithUserName,
+    server: MicroappController.maUserInfoSync,
   })
-  public loginWithUserName(
+  public maUserInfoSync(
     params?: RequestParams | { [key: string]: any }
   ): Observable<any> {
     return RequestParams.create(params).request();
   }
   /**
-   * 微信用户unionId登录
+   * 同步用户电话号码
    */
   @Request({
-    server: LoginController.loginWithUnionId,
+    server: MicroappController.maUserPhoneSync,
   })
-  public loginWithUnionId(
+  public maUserPhoneSync(
     params?: RequestParams | { [key: string]: any }
   ): Observable<any> {
     return RequestParams.create(params).request();

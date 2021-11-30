@@ -15,7 +15,7 @@ const trainingService = new TrainingService()
 const pageService = new PageService()
 
 const OfflineTrainingListPage: NextPage = () => {
-  const [dataSource, setDataSource] = useState([])
+  const [dataSource, setDataSource] = useState<any[]>([])
   const { Column } = Table
   /**
    * Planning, Ordering, Waiting, Teaching, Finished

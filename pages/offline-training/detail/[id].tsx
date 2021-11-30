@@ -231,9 +231,7 @@ const OfflineTrainingDetail: NextPage = () => {
             <Image
               width={'80%'}
               height={'100px'}
-              src={
-                'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-              }
+              src={activityModel?.bannerImg}
             />
           </Descriptions.Item>
           <Descriptions.Item>

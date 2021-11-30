@@ -10,6 +10,7 @@ specifiers:
   '@react-rxjs/utils': ^0.9.3
   '@types/node': 16.11.9
   '@types/react': 17.0.36
+  '@types/react-stack-grid': ^0.7.3
   antd: ^4.17.1-alpha.1
   autoprefixer: ^10.4.0
   chalk: ^4.1.2
@@ -70,6 +71,7 @@ devDependencies:
   '@commitlint/config-conventional': registry.npmmirror.com/@commitlint/config-conventional/15.0.0
   '@types/node': registry.npmmirror.com/@types/node/16.11.9
   '@types/react': registry.npmmirror.com/@types/react/17.0.36
+  '@types/react-stack-grid': registry.npmmirror.com/@types/react-stack-grid/0.7.3
   autoprefixer: registry.npmmirror.com/autoprefixer/10.4.0_postcss@8.3.11
   commander: registry.npmmirror.com/commander/8.3.0
   commitizen: registry.npmmirror.com/commitizen/4.2.4
@@ -5508,6 +5510,14 @@ packages:
     name: '@types/qs'
     version: 6.9.7
     dev: false
+
+  registry.npmmirror.com/@types/react-stack-grid/0.7.3:
+    resolution: {integrity: sha1-2YIZ3nzQPRbh0cyT1wS3W9dbOQ4=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/react-stack-grid/download/@types/react-stack-grid-0.7.3.tgz}
+    name: '@types/react-stack-grid'
+    version: 0.7.3
+    dependencies:
+      '@types/react': registry.npmmirror.com/@types/react/17.0.36
+    dev: true
 
   registry.npmmirror.com/@types/react/17.0.36:
     resolution: {integrity: sha512-CUFUp01OdfbpN/76v4koqgcpcRGT3sYOq3U3N6q0ZVGcyeP40NUdVU+EWe3hs34RNaTefiYyBzOpxBBidCc5zw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/react/download/@types/react-17.0.36.tgz?cache=0&sync_timestamp=1637548210034&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40types%2Freact%2Fdownload%2F%40types%2Freact-17.0.36.tgz}

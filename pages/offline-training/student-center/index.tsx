@@ -290,7 +290,7 @@ const StudentCenter: React.FC<PropsType> = props => {
           <Input style={{ width: '180px' }} />
         </Form.Item>
         <Form.Item>
-          <div>
+          <div className={'flex flex-row justify-end'}>
             <Button
               type={'primary'}
               onClick={getDataSource}
@@ -367,7 +367,7 @@ const StudentCenter: React.FC<PropsType> = props => {
         <TabPane tab="分组" key="2">
           <Form layout={'horizontal'}>
             <Row>
-              <Col span={8}>
+              <Col span={14}>
                 <Form.Item label={'分组方式'}>
                   <Radio.Group
                     onChange={onGroupTypeChange}
@@ -376,15 +376,16 @@ const StudentCenter: React.FC<PropsType> = props => {
                   />
                 </Form.Item>
               </Col>
-              <Col span={8}>
+              <Col span={6}>
                 <Form.Item label={'数量'}>
                   <InputNumber
                     precision={0}
+                    min={1}
                     onChange={(e: any) => setGroupNumber(e)}
                   />
                 </Form.Item>
               </Col>
-              <Col span={8}>
+              <Col span={4}>
                 <Form.Item>
                   <Button onClick={createGroup}>
                     智能分组

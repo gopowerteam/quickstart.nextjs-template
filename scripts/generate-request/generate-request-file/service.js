@@ -4,54 +4,36 @@ const { resolve, dirname } = require('path')
 const { loadConfig, log } = require('../utils')
 const mkdirp = require('mkdirp')
 
-const TEMPLATE_FOLDER = resolve(
-  __dirname,
-  '..',
-  'templates'
-)
+const TEMPLATE_FOLDER = resolve(__dirname, '..', 'templates')
 
 const ENCODING = 'utf8'
 const serviceTemplatePath = `${TEMPLATE_FOLDER}/service.template.hbs`
 // export const serviceDirectionPath = loadConfig().serviceDir
 
-module.exports.generateServiceFiles = (
-  service,
-  controllers
-) => {
-  controllers.forEach(controller =>
-    generateServiceFile(service, controller)
-  )
+module.exports.generateServiceFiles = (service, controllers) => {
+  controllers.forEach((controller) => generateServiceFile(service, controller))
 }
 
 function generateServiceFile(service, controller) {
-  let templateSource = readFileSync(
-    serviceTemplatePath,
-    ENCODING
-  )
+  let templateSource = readFileSync(serviceTemplatePath, ENCODING)
   let template = compile(templateSource)
 
   const schemas = [
     ...new Set(
       controller.actions
-        .map(
-          action =>
-            action.schema && action.schema.replace('[]', '')
-        )
-        .filter(x => !!x)
+        .map((action) => action.schema)
+        .filter((x) => !!x)
+        .map((schema) => schema.replace(/\[\]/g, ''))
     )
   ]
+
   let serviceFileContent = template(
     Object.assign(controller, {
       service: service.key,
-      controllerDir: [
-        service.config.controllerAlias,
-        service.key
-      ]
-        .filter(x => x)
+      controllerDir: [service.config.controllerAlias, service.key]
+        .filter((x) => x)
         .join('/'),
-      modelDir: [service.config.modelAlias]
-        .filter(x => x)
-        .join('/'),
+      modelDir: [service.config.modelAlias].filter((x) => x).join('/'),
       schemas: schemas.length ? schemas : undefined
     })
   )
@@ -60,7 +42,7 @@ function generateServiceFile(service, controller) {
     controller,
     serviceFileContent,
     service.config
-  ).then(filename => {
+  ).then((filename) => {
     log(`Service File Generate`, filename)
   })
 }
@@ -72,11 +54,7 @@ async function writeServiceFile(
   config
 ) {
   const serviceDirectionPath = config.serviceDir
-  const path = resolve(
-    serviceDirectionPath,
-    service,
-    `${filename}.service.ts`
-  )
+  const path = resolve(serviceDirectionPath, service, `${filename}.service.ts`)
   await mkdirp.sync(dirname(path))
   await writeFileSync(path, content, ENCODING)
   return path

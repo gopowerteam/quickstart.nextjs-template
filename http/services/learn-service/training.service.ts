@@ -5,6 +5,7 @@
 import { Request, RequestParams } from '@gopowerteam/http-request'
 import type { Observable } from 'rxjs'
 import { TrainingController } from '@/http/controller/learn-service/training.controller'
+import { TrainingDetail, Training, TrainingSaleInfo, TrainingReleaseInfo, TrainingStudent, TrainingQuestion, Question, TrainingStudentGroup, TrainingOrder, TrainingOrderDetail } from '@/http/model/learn-service.model'
 
 export class TrainingService {
   /**
@@ -12,10 +13,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.getTrainingDetail,
+    model: TrainingDetail
   })
   public getTrainingDetail(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingDetail> {
     return RequestParams.create(params).request();
   }
   /**
@@ -23,10 +25,23 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.updateTrainingDetail,
+    model: TrainingDetail
   })
   public updateTrainingDetail(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingDetail> {
+    return RequestParams.create(params).request();
+  }
+  /**
+   * 更新活动状态
+   */
+  @Request({
+    server: TrainingController.changeStatus,
+    model: Training
+  })
+  public changeStatus(
+    params?: RequestParams | { [key: string]: any }
+  ): Observable<Training> {
     return RequestParams.create(params).request();
   }
   /**
@@ -45,10 +60,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.getTrainingSaleConfig,
+    model: TrainingSaleInfo
   })
   public getTrainingSaleConfig(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingSaleInfo> {
     return RequestParams.create(params).request();
   }
   /**
@@ -56,10 +72,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.updateTrainingSaleConfig,
+    model: TrainingSaleInfo
   })
   public updateTrainingSaleConfig(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingSaleInfo> {
     return RequestParams.create(params).request();
   }
   /**
@@ -67,10 +84,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.getTrainingRelease,
+    model: TrainingReleaseInfo
   })
   public getTrainingRelease(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingReleaseInfo> {
     return RequestParams.create(params).request();
   }
   /**
@@ -78,10 +96,15 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.updateTrainingRelease,
+    model: TrainingReleaseInfo
   })
   public updateTrainingRelease(
     params?: RequestParams | { [key: string]: any }
+<<<<<<< HEAD
+  ): Observable<TrainingReleaseInfo> {
+=======
   ): Observable<any> {
+>>>>>>> 18d615df41baaca2cddea9b28ebcdc87ad443ba6
     return RequestParams.create(params).request();
   }
   /**
@@ -89,10 +112,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.getTrainings,
+    model: TrainingDetail
   })
   public getTrainings(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingDetail[]> {
     return RequestParams.create(params).request();
   }
   /**
@@ -100,10 +124,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.createTraining,
+    model: TrainingDetail
   })
   public createTraining(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingDetail> {
     return RequestParams.create(params).request();
   }
   /**
@@ -111,10 +136,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.getTrainingStudents,
+    model: TrainingStudent
   })
   public getTrainingStudents(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingStudent[]> {
     return RequestParams.create(params).request();
   }
   /**
@@ -122,10 +148,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.addStudent,
+    model: TrainingStudent
   })
   public addStudent(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingStudent> {
     return RequestParams.create(params).request();
   }
   /**
@@ -133,6 +160,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.getAllQuestions,
+<<<<<<< HEAD
+    model: TrainingQuestion
+  })
+  public getAllQuestions(
+=======
   })
   public getAllQuestions(
     params?: RequestParams | { [key: string]: any }
@@ -146,8 +178,21 @@ export class TrainingService {
     server: TrainingController.postQuestion,
   })
   public postQuestion(
+>>>>>>> 18d615df41baaca2cddea9b28ebcdc87ad443ba6
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingQuestion[]> {
+    return RequestParams.create(params).request();
+  }
+  /**
+   * 给培训增加提问
+   */
+  @Request({
+    server: TrainingController.postQuestion,
+    model: Question
+  })
+  public postQuestion(
+    params?: RequestParams | { [key: string]: any }
+  ): Observable<Question> {
     return RequestParams.create(params).request();
   }
   /**
@@ -155,13 +200,33 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.getTrainingGroupStudents,
+    model: TrainingStudentGroup
   })
   public getTrainingGroupStudents(
+    params?: RequestParams | { [key: string]: any }
+  ): Observable<TrainingStudentGroup[]> {
+    return RequestParams.create(params).request();
+  }
+  /**
+   * 启动分组
+   */
+  @Request({
+    server: TrainingController.group,
+  })
+  public group(
     params?: RequestParams | { [key: string]: any }
   ): Observable<any> {
     return RequestParams.create(params).request();
   }
   /**
+<<<<<<< HEAD
+   * 把学员加入某个组
+   */
+  @Request({
+    server: TrainingController.addStudentToGroup,
+  })
+  public addStudentToGroup(
+=======
    * 启动分组
    */
   @Request({
@@ -190,8 +255,21 @@ export class TrainingService {
     server: TrainingController.searchStudent,
   })
   public searchStudent(
+>>>>>>> 18d615df41baaca2cddea9b28ebcdc87ad443ba6
     params?: RequestParams | { [key: string]: any }
   ): Observable<any> {
+    return RequestParams.create(params).request();
+  }
+  /**
+   * 搜索学员，包括分组与未分组的
+   */
+  @Request({
+    server: TrainingController.searchStudent,
+    model: TrainingStudent
+  })
+  public searchStudent(
+    params?: RequestParams | { [key: string]: any }
+  ): Observable<TrainingStudent[]> {
     return RequestParams.create(params).request();
   }
   /**
@@ -199,10 +277,11 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.getTrainingOrders,
+    model: TrainingOrder
   })
   public getTrainingOrders(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingOrder[]> {
     return RequestParams.create(params).request();
   }
   /**
@@ -210,8 +289,42 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.getTrainingOrderDetail,
+    model: TrainingOrderDetail
   })
   public getTrainingOrderDetail(
+    params?: RequestParams | { [key: string]: any }
+  ): Observable<TrainingOrderDetail> {
+    return RequestParams.create(params).request();
+  }
+  /**
+   * 从培训中移出学员
+   */
+  @Request({
+    server: TrainingController.removeStudent,
+  })
+  public removeStudent(
+    params?: RequestParams | { [key: string]: any }
+  ): Observable<any> {
+    return RequestParams.create(params).request();
+  }
+  /**
+   * 从培训的分组中删除某个学员
+   */
+  @Request({
+    server: TrainingController.removeStudentGroup,
+  })
+  public removeStudentGroup(
+    params?: RequestParams | { [key: string]: any }
+  ): Observable<any> {
+    return RequestParams.create(params).request();
+  }
+  /**
+   * 清除分组
+   */
+  @Request({
+    server: TrainingController.clearGroup,
+  })
+  public clearGroup(
     params?: RequestParams | { [key: string]: any }
   ): Observable<any> {
     return RequestParams.create(params).request();

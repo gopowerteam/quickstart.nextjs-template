@@ -9,3 +9,4 @@ yarn.lock
 .pnpm-debug.log
 .next
 /.next/
+.eslintcache

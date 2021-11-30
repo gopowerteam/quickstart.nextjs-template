@@ -5,6 +5,7 @@
 import { Request, RequestParams } from '@gopowerteam/http-request'
 import type { Observable } from 'rxjs'
 import { CosController } from '@/http/controller/assistant-service/cos.controller'
+import { COSUploadUrlResponse, COSTempSecretResponse } from '@/http/model/assistant-service.model'
 
 export class CosService {
   /**
@@ -12,10 +13,11 @@ export class CosService {
    */
   @Request({
     server: CosController.createUploadUrl,
+    model: COSUploadUrlResponse
   })
   public createUploadUrl(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<COSUploadUrlResponse> {
     return RequestParams.create(params).request();
   }
   /**
@@ -23,10 +25,11 @@ export class CosService {
    */
   @Request({
     server: CosController.createTempSecret,
+    model: COSTempSecretResponse
   })
   public createTempSecret(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<COSTempSecretResponse> {
     return RequestParams.create(params).request();
   }
   /**

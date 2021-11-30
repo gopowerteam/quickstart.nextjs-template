@@ -2,7 +2,7 @@ module.exports = {
   name: 'default',
   gateway: 'https://e-api.local.xbt-dev.top',
   swagger: 'rest-api-docs/dso',
-  model: false,
+  model: true,
   modelDir: {
     alias: '@/http/model', // 控制器目录名别
     path: './http/model' // 控制器目录路径

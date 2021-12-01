@@ -1,10 +1,9 @@
-import { Button, Card, Checkbox, List } from 'antd'
+import { Button, Card, Checkbox } from 'antd'
 import { TrainingService } from '~/http/services/learn-service/training.service'
 import { RequestParams } from '@gopowerteam/http-request'
 import { useEffect, useState } from 'react'
 import {
   ExpandAltOutlined,
-  FullscreenOutlined,
   LikeOutlined,
   RedoOutlined,
   ShrinkOutlined

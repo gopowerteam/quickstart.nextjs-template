@@ -90,16 +90,14 @@ const MarketingConfigComponent: ForwardRefRenderFunction<
             <InputNumber
               step={'0.01'}
               style={{ width: '100%' }}
-            ></InputNumber>
+            />
           </Form.Item>
           <Form.Item
             label="早鸟订购截止日期"
             name="earlyDeadTime"
             wrapperCol={{ span: 8 }}
           >
-            <DatePicker
-              style={{ width: '100%' }}
-            ></DatePicker>
+            <DatePicker style={{ width: '100%' }} />
           </Form.Item>
         </>
       )
@@ -118,7 +116,7 @@ const MarketingConfigComponent: ForwardRefRenderFunction<
             <InputNumber
               style={{ width: '100%' }}
               step="0.01"
-            ></InputNumber>
+            />
           </Form.Item>
         </>
       )
@@ -140,7 +138,7 @@ const MarketingConfigComponent: ForwardRefRenderFunction<
           <InputNumber
             precision={0}
             style={{ width: '100%' }}
-          ></InputNumber>
+          />
         </Form.Item>
         <Form.Item
           label="价格"
@@ -150,16 +148,14 @@ const MarketingConfigComponent: ForwardRefRenderFunction<
           <InputNumber
             step={'0.01'}
             style={{ width: '100%' }}
-          ></InputNumber>
+          />
         </Form.Item>
         <Form.Item
           label="订购截止日期"
           name="saleDeadTime"
           wrapperCol={{ span: 8 }}
         >
-          <DatePicker
-            style={{ width: '100%' }}
-          ></DatePicker>
+          <DatePicker style={{ width: '100%' }} />
         </Form.Item>
         <Divider />
         <Form.Item

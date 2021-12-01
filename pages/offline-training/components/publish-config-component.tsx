@@ -3,7 +3,6 @@ import {
   Card,
   DatePicker,
   Form,
-  InputNumber,
   Radio,
   TimePicker
 } from 'antd'

@@ -90,7 +90,7 @@ const BasicInfoComponent: ForwardRefRenderFunction<
             { required: true, message: '请输入标题' }
           ]}
         >
-          <Input></Input>
+          <Input />
         </Form.Item>
         <Form.Item
           label="Banner图"
@@ -121,9 +121,7 @@ const BasicInfoComponent: ForwardRefRenderFunction<
           ]}
           wrapperCol={{ span: 8 }}
         >
-          <DatePicker
-            style={{ width: '100%' }}
-          ></DatePicker>
+          <DatePicker style={{ width: '100%' }} />
         </Form.Item>
         <Form.Item
           label="地点"
@@ -132,7 +130,7 @@ const BasicInfoComponent: ForwardRefRenderFunction<
             { required: true, message: '请输入标题' }
           ]}
         >
-          <Input></Input>
+          <Input />
         </Form.Item>
         <Form.Item
           label="说明"
@@ -141,7 +139,7 @@ const BasicInfoComponent: ForwardRefRenderFunction<
             { required: true, message: '请输入标题' }
           ]}
         >
-          <TextArea></TextArea>
+          <TextArea />
         </Form.Item>
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit">

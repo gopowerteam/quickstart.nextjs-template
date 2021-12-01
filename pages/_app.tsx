@@ -5,6 +5,7 @@ import type { AppProps } from 'next/app'
 import { NextPage } from 'next'
 import Bootstrap from '~/bootstrap'
 import { CookiesProvider } from 'react-cookie'
+import 'reflect-metadata';
 
 function MyApp({
   Component,

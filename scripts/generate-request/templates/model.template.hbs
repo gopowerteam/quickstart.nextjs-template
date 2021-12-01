@@ -6,7 +6,9 @@ export class {{className}} extends Model {
    */
   {{/if}}
   {{#if originalRef}}
+  {{#if (unequal originalRef propertyType)}}
   @Type(() => {{originalRef}})
+  {{/if}}
   {{/if}}
   public {{propertyName}} : {{propertyType}}
 {{/each}}

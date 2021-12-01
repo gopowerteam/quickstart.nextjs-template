@@ -6,7 +6,7 @@ ENV APP_PATH=/app
 WORKDIR $APP_PATH
 # -安装pm2
 RUN  sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
-        && apk add --no-cache --update nodejs=14.17.4-r0 yarn=1.22.10-r0 \
+        && apk add --no-cache --update nodejs yarn \
         && yarn global add pm2 pnpm
 
 

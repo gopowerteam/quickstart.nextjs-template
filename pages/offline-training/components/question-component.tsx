@@ -16,12 +16,14 @@ import {
 import StackGrid from 'react-stack-grid'
 import styles from './info.module.less'
 import sizeMe from 'react-sizeme'
+import { QuestionService } from '~/http/services/learn-service/question.service'
 
 interface PropsType {
   id: string
 }
 
 const trainingService = new TrainingService()
+const questionService = new QuestionService()
 
 const QuestionsComponent: React.FC<PropsType> = props => {
   const handle = useFullScreenHandle()
@@ -44,6 +46,20 @@ const QuestionsComponent: React.FC<PropsType> = props => {
       )
       .subscribe(data => {
         setDataSource(data)
+      })
+  }
+
+  function onCheckChange(id: string) {
+    questionService
+      .done(
+        new RequestParams({
+          append: {
+            id: id
+          }
+        })
+      )
+      .subscribe(data => {
+        getDataSource()
       })
   }
 
@@ -92,6 +108,11 @@ const QuestionsComponent: React.FC<PropsType> = props => {
                   className={'flex flex-row items-center'}
                 >
                   <Checkbox
+                    onChange={e => {
+                      if (e.target.checked) {
+                        onCheckChange(item.id)
+                      }
+                    }}
                     className={'flex-none'}
                     disabled={item.status !== 'TODO'}
                   />

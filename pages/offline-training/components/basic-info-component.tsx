@@ -47,8 +47,12 @@ const BasicInfoComponent: ForwardRefRenderFunction<
     // props.onSubmit(onSubmit)
     console.log('Failed:', errorInfo)
   }
+
   function onBasicInfoFinish(value: any) {
-    props.onSubmit(value)
+    props.onSubmit({
+      ...value,
+      date: value.date.format('YYYY-MM-DD HH:mm:ss')
+    })
   }
 
   function onFileUpload(fileList: FileList) {

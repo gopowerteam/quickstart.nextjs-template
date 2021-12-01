@@ -5,7 +5,7 @@
 import { Request, RequestParams } from '@gopowerteam/http-request'
 import type { Observable } from 'rxjs'
 import { TrainingController } from '@/http/controller/learn-service/training.controller'
-import { TrainingDetail, Training, SignResult, TrainingSaleInfo, TrainingReleaseInfo, TrainingStudent, TrainingQuestion, Question, TrainingStudentGroup, TrainingSignRecord, TrainingOrder, TrainingOrderDetail } from '@/http/model/learn-service.model'
+import { TrainingDetail, Training, SignResult, TrainingSaleInfo, TrainingReleaseInfo, TrainingStudent, SignConfigResponse, TrainingQuestion, Question, TrainingStudentGroup, TrainingSignRecord, TrainingOrder, TrainingOrderDetail } from '@/http/model/learn-service.model'
 
 export class TrainingService {
   /**
@@ -150,6 +150,29 @@ export class TrainingService {
   public addStudent(
     params?: RequestParams | { [key: string]: any }
   ): Observable<TrainingStudent> {
+    return RequestParams.create(params).request();
+  }
+  /**
+   * 获取签到配置
+   */
+  @Request({
+    server: TrainingController.queryAllSignConfig,
+    model: SignConfigResponse
+  })
+  public queryAllSignConfig(
+    params?: RequestParams | { [key: string]: any }
+  ): Observable<SignConfigResponse[]> {
+    return RequestParams.create(params).request();
+  }
+  /**
+   * 增加签到
+   */
+  @Request({
+    server: TrainingController.configTrainingSign,
+  })
+  public configTrainingSign(
+    params?: RequestParams | { [key: string]: any }
+  ): Observable<any> {
     return RequestParams.create(params).request();
   }
   /**

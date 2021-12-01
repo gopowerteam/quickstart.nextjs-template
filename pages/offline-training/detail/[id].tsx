@@ -21,26 +21,12 @@ import moment from 'moment'
 import PublishConfig from '~/pages/offline-training/components/publish-config-component'
 import OrderCenterList from '~/pages/offline-training/order-center'
 import StudentCenter from '~/pages/offline-training/student-center'
-import axios from 'axios'
 import QuestionsComponent from '~/pages/offline-training/components/question-component'
+import type { TrainingDetail } from '~/http/model/learn-service.model'
 
 const trainingService = new TrainingService()
 
 const { TabPane } = Tabs
-
-interface ActivityType {
-  id: string
-  title: string
-  date: string
-  number: {
-    current: number
-    max: number
-  }
-  status: string
-  bannerImg: string
-  description: string
-  location: string
-}
 
 const OfflineTrainingDetail: NextPage = () => {
   const router = useRouter()
@@ -49,7 +35,7 @@ const OfflineTrainingDetail: NextPage = () => {
   const publishConfigRef = useRef<any>()
   const unmount = useRef(false)
   const [activityModel, setActivityModel] =
-    useState<ActivityType>()
+    useState<TrainingDetail>()
 
   useEffect(() => {
     getBasicInfoDetail()
@@ -75,13 +61,12 @@ const OfflineTrainingDetail: NextPage = () => {
         })
       )
       .subscribe(data => {
-        !unmount.current &&
-          setActivityModel({
-            ...data,
-            date: moment(data.date).format('YYYY-MM-DD')
-          })
-        !unmount.current &&
-          basicInfoRef.current?.setFormValue(data)
+        console.log(data)
+        setActivityModel({
+          ...data,
+          date: moment(data.date).format('YYYY-MM-DD')
+        })
+        basicInfoRef.current?.setFormValue(data)
       })
   }
 
@@ -233,6 +218,7 @@ const OfflineTrainingDetail: NextPage = () => {
               height={'100px'}
               src={activityModel?.bannerImg}
             />
+            {activityModel?.bannerImg}
           </Descriptions.Item>
           <Descriptions.Item>
             <div className={styles['flex-col']}>
@@ -246,9 +232,9 @@ const OfflineTrainingDetail: NextPage = () => {
           </Descriptions.Item>
           <Descriptions.Item label={'学员人数'}>
             <div>
-              {activityModel?.number?.current +
+              {activityModel?.count?.current +
                 '/' +
-                activityModel?.number?.max}
+                activityModel?.count?.max}
             </div>
           </Descriptions.Item>
         </Descriptions>

@@ -118,6 +118,24 @@ export const TrainingController = {
         action: 'addStudent',
         type: RequestMethod.Post
     },
+    // 获取签到配置
+    queryAllSignConfig: {
+        gateway,
+        service,
+        controller,
+        path: '/api/training/{id}/sign',
+        action: 'queryAllSignConfig',
+        type: RequestMethod.Get
+    },
+    // 增加签到
+    configTrainingSign: {
+        gateway,
+        service,
+        controller,
+        path: '/api/training/{id}/sign',
+        action: 'configTrainingSign',
+        type: RequestMethod.Post
+    },
     // 获取全部的问题
     getAllQuestions: {
         gateway,

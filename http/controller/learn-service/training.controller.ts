@@ -37,6 +37,15 @@ export const TrainingController = {
         action: 'changeStatus',
         type: RequestMethod.Put
     },
+    // 用户签到
+    trainingSignIn: {
+        gateway,
+        service,
+        controller,
+        path: '/api/training/{id}/sign-in',
+        action: 'trainingSignIn',
+        type: RequestMethod.Put
+    },
     // 获取营销配置
     getTrainingSaleConfig: {
         gateway,
@@ -73,7 +82,7 @@ export const TrainingController = {
         action: 'updateTrainingRelease',
         type: RequestMethod.Put
     },
-    // 活动列表(全部)
+    // 活动列表(分页)
     getTrainings: {
         gateway,
         service,
@@ -163,6 +172,15 @@ export const TrainingController = {
         action: 'searchStudent',
         type: RequestMethod.Get
     },
+    // 学员签到列表
+    trainingSignRecord: {
+        gateway,
+        service,
+        controller,
+        path: '/api/training/{id}/sign-record',
+        action: 'trainingSignRecord',
+        type: RequestMethod.Get
+    },
     // （分页）获取全部单订单(admin)
     getTrainingOrders: {
         gateway,
@@ -179,6 +197,15 @@ export const TrainingController = {
         controller,
         path: '/api/training/order/{id}',
         action: 'getTrainingOrderDetail',
+        type: RequestMethod.Get
+    },
+    // 活动列表(上架的All)
+    getTrainingOns: {
+        gateway,
+        service,
+        controller,
+        path: '/api/training/on-sale',
+        action: 'getTrainingOns',
         type: RequestMethod.Get
     },
     // 从培训中移出学员

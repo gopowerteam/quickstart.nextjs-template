@@ -5,7 +5,7 @@
 import { Request, RequestParams } from '@gopowerteam/http-request'
 import type { Observable } from 'rxjs'
 import { TrainingController } from '@/http/controller/learn-service/training.controller'
-import { TrainingDetail, Training, TrainingSaleInfo, TrainingReleaseInfo, TrainingStudent, TrainingQuestion, Question, TrainingStudentGroup, TrainingOrder, TrainingOrderDetail } from '@/http/model/learn-service.model'
+import { TrainingDetail, Training, SignResult, TrainingSaleInfo, TrainingReleaseInfo, TrainingStudent, TrainingQuestion, Question, TrainingStudentGroup, TrainingSignRecord, TrainingOrder, TrainingOrderDetail } from '@/http/model/learn-service.model'
 
 export class TrainingService {
   /**
@@ -45,14 +45,15 @@ export class TrainingService {
     return RequestParams.create(params).request();
   }
   /**
-   * 更新活动状态
+   * 用户签到
    */
   @Request({
-    server: TrainingController.changeStatus,
+    server: TrainingController.trainingSignIn,
+    model: SignResult
   })
-  public changeStatus(
+  public trainingSignIn(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<SignResult> {
     return RequestParams.create(params).request();
   }
   /**
@@ -100,15 +101,11 @@ export class TrainingService {
   })
   public updateTrainingRelease(
     params?: RequestParams | { [key: string]: any }
-<<<<<<< HEAD
   ): Observable<TrainingReleaseInfo> {
-=======
-  ): Observable<any> {
->>>>>>> 18d615df41baaca2cddea9b28ebcdc87ad443ba6
     return RequestParams.create(params).request();
   }
   /**
-   * 活动列表(全部)
+   * 活动列表(分页)
    */
   @Request({
     server: TrainingController.getTrainings,
@@ -160,25 +157,9 @@ export class TrainingService {
    */
   @Request({
     server: TrainingController.getAllQuestions,
-<<<<<<< HEAD
     model: TrainingQuestion
   })
   public getAllQuestions(
-=======
-  })
-  public getAllQuestions(
-    params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
-    return RequestParams.create(params).request();
-  }
-  /**
-   * 给培训增加提问
-   */
-  @Request({
-    server: TrainingController.postQuestion,
-  })
-  public postQuestion(
->>>>>>> 18d615df41baaca2cddea9b28ebcdc87ad443ba6
     params?: RequestParams | { [key: string]: any }
   ): Observable<TrainingQuestion[]> {
     return RequestParams.create(params).request();
@@ -219,43 +200,12 @@ export class TrainingService {
     return RequestParams.create(params).request();
   }
   /**
-<<<<<<< HEAD
    * 把学员加入某个组
    */
   @Request({
     server: TrainingController.addStudentToGroup,
   })
   public addStudentToGroup(
-=======
-   * 启动分组
-   */
-  @Request({
-    server: TrainingController.group,
-  })
-  public group(
-    params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
-    return RequestParams.create(params).request();
-  }
-  /**
-   * 把学员加入某个组
-   */
-  @Request({
-    server: TrainingController.addStudentToGroup,
-  })
-  public addStudentToGroup(
-    params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
-    return RequestParams.create(params).request();
-  }
-  /**
-   * 搜索学员，包括分组与未分组的
-   */
-  @Request({
-    server: TrainingController.searchStudent,
-  })
-  public searchStudent(
->>>>>>> 18d615df41baaca2cddea9b28ebcdc87ad443ba6
     params?: RequestParams | { [key: string]: any }
   ): Observable<any> {
     return RequestParams.create(params).request();
@@ -270,6 +220,18 @@ export class TrainingService {
   public searchStudent(
     params?: RequestParams | { [key: string]: any }
   ): Observable<TrainingStudent[]> {
+    return RequestParams.create(params).request();
+  }
+  /**
+   * 学员签到列表
+   */
+  @Request({
+    server: TrainingController.trainingSignRecord,
+    model: TrainingSignRecord
+  })
+  public trainingSignRecord(
+    params?: RequestParams | { [key: string]: any }
+  ): Observable<TrainingSignRecord[]> {
     return RequestParams.create(params).request();
   }
   /**
@@ -297,36 +259,15 @@ export class TrainingService {
     return RequestParams.create(params).request();
   }
   /**
-   * 从培训中移出学员
+   * 活动列表(上架的All)
    */
   @Request({
-    server: TrainingController.removeStudent,
+    server: TrainingController.getTrainingOns,
+    model: TrainingDetail
   })
-  public removeStudent(
+  public getTrainingOns(
     params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
-    return RequestParams.create(params).request();
-  }
-  /**
-   * 从培训的分组中删除某个学员
-   */
-  @Request({
-    server: TrainingController.removeStudentGroup,
-  })
-  public removeStudentGroup(
-    params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
-    return RequestParams.create(params).request();
-  }
-  /**
-   * 清除分组
-   */
-  @Request({
-    server: TrainingController.clearGroup,
-  })
-  public clearGroup(
-    params?: RequestParams | { [key: string]: any }
-  ): Observable<any> {
+  ): Observable<TrainingDetail[]> {
     return RequestParams.create(params).request();
   }
   /**

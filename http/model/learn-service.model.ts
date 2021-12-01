@@ -89,6 +89,10 @@ export class Training extends Model {
   public bannerImg : string
 }
 
+export class SignResult extends Model {
+  public status : string
+}
+
 export class TrainingSaleInfo extends Model {
   /**
    * 人数上限
@@ -197,6 +201,42 @@ export class GroupRequest extends Model {
    * 分组类型
    */
   public type : string
+}
+
+export class SystemLog extends Model {
+  public level : string
+  public type : string
+  public operator : string
+  public detail : string
+  public id : string
+  public createAt : string
+}
+
+export class TrainingSignRecord extends Model {
+  /**
+   * 学员id
+   */
+  public id : string
+  /**
+   * 姓名
+   */
+  public name : string
+  /**
+   * 手机号码
+   */
+  public phone : string
+  /**
+   * 学员类型
+   */
+  public studentType : string
+  /**
+   * 签到状态
+   */
+  public status : string
+  /**
+   * 签到时间
+   */
+  public date : string
 }
 
 export class TrainingQuestion extends Model {

@@ -35,7 +35,6 @@ export class WxMaUserInfo extends Model {
   public country : string
   public avatarUrl : string
   public unionId : string
-  @Type(() => Watermark)
   public watermark : Watermark
 }
 
@@ -43,7 +42,6 @@ export class WxMaPhoneNumberInfo extends Model {
   public phoneNumber : string
   public purePhoneNumber : string
   public countryCode : string
-  @Type(() => Watermark)
   public watermark : Watermark
 }
 

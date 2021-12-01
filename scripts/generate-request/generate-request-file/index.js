@@ -20,6 +20,14 @@ Handlebars.registerHelper('toLowerCase', function (str) {
 Handlebars.registerHelper('replace', function (context, findStr, replaceStr) {
   return context.replace(findStr, replaceStr)
 })
+
+Handlebars.registerHelper('equal', function (context, value) {
+  return context === value
+})
+
+Handlebars.registerHelper('unequal', function (context, value) {
+  return context !== value
+})
 /**
  * 生成服务
  */

@@ -5,7 +5,7 @@ specifiers:
   '@commitlint/cli': ^15.0.0
   '@commitlint/config-conventional': ^15.0.0
   '@datorama/akita': ^6.2.4
-  '@gopowerteam/http-request': ^0.4.3
+  '@gopowerteam/http-request': ^0.4.4
   '@react-rxjs/core': ^0.8.4
   '@react-rxjs/utils': ^0.9.3
   '@types/node': 16.11.9
@@ -51,7 +51,7 @@ specifiers:
 dependencies:
   '@ant-design/icons': registry.npmmirror.com/@ant-design/icons/4.7.0_react-dom@17.0.2+react@17.0.2
   '@datorama/akita': registry.npmmirror.com/@datorama/akita/6.2.4_rxjs@7.4.0
-  '@gopowerteam/http-request': registry.npmmirror.com/@gopowerteam/http-request/0.4.3_rxjs@7.4.0
+  '@gopowerteam/http-request': registry.npmmirror.com/@gopowerteam/http-request/0.4.4_rxjs@7.4.0
   '@react-rxjs/core': registry.npmmirror.com/@react-rxjs/core/0.8.4_react@17.0.2+rxjs@7.4.0
   '@react-rxjs/utils': registry.npmmirror.com/@react-rxjs/utils/0.9.3_60317e7bb930969efe8177c79c6cf228
   antd: registry.npmmirror.com/antd/4.17.1-alpha.1_react-dom@17.0.2+react@17.0.2
@@ -3434,7 +3434,7 @@ packages:
     dev: true
 
   registry.nlark.com/qs/6.10.1:
-    resolution: {integrity: sha1-STFIL6jWR6Wqt5nFJx0hM7mB+2o=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/qs/download/qs-6.10.1.tgz}
+    resolution: {integrity: sha1-STFIL6jWR6Wqt5nFJx0hM7mB+2o=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/qs/download/qs-6.10.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fqs%2Fdownload%2Fqs-6.10.1.tgz}
     name: qs
     version: 6.10.1
     engines: {node: '>=0.6'}
@@ -5175,17 +5175,17 @@ packages:
       - supports-color
     dev: true
 
-  registry.npmmirror.com/@gopowerteam/http-request/0.4.3_rxjs@7.4.0:
-    resolution: {integrity: sha1-WDzYu3nX0nN7JOnR4pRe+0KPzsg=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@gopowerteam/http-request/download/@gopowerteam/http-request-0.4.3.tgz}
-    id: registry.npmmirror.com/@gopowerteam/http-request/0.4.3
+  registry.npmmirror.com/@gopowerteam/http-request/0.4.4_rxjs@7.4.0:
+    resolution: {integrity: sha512-oU13j7yXNDkpOpIkrimB8xFMt4CpImTpWFI03BPGVFeXepOOV/OFDKmIgPy2RAlHuUdqnb48mydkYGBaTEVf8w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@gopowerteam/http-request/download/@gopowerteam/http-request-0.4.4.tgz}
+    id: registry.npmmirror.com/@gopowerteam/http-request/0.4.4
     name: '@gopowerteam/http-request'
-    version: 0.4.3
+    version: 0.4.4
     peerDependencies:
-      rxjs: ^7.0.0
+      rxjs: 7.4.0
     dependencies:
       '@types/qs': registry.npmmirror.com/@types/qs/6.9.7
-      axios: registry.npmmirror.com/axios/0.21.4
-      class-transformer: registry.npmmirror.com/class-transformer/0.4.0
+      axios: registry.npmmirror.com/axios/0.24.0
+      class-transformer: registry.npmmirror.com/class-transformer/0.5.1
       qs: registry.nlark.com/qs/6.10.1
       rxjs: registry.npmmirror.com/rxjs/7.4.0
     transitivePeerDependencies:
@@ -5785,10 +5785,10 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  registry.npmmirror.com/axios/0.21.4:
-    resolution: {integrity: sha1-xnuQ3AVo5cHPKwuFjEO6KOLtpXU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/axios/download/axios-0.21.4.tgz}
+  registry.npmmirror.com/axios/0.24.0:
+    resolution: {integrity: sha1-gE5voeS5xSiFAd2d/1anoJQNINY=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/axios/download/axios-0.24.0.tgz}
     name: axios
-    version: 0.21.4
+    version: 0.24.0
     dependencies:
       follow-redirects: registry.npmmirror.com/follow-redirects/1.14.5
     transitivePeerDependencies:
@@ -5932,12 +5932,6 @@ packages:
     optionalDependencies:
       fsevents: registry.npmmirror.com/fsevents/2.3.2
     dev: true
-
-  registry.npmmirror.com/class-transformer/0.4.0:
-    resolution: {integrity: sha1-tSFEEXtCPFFq+0TMHHbbrTHCFls=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/class-transformer/download/class-transformer-0.4.0.tgz}
-    name: class-transformer
-    version: 0.4.0
-    dev: false
 
   registry.npmmirror.com/class-transformer/0.5.1:
     resolution: {integrity: sha512-SQa1Ws6hUbfC98vKGxZH3KFY0Y1lm5Zm0SY8XX9zbK7FJCyVEac3ATW0RIpwzW+oOfmHE5PMPufDG9hCfoEOMw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/class-transformer/download/class-transformer-0.5.1.tgz}

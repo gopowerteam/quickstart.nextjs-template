@@ -49,7 +49,6 @@ export class TrainingDetail extends Model {
    */
   public date: string
 
-  @Type(() => Numbers)
   public count: Numbers
   /**
    * 状态

@@ -33,20 +33,12 @@ const OfflineTrainingDetail: NextPage = () => {
   const basicInfoRef = useRef<any>()
   const marketingConfigRef = useRef<any>()
   const publishConfigRef = useRef<any>()
-  const unmount = useRef(false)
   const [activityModel, setActivityModel] =
     useState<TrainingDetail>()
 
   useEffect(() => {
     getBasicInfoDetail()
   }, [])
-
-  //清除副作用
-  useEffect(() => {
-    return () => {
-      unmount.current = true
-    }
-  })
 
   /**
    * 获取基本信息详情
@@ -174,8 +166,7 @@ const OfflineTrainingDetail: NextPage = () => {
         })
       )
       .subscribe(data => {
-        !unmount.current &&
-          marketingConfigRef.current?.setFormValue(data)
+        marketingConfigRef.current?.setFormValue(data)
       })
   }
 
@@ -189,8 +180,7 @@ const OfflineTrainingDetail: NextPage = () => {
         })
       )
       .subscribe(data => {
-        !unmount.current &&
-          publishConfigRef.current?.setFormValue(data)
+        publishConfigRef.current?.setFormValue(data)
       })
   }
 
@@ -211,30 +201,51 @@ const OfflineTrainingDetail: NextPage = () => {
   return (
     <PageContainer>
       <Card>
-        <Descriptions column={3}>
+        <Descriptions column={5}>
           <Descriptions.Item span={1}>
-            <Image
-              width={'80%'}
-              height={'100px'}
-              src={activityModel?.bannerImg}
-            />
-            {activityModel?.bannerImg}
+            <div
+              className={'flex items-center'}
+              style={{ width: '100%' }}
+            >
+              <Image
+                height={'100px'}
+                src={activityModel?.bannerImg}
+              />
+            </div>
           </Descriptions.Item>
-          <Descriptions.Item>
+          <Descriptions.Item span={3}>
             <div className={styles['flex-col']}>
               <Row>
-                <Col>{activityModel?.title}</Col>
+                <Col className={'text-3xl'}>
+                  {activityModel?.title}
+                </Col>
               </Row>
               <Row style={{ marginTop: '60px' }}>
-                <Col>时间 : {activityModel?.date}</Col>
+                <Col className={'text-gray-400'}>
+                  时间 : {activityModel?.date}
+                </Col>
               </Row>
             </div>
           </Descriptions.Item>
-          <Descriptions.Item label={'学员人数'}>
-            <div>
-              {activityModel?.count?.current +
-                '/' +
-                activityModel?.count?.max}
+          <Descriptions.Item span={1}>
+            <div className={'flex flex-col'}>
+              <div className={'text-gray-400'}>
+                学员人数:
+              </div>
+              <div
+                className={
+                  'flex flex-row justify-end items-end'
+                }
+                style={{ width: '100%' }}
+              >
+                <div className={'text-2xl'}>
+                  {activityModel?.count?.current}
+                </div>
+                /
+                <div className={'text-gray-400'}>
+                  {activityModel?.count?.max}
+                </div>
+              </div>
             </div>
           </Descriptions.Item>
         </Descriptions>

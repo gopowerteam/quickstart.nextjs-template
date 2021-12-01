@@ -126,8 +126,15 @@ const QuestionsComponent: React.FC<PropsType> = props => {
                       'flex flex-col flex-none items-center'
                     }
                   >
-                    {item.stars}
-                    <LikeOutlined />
+                    <div className={'text-2xl mb-3'}>
+                      {item.stars}
+                    </div>
+                    <LikeOutlined
+                      style={{
+                        fontSize: '20px',
+                        color: '#cc6600'
+                      }}
+                    />
                   </div>
                 </div>
               </Card>

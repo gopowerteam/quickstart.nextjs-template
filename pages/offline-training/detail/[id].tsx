@@ -22,6 +22,7 @@ import PublishConfig from '~/pages/offline-training/components/publish-config-co
 import OrderCenterList from '~/pages/offline-training/order-center'
 import StudentCenter from '~/pages/offline-training/student-center'
 import axios from 'axios'
+import QuestionsComponent from '~/pages/offline-training/components/question-component'
 
 const trainingService = new TrainingService()
 
@@ -230,9 +231,7 @@ const OfflineTrainingDetail: NextPage = () => {
             <Image
               width={'80%'}
               height={'100px'}
-              src={
-                'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-              }
+              src={activityModel?.bannerImg}
             />
           </Descriptions.Item>
           <Descriptions.Item>
@@ -283,6 +282,11 @@ const OfflineTrainingDetail: NextPage = () => {
           </TabPane>
           <TabPane tab="学员管理" key="5">
             <StudentCenter id={router.query.id as string} />
+          </TabPane>
+          <TabPane tab="问题停车场" key="6">
+            <QuestionsComponent
+              id={router.query.id as string}
+            />
           </TabPane>
         </Tabs>
       </Card>

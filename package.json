@@ -38,6 +38,9 @@
     "react-cookie": "^4.1.1",
     "react-dom": "17.0.2",
     "reflect-metadata": "^0.1.13",
+    "react-full-screen": "^1.1.0",
+    "react-sizeme": "^3.0.2",
+    "react-stack-grid": "^0.7.1",
     "rxjs": "^7.4.0"
   },
   "devDependencies": {
@@ -45,6 +48,7 @@
     "@commitlint/config-conventional": "^15.0.0",
     "@types/node": "16.11.9",
     "@types/react": "17.0.36",
+    "@types/react-stack-grid": "^0.7.3",
     "autoprefixer": "^10.4.0",
     "commander": "^8.3.0",
     "commitizen": "^4.2.4",

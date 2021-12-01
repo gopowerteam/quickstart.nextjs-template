@@ -10,6 +10,7 @@ specifiers:
   '@react-rxjs/utils': ^0.9.3
   '@types/node': 16.11.9
   '@types/react': 17.0.36
+  '@types/react-stack-grid': ^0.7.3
   antd: ^4.17.1-alpha.1
   autoprefixer: ^10.4.0
   chalk: ^4.1.2
@@ -40,6 +41,9 @@ specifiers:
   react-cookie: ^4.1.1
   react-dom: 17.0.2
   reflect-metadata: ^0.1.13
+  react-full-screen: ^1.1.0
+  react-sizeme: ^3.0.2
+  react-stack-grid: ^0.7.1
   rxjs: ^7.4.0
   tailwindcss: ^2.2.19
   typescript: 4.5.2
@@ -60,7 +64,13 @@ dependencies:
   react: registry.npmmirror.com/react/17.0.2
   react-cookie: registry.npmmirror.com/react-cookie/4.1.1_react@17.0.2
   react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+<<<<<<< HEAD
   reflect-metadata: registry.nlark.com/reflect-metadata/0.1.13
+=======
+  react-full-screen: registry.npmmirror.com/react-full-screen/1.1.0_react@17.0.2
+  react-sizeme: registry.nlark.com/react-sizeme/3.0.2
+  react-stack-grid: registry.npmmirror.com/react-stack-grid/0.7.1_react-dom@17.0.2+react@17.0.2
+>>>>>>> 02ffe55b7183966f036874995728fe167df7baa0
   rxjs: registry.npmmirror.com/rxjs/7.4.0
 
 devDependencies:
@@ -68,6 +78,7 @@ devDependencies:
   '@commitlint/config-conventional': registry.npmmirror.com/@commitlint/config-conventional/15.0.0
   '@types/node': registry.npmmirror.com/@types/node/16.11.9
   '@types/react': registry.npmmirror.com/@types/react/17.0.36
+  '@types/react-stack-grid': registry.npmmirror.com/@types/react-stack-grid/0.7.3
   autoprefixer: registry.npmmirror.com/autoprefixer/10.4.0_postcss@8.3.11
   commander: registry.npmmirror.com/commander/8.3.0
   commitizen: registry.npmmirror.com/commitizen/4.2.4
@@ -580,6 +591,12 @@ packages:
     version: 1.5.1
     dev: false
 
+  registry.nlark.com/batch-processor/1.0.0:
+    resolution: {integrity: sha1-dclcMrdI4IUNEMKxaPa9vpiRrOg=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/batch-processor/download/batch-processor-1.0.0.tgz}
+    name: batch-processor
+    version: 1.0.0
+    dev: false
+
   registry.nlark.com/big.js/5.2.2:
     resolution: {integrity: sha1-ZfCvOC9Xi83HQr2cKB6cstd2gyg=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/big.js/download/big.js-5.2.2.tgz}
     name: big.js
@@ -608,6 +625,12 @@ packages:
     resolution: {integrity: sha1-NYhgZ0OWxpl3canQUfzBtX1K4AI=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/bn.js/download/bn.js-5.2.0.tgz}
     name: bn.js
     version: 5.2.0
+    dev: false
+
+  registry.nlark.com/bowser/1.9.4:
+    resolution: {integrity: sha1-iQxYooE6nTJDcEM0+oG5alwVDJo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/bowser/download/bowser-1.9.4.tgz}
+    name: bowser
+    version: 1.9.4
     dev: false
 
   registry.nlark.com/brace-expansion/1.1.11:
@@ -1070,6 +1093,15 @@ packages:
     version: 0.0.4
     dev: true
 
+  registry.nlark.com/css-in-js-utils/2.0.1:
+    resolution: {integrity: sha1-O0crOYeHKRtHz+PkT+z92ekUupk=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/css-in-js-utils/download/css-in-js-utils-2.0.1.tgz}
+    name: css-in-js-utils
+    version: 2.0.1
+    dependencies:
+      hyphenate-style-name: registry.nlark.com/hyphenate-style-name/1.0.4
+      isobject: registry.nlark.com/isobject/3.0.1
+    dev: false
+
   registry.nlark.com/css-unit-converter/1.1.2:
     resolution: {integrity: sha1-THf1oZVObb/2BpXsshTjJwQ2qyE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/css-unit-converter/download/css-unit-converter-1.1.2.tgz}
     name: css-unit-converter
@@ -1255,6 +1287,14 @@ packages:
     version: 1.12.2
     dev: false
 
+  registry.nlark.com/dom-helpers/3.4.0:
+    resolution: {integrity: sha1-6bNpcA+Vn2Ls3lprq95LzNkWmvg=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/dom-helpers/download/dom-helpers-3.4.0.tgz}
+    name: dom-helpers
+    version: 3.4.0
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.3
+    dev: false
+
   registry.nlark.com/domain-browser/4.19.0:
     resolution: {integrity: sha1-EJPhfAoX29UhGC/pDUmsE3AFSvE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/domain-browser/download/domain-browser-4.19.0.tgz}
     name: domain-browser
@@ -1287,6 +1327,14 @@ packages:
     name: editor
     version: 1.0.0
     dev: true
+
+  registry.nlark.com/element-resize-detector/1.2.3:
+    resolution: {integrity: sha1-UHjZuZOY/kxYn4yN+U/5nl1BP/M=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/element-resize-detector/download/element-resize-detector-1.2.3.tgz}
+    name: element-resize-detector
+    version: 1.2.3
+    dependencies:
+      batch-processor: registry.nlark.com/batch-processor/1.0.0
+    dev: false
 
   registry.nlark.com/elliptic/6.5.4:
     resolution: {integrity: sha1-2jfOvTHnmhNn6UG1ku0fvr1Yq7s=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/elliptic/download/elliptic-6.5.4.tgz}
@@ -1459,6 +1507,12 @@ packages:
     dependencies:
       md5.js: registry.nlark.com/md5.js/1.3.5
       safe-buffer: registry.nlark.com/safe-buffer/5.2.1
+    dev: false
+
+  registry.nlark.com/exenv/1.2.2:
+    resolution: {integrity: sha1-KueOhdmJQVhnCwPUe+wfA72Ru50=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/exenv/download/exenv-1.2.2.tgz}
+    name: exenv
+    version: 1.2.2
     dev: false
 
   registry.nlark.com/expand-tilde/2.0.2:
@@ -1961,6 +2015,12 @@ packages:
       ms: registry.npmmirror.com/ms/2.1.3
     dev: false
 
+  registry.nlark.com/hyphenate-style-name/1.0.4:
+    resolution: {integrity: sha1-aRh5r44iCupXUOiCfbTvYqVONh0=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/hyphenate-style-name/download/hyphenate-style-name-1.0.4.tgz}
+    name: hyphenate-style-name
+    version: 1.0.4
+    dev: false
+
   registry.nlark.com/iconv-lite/0.4.24:
     resolution: {integrity: sha1-ICK0sl+93CHS9SSXSkdKr+czkIs=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/iconv-lite/download/iconv-lite-0.4.24.tgz}
     name: iconv-lite
@@ -2085,6 +2145,14 @@ packages:
       get-intrinsic: registry.nlark.com/get-intrinsic/1.1.1
       has: registry.nlark.com/has/1.0.3
       side-channel: registry.nlark.com/side-channel/1.0.4
+
+  registry.nlark.com/invariant/2.2.4:
+    resolution: {integrity: sha1-YQ88ksk1nOHbYW5TgAjSP/NRWOY=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/invariant/download/invariant-2.2.4.tgz}
+    name: invariant
+    version: 2.2.4
+    dependencies:
+      loose-envify: registry.nlark.com/loose-envify/1.4.0
+    dev: false
 
   registry.nlark.com/ip/1.1.5:
     resolution: {integrity: sha1-vd7XARQpCCjAoDnnLvJfWq7ENUo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/ip/download/ip-1.1.5.tgz}
@@ -2325,11 +2393,10 @@ packages:
     version: 2.0.0
 
   registry.nlark.com/isobject/3.0.1:
-    resolution: {integrity: sha1-TkMekrEalzFjaqH5yNHMvP2reN8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/isobject/download/isobject-3.0.1.tgz?cache=0&sync_timestamp=1631583891576&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fisobject%2Fdownload%2Fisobject-3.0.1.tgz}
+    resolution: {integrity: sha1-TkMekrEalzFjaqH5yNHMvP2reN8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/isobject/download/isobject-3.0.1.tgz}
     name: isobject
     version: 3.0.1
     engines: {node: '>=0.10.0'}
-    dev: true
 
   registry.nlark.com/js-tokens/4.0.0:
     resolution: {integrity: sha1-GSA/tZmR35jjoocFDUZHzerzJJk=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/js-tokens/download/js-tokens-4.0.0.tgz}
@@ -3287,7 +3354,6 @@ packages:
       loose-envify: registry.nlark.com/loose-envify/1.4.0
       object-assign: registry.nlark.com/object-assign/4.1.1
       react-is: registry.npmmirror.com/react-is/16.13.1
-    dev: true
 
   registry.nlark.com/protoduck/5.0.1:
     resolution: {integrity: sha1-A8NlnKGAB7aaUP2Cp+vMUWJhFR8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/protoduck/download/protoduck-5.0.1.tgz}
@@ -3707,6 +3773,52 @@ packages:
       rc-util: registry.npmmirror.com/rc-util/5.15.0_react-dom@17.0.2+react@17.0.2
       react: registry.npmmirror.com/react/17.0.2
       react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
+  registry.nlark.com/react-sizeme/2.6.12_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha1-7SB75UdvSoW/Nk6SBCUgSZRVRT4=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/react-sizeme/download/react-sizeme-2.6.12.tgz}
+    id: registry.nlark.com/react-sizeme/2.6.12
+    name: react-sizeme
+    version: 2.6.12
+    peerDependencies:
+      react: ^0.14.0 || ^15.0.0-0 || ^16.0.0
+      react-dom: ^0.14.0 || ^15.0.0-0 || ^16.0.0
+    dependencies:
+      element-resize-detector: registry.nlark.com/element-resize-detector/1.2.3
+      invariant: registry.nlark.com/invariant/2.2.4
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+      shallowequal: registry.nlark.com/shallowequal/1.1.0
+      throttle-debounce: registry.nlark.com/throttle-debounce/2.3.0
+    dev: false
+
+  registry.nlark.com/react-sizeme/3.0.2:
+    resolution: {integrity: sha1-Si8WeQW6j4uNkyqeNRZORZ+QIOQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/react-sizeme/download/react-sizeme-3.0.2.tgz}
+    name: react-sizeme
+    version: 3.0.2
+    dependencies:
+      element-resize-detector: registry.nlark.com/element-resize-detector/1.2.3
+      invariant: registry.nlark.com/invariant/2.2.4
+      shallowequal: registry.nlark.com/shallowequal/1.1.0
+      throttle-debounce: registry.nlark.com/throttle-debounce/3.0.1
+    dev: false
+
+  registry.nlark.com/react-transition-group/1.2.1_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha1-4R9yslf5IbITIpp3TfRmEjRsfKY=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/react-transition-group/download/react-transition-group-1.2.1.tgz?cache=0&sync_timestamp=1632051331339&other_urls=https%3A%2F%2Fregistry.nlark.com%2Freact-transition-group%2Fdownload%2Freact-transition-group-1.2.1.tgz}
+    id: registry.nlark.com/react-transition-group/1.2.1
+    name: react-transition-group
+    version: 1.2.1
+    peerDependencies:
+      react: ^15.0.0 || ^16.0.0
+      react-dom: ^15.0.0 || ^16.0.0
+    dependencies:
+      chain-function: registry.npmmirror.com/chain-function/1.0.1
+      dom-helpers: registry.nlark.com/dom-helpers/3.4.0
+      loose-envify: registry.nlark.com/loose-envify/1.4.0
+      prop-types: registry.nlark.com/prop-types/15.7.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+      warning: registry.nlark.com/warning/3.0.0
     dev: false
 
   registry.nlark.com/read-pkg/5.2.0:
@@ -4348,6 +4460,20 @@ packages:
     version: 0.2.0
     dev: true
 
+  registry.nlark.com/throttle-debounce/2.3.0:
+    resolution: {integrity: sha1-/TGGXmZQIHHkEYF+JBRls+nDcuI=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/throttle-debounce/download/throttle-debounce-2.3.0.tgz}
+    name: throttle-debounce
+    version: 2.3.0
+    engines: {node: '>=8'}
+    dev: false
+
+  registry.nlark.com/throttle-debounce/3.0.1:
+    resolution: {integrity: sha1-MvlNhN+olPeGyaHykOemRbahmrs=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/throttle-debounce/download/throttle-debounce-3.0.1.tgz}
+    name: throttle-debounce
+    version: 3.0.1
+    engines: {node: '>=10'}
+    dev: false
+
   registry.nlark.com/through/2.3.8:
     resolution: {integrity: sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/through/download/through-2.3.8.tgz}
     name: through
@@ -4563,6 +4689,14 @@ packages:
     version: 3.0.0
     dependencies:
       builtins: registry.nlark.com/builtins/1.0.3
+    dev: false
+
+  registry.nlark.com/warning/3.0.0:
+    resolution: {integrity: sha1-MuU3fLVy3kqwR1O9+IIcAe1gW3w=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/warning/download/warning-3.0.0.tgz}
+    name: warning
+    version: 3.0.0
+    dependencies:
+      loose-envify: registry.nlark.com/loose-envify/1.4.0
     dev: false
 
   registry.nlark.com/warning/4.0.3:
@@ -5390,6 +5524,14 @@ packages:
     version: 6.9.7
     dev: false
 
+  registry.npmmirror.com/@types/react-stack-grid/0.7.3:
+    resolution: {integrity: sha1-2YIZ3nzQPRbh0cyT1wS3W9dbOQ4=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/react-stack-grid/download/@types/react-stack-grid-0.7.3.tgz}
+    name: '@types/react-stack-grid'
+    version: 0.7.3
+    dependencies:
+      '@types/react': registry.npmmirror.com/@types/react/17.0.36
+    dev: true
+
   registry.npmmirror.com/@types/react/17.0.36:
     resolution: {integrity: sha512-CUFUp01OdfbpN/76v4koqgcpcRGT3sYOq3U3N6q0ZVGcyeP40NUdVU+EWe3hs34RNaTefiYyBzOpxBBidCc5zw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/react/download/@types/react-17.0.36.tgz?cache=0&sync_timestamp=1637548210034&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40types%2Freact%2Fdownload%2F%40types%2Freact-17.0.36.tgz}
     name: '@types/react'
@@ -5719,6 +5861,12 @@ packages:
     name: caniuse-lite
     version: 1.0.30001280
 
+  registry.npmmirror.com/chain-function/1.0.1:
+    resolution: {integrity: sha1-xjBF5bS2Y/uG8cbhhq2vHeQCocw=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/chain-function/download/chain-function-1.0.1.tgz}
+    name: chain-function
+    version: 1.0.1
+    dev: false
+
   registry.npmmirror.com/chalk/2.4.2:
     resolution: {integrity: sha1-zUJUFnelQzPPVBpJEIwUMrRMlCQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/chalk/download/chalk-2.4.2.tgz}
     name: chalk
@@ -6017,6 +6165,14 @@ packages:
     version: 1.2.0
     engines: {node: '>=0.10.0'}
     dev: true
+
+  registry.npmmirror.com/easy-css-transform-builder/0.0.2:
+    resolution: {integrity: sha1-pUFmenkZ4X9n2CsR08tV/dVDMCI=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/easy-css-transform-builder/download/easy-css-transform-builder-0.0.2.tgz}
+    name: easy-css-transform-builder
+    version: 0.0.2
+    dependencies:
+      invariant: registry.nlark.com/invariant/2.2.4
+    dev: false
 
   registry.npmmirror.com/electron-to-chromium/1.3.899:
     resolution: {integrity: sha512-w16Dtd2zl7VZ4N4Db+FIa7n36sgPGCKjrKvUUmp5ialsikvcQLjcJR9RWnlYNxIyEHLdHaoIZEqKsPxU9MdyBg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/electron-to-chromium/download/electron-to-chromium-1.3.899.tgz?cache=0&sync_timestamp=1637176347223&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Felectron-to-chromium%2Fdownload%2Felectron-to-chromium-1.3.899.tgz}
@@ -6323,6 +6479,12 @@ packages:
     engines: {node: '>=4.0'}
     dev: true
 
+  registry.npmmirror.com/ev-emitter/1.1.1:
+    resolution: {integrity: sha1-jxiwzlx2pdGAF/ccCnlcZbkTjyo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ev-emitter/download/ev-emitter-1.1.1.tgz}
+    name: ev-emitter
+    version: 1.1.1
+    dev: false
+
   registry.npmmirror.com/events/3.3.0:
     resolution: {integrity: sha1-Mala0Kkk4tLEGagTrrLE6HjqdAA=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/events/download/events-3.3.0.tgz?cache=0&sync_timestamp=1636450001961&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fevents%2Fdownload%2Fevents-3.3.0.tgz}
     name: events
@@ -6429,6 +6591,12 @@ packages:
       iferr: registry.nlark.com/iferr/0.1.5
       imurmurhash: registry.nlark.com/imurmurhash/0.1.4
       readable-stream: registry.nlark.com/readable-stream/2.3.7
+    dev: false
+
+  registry.npmmirror.com/fscreen/1.2.0:
+    resolution: {integrity: sha1-GoyI4GvBage0c62WGW+wbWZX9Z4=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/fscreen/download/fscreen-1.2.0.tgz}
+    name: fscreen
+    version: 1.2.0
     dev: false
 
   registry.npmmirror.com/fsevents/2.3.2:
@@ -6569,6 +6737,23 @@ packages:
     version: 5.1.9
     engines: {node: '>= 4'}
     dev: true
+
+  registry.npmmirror.com/imagesloaded/4.1.4:
+    resolution: {integrity: sha1-E3bvzRYrt2jDTDcnrInMBAUfPMc=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/imagesloaded/download/imagesloaded-4.1.4.tgz}
+    name: imagesloaded
+    version: 4.1.4
+    dependencies:
+      ev-emitter: registry.npmmirror.com/ev-emitter/1.1.1
+    dev: false
+
+  registry.npmmirror.com/inline-style-prefixer/3.0.8:
+    resolution: {integrity: sha1-hVG45bTVcyROZqNLBPfTIHaitTQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/inline-style-prefixer/download/inline-style-prefixer-3.0.8.tgz}
+    name: inline-style-prefixer
+    version: 3.0.8
+    dependencies:
+      bowser: registry.nlark.com/bowser/1.9.4
+      css-in-js-utils: registry.nlark.com/css-in-js-utils/2.0.1
+    dev: false
 
   registry.npmmirror.com/inquirer/6.5.2:
     resolution: {integrity: sha1-rVCUI3XQNtMn/1KMCL1fqwiZKMo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/inquirer/download/inquirer-6.5.2.tgz}
@@ -7550,6 +7735,19 @@ packages:
       scheduler: registry.npmmirror.com/scheduler/0.20.2
     dev: false
 
+  registry.npmmirror.com/react-full-screen/1.1.0_react@17.0.2:
+    resolution: {integrity: sha1-aWxYbaJWUu0Q2IBG+NwLZiD075Y=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-full-screen/download/react-full-screen-1.1.0.tgz}
+    id: registry.npmmirror.com/react-full-screen/1.1.0
+    name: react-full-screen
+    version: 1.1.0
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>= 16.8.0'
+    dependencies:
+      fscreen: registry.npmmirror.com/fscreen/1.2.0
+      react: registry.npmmirror.com/react/17.0.2
+    dev: false
+
   registry.npmmirror.com/react-is/16.13.1:
     resolution: {integrity: sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-is/download/react-is-16.13.1.tgz}
     name: react-is
@@ -7566,6 +7764,28 @@ packages:
     name: react-refresh
     version: 0.8.3
     engines: {node: '>=0.10.0'}
+    dev: false
+
+  registry.npmmirror.com/react-stack-grid/0.7.1_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha1-y/c1PObCrPcSuCfDawviNK+Evuk=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-stack-grid/download/react-stack-grid-0.7.1.tgz}
+    id: registry.npmmirror.com/react-stack-grid/0.7.1
+    name: react-stack-grid
+    version: 0.7.1
+    peerDependencies:
+      react: '>=15.3.0'
+      react-dom: '>=15.3.0'
+    dependencies:
+      easy-css-transform-builder: registry.npmmirror.com/easy-css-transform-builder/0.0.2
+      exenv: registry.nlark.com/exenv/1.2.2
+      imagesloaded: registry.npmmirror.com/imagesloaded/4.1.4
+      inline-style-prefixer: registry.npmmirror.com/inline-style-prefixer/3.0.8
+      invariant: registry.nlark.com/invariant/2.2.4
+      prop-types: registry.nlark.com/prop-types/15.7.2
+      react: registry.npmmirror.com/react/17.0.2
+      react-dom: registry.npmmirror.com/react-dom/17.0.2_react@17.0.2
+      react-sizeme: registry.nlark.com/react-sizeme/2.6.12_react-dom@17.0.2+react@17.0.2
+      react-transition-group: registry.nlark.com/react-transition-group/1.2.1_react-dom@17.0.2+react@17.0.2
+      shallowequal: registry.nlark.com/shallowequal/1.1.0
     dev: false
 
   registry.npmmirror.com/react/17.0.2:

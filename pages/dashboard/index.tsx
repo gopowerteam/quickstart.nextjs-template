@@ -4,9 +4,15 @@ import { appQuery, appAction } from '~/store'
 import definePage from '~/shared/common/define-page'
 import { useStoreQuery } from '~/shared/common/use-store'
 import { useCookies } from 'react-cookie'
-import { useState } from 'react'
+import {
+  createRef,
+  useEffect,
+  useRef,
+  useState
+} from 'react'
 import FileUpload from '~/shared/components/file-upload'
 import { useFileService } from '~/shared/services/file.service'
+import useEditor from '~/shared/common/use-editor'
 
 const DashBoardPage: NextPage = () => {
   const fileService = useFileService(
@@ -20,10 +26,14 @@ const DashBoardPage: NextPage = () => {
 
   const [a, u] = useState('1')
 
+  // const editor = createRef()
+
   // const router = useRouter()
   function updateName() {
     // userAction.updateUserName(name + 'z')
   }
+
+  const Editor = useEditor()
 
   function updateReady() {
     appAction.updateReady()
@@ -40,6 +50,14 @@ const DashBoardPage: NextPage = () => {
     })
     console.log(files.item(0))
   }
+
+  const [editorContent, updateEditorContent] = useState('')
+
+  useEffect(() => {
+    setTimeout(() => {
+      updateEditorContent('aksjdkljaskldjaksljdlk')
+    }, 5000)
+  }, [])
 
   if (!ready) {
     return (
@@ -64,6 +82,10 @@ const DashBoardPage: NextPage = () => {
             Dashboard {a}
           </Button>
         </FileUpload>
+        <Editor
+          value={editorContent}
+          onSubmit={content => console.log(content)}
+        ></Editor>
       </>
     )
   }
